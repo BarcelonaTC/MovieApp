@@ -9,7 +9,6 @@ plugins {
     id 'com.google.firebase.firebase-perf'
 }
 
-// Load local properties at the project level
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -29,7 +28,6 @@ android {
         versionCode 1
         versionName "1.0"
 
-        // Build config fields with safe property access
         buildConfigField "String", "API_KEY", "\"${localProperties.getProperty('apiKey', '')}\""
         buildConfigField "String", "BASE_URL", "\"https://api.themoviedb.org/3/\""
         buildConfigField "String", "IMAGE_BASE_PATH", "\"https://image.tmdb.org/t/p/w500\""
@@ -44,23 +42,15 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        debug {
-            // Add debug-specific configurations if needed
-        }
     }
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
-                targetCompatibility JavaVersion.VERSION_1_8
-        // For newer AGP versions, consider using VERSION_11
-        // sourceCompatibility JavaVersion.VERSION_11
-        // targetCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
         jvmTarget = '1.8'
-        // For newer Kotlin versions, consider using '11'
-        // jvmTarget = '11'
     }
 
     buildFeatures {

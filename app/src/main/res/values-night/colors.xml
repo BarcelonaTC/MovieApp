@@ -16,4 +16,51 @@
     <color name="gray">#80737373</color>
 
     <color name="profile_background">#99FFFFFF</color>
+
+
+    <!--     CineVerse Colors-->
+    <!-- Shade -->
+    <color name="shade_primary">#E1E1E3</color>
+    <color name="shade_secondary">#A4A4AA</color>
+    <color name="shade_tertiary">#72727B</color>
+    <color name="shade_quaternary">#2D2E3B</color>
+    <color name="shade_quinary">#242533</color>
+    <color name="shade_shimmer">#14FFFFFF</color> <!-- includes alpha -->
+
+    <!-- Background -->
+    <color name="background_screen">#121321</color>
+    <color name="background_card">#1B1C2A</color>
+    <color name="background_bottomSheet">#1B1C2A</color>
+    <color name="background_bottomSheetCard">#242533</color>
+
+    <!-- Brand -->
+    <color name="brand_primary">#8C9EFF</color>
+    <color name="brand_secondary">#464D7B</color>
+    <color name="brand_tertiary">#24263B</color>
+
+    <!-- Button -->
+    <color name="button_primary">#8C9EFF</color>
+    <color name="button_secondary">#24263B</color>
+    <color name="button_disabled">#242533</color>
+    <color name="button_onPrimary">#1B1C2A</color>
+    <color name="button_onSecondary">#E1E1E3</color>
+    <color name="button_onDisabled">#72727B</color>
+    <color name="button_onTertiary">#8C9EFF</color>
+
+    <!-- Stroke -->
+    <color name="stroke_primary">#24263B</color>
+
+    <!-- Overlay -->
+    <color name="overlay_primary">#99121321</color> <!-- 60% alpha -->
+    <color name="overlay_secondary">#3D121321</color> <!-- 24% alpha -->
+
+    <!-- Additional - Primary -->
+    <color name="additional_primary_red">#FF6B6B</color>
+    <color name="additional_primary_green">#00E676</color>
+    <color name="additional_primary_yellow">#FFD600</color>
+
+    <!-- Additional - Secondary -->
+    <color name="additional_secondary_red">#2C202D</color>
+    <color name="additional_secondary_green">#232A31</color>
+    <color name="additional_secondary_yellow">#2D2927</color>
 </resources>

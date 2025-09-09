@@ -1,5 +1,6 @@
 package com.karrar.movieapp.data.remote
 
+import android.util.Log
 import com.karrar.movieapp.BuildConfig
 import com.karrar.movieapp.data.local.AppConfiguration
 import okhttp3.Interceptor

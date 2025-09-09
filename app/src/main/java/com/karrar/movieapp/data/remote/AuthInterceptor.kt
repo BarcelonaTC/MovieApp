@@ -1,5 +1,6 @@
 package com.karrar.movieapp.data.remote
 
+import android.util.Log
 import com.karrar.movieapp.BuildConfig
 import com.karrar.movieapp.data.local.AppConfiguration
 import okhttp3.Interceptor
@@ -12,6 +13,7 @@ class AuthInterceptor @Inject constructor(
 
     private val apikey = BuildConfig.API_KEY
     override fun intercept(chain: Interceptor.Chain): Response {
+        Log.d("API_KEY_CHECK", "API_KEY = ${BuildConfig.API_KEY}")
         var request = chain.request()
         val httpUrl = request.url.newBuilder().addQueryParameter(API_KEY_PARAMETER, apikey)
             .addQueryParameter(SESSION_ID_KEY,appConfiguration.getSessionId())

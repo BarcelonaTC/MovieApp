@@ -27,4 +27,24 @@
     <!-- chips -->
     <dimen name="chip_height">32dp</dimen>
 
+
+    <!--    CineVerse Text sizes-->
+
+    <!-- Display -->
+    <dimen name="text_display_xl">40sp</dimen>
+
+    <!-- Title -->
+    <dimen name="text_title_xl">24sp</dimen>
+    <dimen name="text_title_lg">20sp</dimen>
+    <dimen name="text_title_md">18sp</dimen>
+    <dimen name="text_title_sm">16sp</dimen>
+
+    <!-- Body -->
+    <dimen name="text_body_lg">16sp</dimen>
+    <dimen name="text_body_md">14sp</dimen>
+    <dimen name="text_body_sm">12sp</dimen>
+
+    <!-- Label -->
+    <dimen name="text_label_md">12sp</dimen>
+
 </resources>

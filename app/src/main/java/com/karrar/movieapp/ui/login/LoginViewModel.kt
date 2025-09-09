@@ -45,7 +45,7 @@ class LoginViewModel @Inject constructor(
         _loginUIState.update {
             it.copy(
                 userName = text.toString(),
-                userNameHelperText = userNameFieldState.errorMessage() ?: "",
+                userNameHelperText = userNameFieldState.errorMessage(),
                 isValidForm = validateLoginFormUseCase(
                     loginUIState.value.userName,
                     loginUIState.value.password
@@ -60,7 +60,7 @@ class LoginViewModel @Inject constructor(
         _loginUIState.update {
             it.copy(
                 password = text.toString(),
-                passwordHelperText = passwordFieldState.errorMessage() ?: "",
+                passwordHelperText = passwordFieldState.errorMessage(),
                 isValidForm = validateLoginFormUseCase(
                     loginUIState.value.userName,
                     loginUIState.value.password
@@ -83,7 +83,7 @@ class LoginViewModel @Inject constructor(
                     onLoginSuccessfully()
                 }
             } catch (e: Throwable) {
-                onLoginError(e.message.toString())
+                onLoginError("Incorrect username or password. Please try again.")
             }
         }
 

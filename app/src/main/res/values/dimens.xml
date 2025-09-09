@@ -7,6 +7,9 @@
     <dimen name="spacing_small">8dp</dimen>
     <dimen name="spacing_too_small">4dp</dimen>
     <dimen name="season_card_width">88dp</dimen>
+    <dimen name="spacingTop20">20dp</dimen>
+    <dimen name="spacingTop48">48dp</dimen>
+
 
     <!--  layout -->
     <dimen name="spacing_actor">72dp</dimen>
@@ -19,8 +22,8 @@
     <dimen name="text_small">12sp</dimen>
 
     <!-- radius -->
-    <dimen name="radius_large">24dp</dimen>
-    <dimen name="radius_medium">16dp</dimen>
+    <dimen name="radius_lg">12dp</dimen>
+    <dimen name="radius_md">10dp</dimen>
     <dimen name="radius_small">8dp</dimen>
     <dimen name="radius_too_small">4dp</dimen>
 

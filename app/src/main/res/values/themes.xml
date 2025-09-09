@@ -37,11 +37,11 @@
     </style>
 
     <style name="SemiBold.Large">
-        <item name="android:textSize">@dimen/text_large</item>
+        <item name="android:textSize">@dimen/text_title_lg</item>
     </style>
 
     <style name="SemiBold.Medium">
-        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:textSize">@dimen/text_body_md</item>
     </style>
 
     <style name="SemiBold.Small">
@@ -54,7 +54,7 @@
     </style>
 
     <style name="Regular.Medium">
-        <item name="android:textSize">@dimen/text_medium</item>
+        <item name="android:textSize">@dimen/text_body_md</item>
     </style>
 
     <style name="Regular.Medium.Primary">
@@ -89,7 +89,7 @@
     </style>
 
     <style name="CardCorners.Medium">
-        <item name="cornerSize">@dimen/radius_medium</item>
+        <item name="cornerSize">@dimen/radius_md</item>
     </style>
 
     <style name="Login" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
@@ -121,8 +121,8 @@
 
 
     <style name="CardCorners.BottomMedium">
-        <item name="cornerSizeBottomLeft">@dimen/radius_medium</item>
-        <item name="cornerSizeBottomRight">@dimen/radius_medium</item>
+        <item name="cornerSizeBottomLeft">@dimen/radius_md</item>
+        <item name="cornerSizeBottomRight">@dimen/radius_md</item>
     </style>
 
 

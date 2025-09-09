@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.karrar.movieapp.ui.login.LoginViewModel"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_bottomSheet"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_medium">
+
+            <View
+                android:layout_width="48dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="@dimen/spacing12"
+                android:layout_marginBottom="@dimen/spacing20"
+                android:background="@drawable/bottom_sheet_view" />
+
+            <FrameLayout
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/bottom_sheet_icon_shape">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/link_minimalistic" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:text="@string/join_cineverse"
+                android:textColor="@color/shade_primary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:gravity="center"
+                android:text="@string/sign_up_bottom_sheet_text"
+                android:textColor="@color/shade_secondary" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cancle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spacing12"
+                    android:layout_weight="1"
+                    android:onClick="@{}"
+                    android:paddingVertical="@dimen/spacing14"
+                    android:stateListAnimator="@null"
+                    android:text="@string/cancel"
+                    android:textAppearance="@style/SemiBold.Medium"
+                    android:textColor="@color/button_onSecondary"
+                    app:backgroundTint="@color/button_secondary"
+                    app:cornerRadius="@dimen/radius_lg" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/goto_website"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="@{()->viewModel.onClickSignUp()}"
+                    android:paddingVertical="@dimen/spacing14"
+                    android:stateListAnimator="@null"
+                    android:text="@string/go_to_website"
+                    android:textAppearance="@style/SemiBold.Medium"
+                    android:textColor="@color/button_onPrimary"
+                    app:backgroundTint="@color/color_states_material_button"
+                    app:cornerRadius="@dimen/radius_lg" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

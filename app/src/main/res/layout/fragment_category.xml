@@ -49,6 +49,7 @@
                         app:selectedChip="@{viewModel.uiState.selectedCategoryID}"
                         app:selectionRequired="true"
                         app:setGenres="@{viewModel.uiState.genre}"
+                        app:chipSpacingHorizontal="@dimen/spacing_normal"
                         app:singleLine="true"
                         app:singleSelection="true" />
 

@@ -10,7 +10,8 @@ class MysteryMovieMapper @Inject constructor() : Mapper<MovieDto, MysteryMovieEn
         return MysteryMovieEntity(
             id = input.id ?: 0,
             name = input.originalTitle ?: "",
-            imageUrl = input.posterPath ?: ""
+            imageUrl = input.posterPath ?: "",
+            rating = input.voteAverage ?: 0.0
         )
     }
 }

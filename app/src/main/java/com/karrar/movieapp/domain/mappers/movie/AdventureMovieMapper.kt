@@ -13,7 +13,7 @@ class AdventureMovieMapper @Inject constructor() : Mapper<AdventureMovieEntity, 
             mediaID = input.id,
             mediaName = input.name,
             mediaImage = BuildConfig.IMAGE_BASE_PATH + input.imageUrl,
-            mediaRate = 0f,
+            mediaRate = input.rating.toFloat(),
             mediaDate = "",
             mediaType = MediaType.MOVIE.value,
         )

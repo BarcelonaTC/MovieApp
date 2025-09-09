@@ -34,7 +34,9 @@
 
         <argument
             android:name="from"
-            app:argType="integer" />
+            app:argType="integer"
+            android:defaultValue="0" />
+
 
 
         <action

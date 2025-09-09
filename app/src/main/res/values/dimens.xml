@@ -25,7 +25,8 @@
     <!-- radius -->
     <dimen name="radius_lg">12dp</dimen>
     <dimen name="radius_md">10dp</dimen>
-    <dimen name="radius_full">1000</dimen>
+    <dimen name="radius_xl">16dp</dimen>
+    <dimen name="radius_full">1000dp</dimen>
     <dimen name="radius_small">8dp</dimen>
     <dimen name="radius_too_small">4dp</dimen>
 
@@ -52,5 +53,6 @@
     <!-- Label -->
     <dimen name="text_label_md">12sp</dimen>
     <dimen name="spacing14">14dp</dimen>
+    <dimen name="spacing28">28dp</dimen>
 
 </resources>

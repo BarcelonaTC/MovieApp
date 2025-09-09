@@ -26,14 +26,20 @@ class LoginViewModel @Inject constructor(
 
     val args = LoginFragmentArgs.fromSavedStateHandle(state)
 
+
     private val _loginUIState = MutableStateFlow(LoginUiState())
     val loginUIState = _loginUIState.asStateFlow()
 
     private val _loginEvent = MutableStateFlow<Event<LoginUIEvent?>>(Event(null))
     val loginEvent = _loginEvent.asStateFlow()
 
-    fun onClickSignUp() {
-        _loginEvent.update { Event(LoginUIEvent.SignUpEvent) }
+    fun createAccountClick(){
+        _loginEvent.update {
+            Event(LoginUIEvent.CreateAccountEvent)
+        }
+    }
+    fun onClickForgotPassword() {
+        _loginEvent.update { Event(LoginUIEvent.ForgotPasswordEvent) }
     }
 
     fun onClickLogin() {
@@ -45,7 +51,7 @@ class LoginViewModel @Inject constructor(
         _loginUIState.update {
             it.copy(
                 userName = text.toString(),
-                userNameHelperText = userNameFieldState.errorMessage(),
+                userNameHelperText = userNameFieldState.errorMessage()?:"",
                 isValidForm = validateLoginFormUseCase(
                     loginUIState.value.userName,
                     loginUIState.value.password
@@ -60,7 +66,7 @@ class LoginViewModel @Inject constructor(
         _loginUIState.update {
             it.copy(
                 password = text.toString(),
-                passwordHelperText = passwordFieldState.errorMessage(),
+                passwordHelperText = passwordFieldState.errorMessage()?:"",
                 isValidForm = validateLoginFormUseCase(
                     loginUIState.value.userName,
                     loginUIState.value.password

@@ -1,15 +1,15 @@
 package com.karrar.movieapp.ui.login
 
 import android.content.Intent
-import android.net.Uri
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.karrar.movieapp.BuildConfig
 import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.FragmentLoginBinding
 import com.karrar.movieapp.ui.base.BaseFragment
 import com.karrar.movieapp.utilities.collectLast
 import dagger.hilt.android.AndroidEntryPoint
+import com.karrar.movieapp.BuildConfig
+import androidx.core.net.toUri
 
 
 @AndroidEntryPoint
@@ -25,14 +25,19 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
         }
     }
 
+
     private fun onEvent(event: LoginUIEvent) {
         when (event) {
             is LoginUIEvent.LoginEvent -> {
                 findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToProfileFragment())
             }
-            LoginUIEvent.SignUpEvent -> {
+            LoginUIEvent.CreateAccountEvent -> {
+                CreateAccountBottomSheet().show(childFragmentManager, "TAG")
+            }
+
+            LoginUIEvent.ForgotPasswordEvent -> {
                 val browserIntent =
-                    Intent(Intent.ACTION_VIEW, Uri.parse(BuildConfig.TMDB_SIGNUP_URL))
+                    Intent(Intent.ACTION_VIEW, BuildConfig.RESET_PASSWORD_URL.toUri())
                 startActivity(browserIntent)
             }
         }

@@ -24,7 +24,7 @@
             android:layout_marginHorizontal="@dimen/spacing_medium"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingVertical="@dimen/spacingTop48"
+            android:paddingVertical="@dimen/spacing48"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -102,6 +102,7 @@
             android:layout_marginTop="@dimen/spacing_small"
             app:helperText="@{viewModel.loginUIState.passwordHelperText}"
             app:hintEnabled="false"
+            app:boxStrokeErrorColor="@color/design_default_color_error"
             app:layout_constraintTop_toBottomOf="@+id/password"
             app:endIconDrawable="@drawable/eye_opened"
             app:endIconTint="@color/shade_secondary"
@@ -130,6 +131,7 @@
             android:layout_marginHorizontal="@dimen/spacing_medium"
             android:layout_marginTop="@dimen/spacing_small"
             android:paddingTop="@dimen/spacing_too_small"
+            android:onClick="@{()->viewModel.onClickForgotPassword()}"
             android:text="@string/forgot_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/password_input" />
@@ -139,7 +141,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_medium"
-            android:layout_marginTop="@dimen/spacingTop20"
+            android:layout_marginTop="@dimen/spacing20"
             android:enabled="@{viewModel.loginUIState.validForm}"
             android:onClick="@{()->viewModel.onClickLogin()}"
             android:paddingVertical="14dp"
@@ -173,7 +175,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_medium"
-            android:layout_marginTop="@dimen/spacingTop20"
+            android:layout_marginTop="@dimen/spacing20"
             android:enabled="@{viewModel.loginUIState.validForm}"
             android:onClick="@{()->viewModel.onClickLogin()}"
             android:paddingVertical="15dp"
@@ -193,8 +195,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:enabled="@{viewModel.loginUIState.validForm}"
-            android:onClick="@{()->viewModel.onClickLogin()}"
+            android:onClick="@{()->viewModel.createAccountClick()}"
             android:paddingHorizontal="16dp"
             android:paddingVertical="12dp"
             android:paddingBottom="24dp"
@@ -204,10 +205,10 @@
             android:textColor="@color/button_onSecondary"
             app:backgroundTint="@color/button_secondary"
             app:cornerRadius="@dimen/radius_md"
-            app:hideIfTrue="@{viewModel.loginUIState.loading}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

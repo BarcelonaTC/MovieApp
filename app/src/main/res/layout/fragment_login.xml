@@ -85,7 +85,7 @@
                 android:paddingVertical="@dimen/spacing_medium"
                 android:textColor="@color/shade_primary"
                 android:textColorHint="@color/shade_tertiary"
-
+                android:textCursorDrawable="@drawable/color_cursor"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -130,7 +130,9 @@
                 android:maxLines="1"
                 android:paddingVertical="@dimen/spacing_medium"
                 android:textColor="@color/shade_primary"
-                android:textColorHint="@color/shade_tertiary" />
+                android:textColorHint="@color/shade_tertiary"
+                android:textCursorDrawable="@drawable/color_cursor"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView

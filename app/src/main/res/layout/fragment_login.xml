@@ -100,14 +100,14 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_medium"
             android:layout_marginTop="@dimen/spacing_small"
+            app:boxStrokeErrorColor="@color/design_default_color_error"
+            app:endIconDrawable="@drawable/eye_opened"
+            app:endIconMode="custom"
+            app:endIconTint="@color/shade_secondary"
             app:helperText="@{viewModel.loginUIState.passwordHelperText}"
             app:hintEnabled="false"
-            app:boxStrokeErrorColor="@color/design_default_color_error"
             app:layout_constraintTop_toBottomOf="@+id/password"
-            app:endIconDrawable="@drawable/eye_opened"
-            app:endIconTint="@color/shade_secondary"
             app:startIconDrawable="@drawable/lock"
-            app:endIconMode="custom"
             app:startIconTint="@color/shade_tertiary">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -130,45 +130,48 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_medium"
             android:layout_marginTop="@dimen/spacing_small"
-            android:paddingTop="@dimen/spacing_too_small"
             android:onClick="@{()->viewModel.onClickForgotPassword()}"
+            android:paddingTop="@dimen/spacing_too_small"
             android:text="@string/forgot_password"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/password_input" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/containedButton"
+        <FrameLayout
+            android:id="@+id/login_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_medium"
             android:layout_marginTop="@dimen/spacing20"
-            android:enabled="@{viewModel.loginUIState.validForm}"
-            android:onClick="@{()->viewModel.onClickLogin()}"
-            android:paddingVertical="14dp"
-            android:stateListAnimator="@null"
-            android:text="@string/login"
-            android:textAppearance="@style/SemiBold.Medium"
-            android:textColor="@color/button_onPrimary"
-            app:backgroundTint="@color/color_states_material_button"
-            app:cornerRadius="@dimen/radius_lg"
-            app:hideIfTrue="@{viewModel.loginUIState.loading}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/forgetPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/forgetPassword">
 
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/LoginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:enabled="@{viewModel.loginUIState.validForm}"
+                android:onClick="@{()->viewModel.onClickLogin()}"
+                android:paddingVertical="14dp"
+                android:stateListAnimator="@null"
+                android:text="@string/login"
+                android:textAppearance="@style/SemiBold.Medium"
+                android:textColor="@color/login_text_color_state"
+                app:backgroundTint="@color/color_states_material_button"
+                app:cornerRadius="@dimen/radius_lg" />
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_extra_large"
-            android:indeterminate="true"
-            android:visibility="gone"
-            app:indicatorColor="@color/brand_color"
-            app:isVisible="@{viewModel.loginUIState.loading}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/password_input"
-            app:trackColor="@color/shade_secondary_color" />
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/ProgressIndicator"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                android:visibility="gone"
+                app:indicatorColor="@color/brand_tertiary"
+                app:indicatorSize="24dp"
+                app:trackColor="@color/brand_primary" />
+
+        </FrameLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/as_guest"
@@ -176,8 +179,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_medium"
             android:layout_marginTop="@dimen/spacing20"
-            android:enabled="@{viewModel.loginUIState.validForm}"
-            android:onClick="@{()->viewModel.onClickLogin()}"
+            android:onClick="@{()->viewModel.onClickContinueAsGuest()}"
             android:paddingVertical="15dp"
             android:stateListAnimator="@null"
             android:text="@string/join_as_guest"
@@ -185,10 +187,9 @@
             android:textColor="@color/button_onSecondary"
             app:backgroundTint="@color/button_secondary"
             app:cornerRadius="@dimen/radius_lg"
-            app:hideIfTrue="@{viewModel.loginUIState.loading}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/containedButton" />
+            app:layout_constraintTop_toBottomOf="@id/login_layout" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/create_new_account"
@@ -208,7 +209,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

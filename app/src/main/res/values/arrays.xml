@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="progress_gradient">
+        <item>@color/brand_primary</item>
+        <item>@color/brand_tertiary</item>
+    </array>
+</resources>

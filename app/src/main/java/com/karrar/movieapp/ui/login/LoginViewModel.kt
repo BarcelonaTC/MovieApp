@@ -7,6 +7,7 @@ import com.karrar.movieapp.domain.usecases.login.LoginWithUserNameAndPasswordUse
 import com.karrar.movieapp.domain.usecases.login.ValidateFiledUseCase
 import com.karrar.movieapp.domain.usecases.login.ValidateLoginFormUseCase
 import com.karrar.movieapp.domain.usecases.login.ValidatePasswordFiledUseCase
+import com.karrar.movieapp.domain.usecases.login.ValidateUserNameFiledUseCase
 import com.karrar.movieapp.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,8 +20,8 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     state: SavedStateHandle,
     private val loginWithUserNameAndPasswordUseCase: LoginWithUserNameAndPasswordUseCase,
-    private val validateFiledUseCase: ValidateFiledUseCase,
     private val validatePasswordFiledUseCase: ValidatePasswordFiledUseCase,
+    private val validateUserNameFiledUseCase: ValidateUserNameFiledUseCase,
     private val validateLoginFormUseCase: ValidateLoginFormUseCase,
 ) : ViewModel() {
 
@@ -51,7 +52,7 @@ class LoginViewModel @Inject constructor(
     }
 
     fun onUserNameInputChange(text: CharSequence) {
-        val userNameFieldState = validateFiledUseCase(text.toString())
+        val userNameFieldState = validateUserNameFiledUseCase(text.toString())
         _loginUIState.update {
             it.copy(
                 userName = text.toString(),
@@ -110,7 +111,8 @@ class LoginViewModel @Inject constructor(
             it.copy(
                 isLoading = false,
                 error = "Incorrect username or password. Please try again.",
-                passwordHelperText = "Incorrect username or password. Please try again."
+                passwordHelperText = "Incorrect username or password. Please try again.",
+                userNameHelperText = ""
             )
         }
     }

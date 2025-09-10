@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.textfield.TextInputLayout
 import com.karrar.movieapp.BuildConfig
 import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.FragmentLoginBinding
@@ -31,6 +32,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
         collectLast(viewModel.loginUIState) { state ->
             showLoading(state.isLoading)
+            userNameErrorIcon(state.userNameHelperText)
         }
 
         passwordToggle()
@@ -90,6 +92,22 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
             editText?.setSelection(editText.text?.length ?: 0)
         }
+    }
+
+    private fun userNameErrorIcon(errorText: String){
+        binding.userNameInput.apply {
+            if(errorText.isNotEmpty()) {
+                endIconMode = TextInputLayout.END_ICON_CUSTOM
+                binding.userNameInput.endIconDrawable =
+                    ContextCompat.getDrawable(requireContext(), R.drawable.danger_triangle)
+            }
+            else{
+                endIconMode = TextInputLayout.END_ICON_NONE
+            }
+
+
+        }
+
     }
 
 

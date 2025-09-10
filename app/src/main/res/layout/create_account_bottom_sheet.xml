@@ -47,8 +47,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/spacing_medium"
                 android:layout_marginBottom="@dimen/spacing_small"
-                android:text="@string/join_cineverse"
-                android:textColor="@color/shade_primary" />
+                style="@style/Medium.TitleSmall"
+                android:text="@string/join_cineverse" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -56,8 +56,9 @@
                 android:layout_marginTop="@dimen/spacing_medium"
                 android:layout_marginBottom="@dimen/spacing_small"
                 android:gravity="center"
+                style="@style/Medium.BodySmall"
                 android:text="@string/sign_up_bottom_sheet_text"
-                android:textColor="@color/shade_secondary" />
+                 />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,7 +68,7 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/cancle"
+                    android:id="@+id/cancel"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="@dimen/spacing12"
@@ -75,8 +76,8 @@
                     android:paddingVertical="@dimen/spacing14"
                     android:stateListAnimator="@null"
                     android:text="@string/cancel"
-                    android:textAppearance="@style/SemiBold.Medium"
                     android:textColor="@color/button_onSecondary"
+                    android:textAppearance="@style/Medium.BodyMedium"
                     app:backgroundTint="@color/button_secondary"
                     app:cornerRadius="@dimen/radius_lg" />
 
@@ -88,8 +89,7 @@
                     android:paddingVertical="@dimen/spacing14"
                     android:stateListAnimator="@null"
                     android:text="@string/go_to_website"
-                    android:textAppearance="@style/SemiBold.Medium"
-                    android:textColor="@color/button_onPrimary"
+                    android:textAppearance="@style/Medium.Body"
                     app:backgroundTint="@color/color_states_material_button"
                     app:cornerRadius="@dimen/radius_lg" />
             </LinearLayout>

@@ -48,7 +48,7 @@ class CreateAccountBottomSheet : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.cancle.setOnClickListener { dismiss() }
+        binding.cancel.setOnClickListener { dismiss() }
         binding.gotoWebsite.setOnClickListener {
             val browserIntent =
                 Intent(Intent.ACTION_VIEW, BuildConfig.TMDB_SIGNUP_URL.toUri())

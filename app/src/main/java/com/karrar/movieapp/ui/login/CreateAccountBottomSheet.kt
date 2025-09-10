@@ -2,19 +2,39 @@ package com.karrar.movieapp.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.net.toUri
+import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.karrar.movieapp.BuildConfig
 import com.karrar.movieapp.databinding.CreateAccountBottomSheetBinding
 
-class CreateAccountBottomSheet : BottomSheetDialogFragment() {
+class CreateAccountBottomSheet : DialogFragment() {
 
     lateinit var binding: CreateAccountBottomSheetBinding
     private val viewModel: LoginViewModel by activityViewModels()
+
+    override fun onStart() {
+        super.onStart()
+
+        dialog?.window?.setGravity(Gravity.BOTTOM)
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
+
+        val params = dialog?.window?.attributes
+        val marginBottomInDp = 28
+        val marginBottomInPx = (marginBottomInDp * resources.displayMetrics.density).toInt()
+        params?.y = marginBottomInPx
+        dialog?.window?.attributes = params
+
+        dialog?.window?.setLayout(
+            ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT
+        )
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

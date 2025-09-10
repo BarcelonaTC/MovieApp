@@ -195,7 +195,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
-            android:onClick="@{()->viewModel.createAccountClick()}"
+            android:onClick="@{()->viewModel.onClickCreateAccount()}"
             android:paddingHorizontal="16dp"
             android:paddingVertical="12dp"
             android:paddingBottom="24dp"

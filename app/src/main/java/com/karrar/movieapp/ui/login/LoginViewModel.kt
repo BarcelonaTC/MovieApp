@@ -33,7 +33,7 @@ class LoginViewModel @Inject constructor(
     private val _loginEvent = MutableStateFlow<Event<LoginUIEvent?>>(Event(null))
     val loginEvent = _loginEvent.asStateFlow()
 
-    fun createAccountClick(){
+    fun onClickCreateAccount(){
         _loginEvent.update {
             Event(LoginUIEvent.CreateAccountEvent)
         }
@@ -89,7 +89,7 @@ class LoginViewModel @Inject constructor(
                     onLoginSuccessfully()
                 }
             } catch (e: Throwable) {
-                onLoginError("Incorrect username or password. Please try again.")
+                onLoginError()
             }
         }
 
@@ -101,12 +101,12 @@ class LoginViewModel @Inject constructor(
         resetForm()
     }
 
-    private fun onLoginError(message: String) {
+    private fun onLoginError() {
         _loginUIState.update {
             it.copy(
                 isLoading = false,
-                error = message,
-                passwordHelperText = message
+                error = "Incorrect username or password. Please try again.",
+                passwordHelperText = "Incorrect username or password. Please try again."
             )
         }
     }

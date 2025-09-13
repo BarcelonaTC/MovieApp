@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -19,6 +20,8 @@ import com.karrar.movieapp.utilities.Constants.FIRST_CATEGORY_ID
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 
 @BindingAdapter("app:showWhenListNotEmpty")
@@ -140,7 +143,14 @@ fun <T> setRecyclerItems(view: RecyclerView, items: List<T>?) {
     (view.adapter as BaseAdapter<T>?)?.setItems(items ?: emptyList())
     view.scrollToPosition(0)
 }
-
+@BindingAdapter("app:reverseGalleryLayout")
+fun reverseGalleryLayout(view: ConstraintLayout, reverse: Boolean) {
+    view.layoutDirection = if (reverse) {
+        View.LAYOUT_DIRECTION_RTL
+    } else {
+        View.LAYOUT_DIRECTION_LTR
+    }
+}
 
 @BindingAdapter(value = ["app:usePagerSnapHelper"])
 fun usePagerSnapHelperWithRecycler(recycler: RecyclerView, useSnapHelper: Boolean = false) {
@@ -154,6 +164,34 @@ fun bindMovieImage(image: ImageView, imageURL: String?) {
         image.load(imageURL) {
             placeholder(R.drawable.loading)
             error(R.drawable.ic_profile_place_holder)
+        }
+    }
+}
+
+@BindingAdapter(value = ["actorGalleryImage", "placeholderImage"], requireAll = true)
+fun bindActorGalleryImage(
+    image: ImageView,
+    imageURL: String?,
+    placeholder: ImageView
+) {
+    if (!imageURL.isNullOrEmpty()) {
+        placeholder.visibility = View.GONE
+
+        image.load(imageURL) {
+            crossfade(true)
+            placeholder(R.drawable.loading)
+            fallback(R.drawable.actor_placeholder)
+            listener(
+                onStart = {
+                    placeholder.visibility = View.GONE
+                },
+                onSuccess = { _, _ ->
+                    placeholder.visibility = View.GONE
+                },
+                onError = { _, _ ->
+                    placeholder.visibility = View.VISIBLE
+                }
+            )
         }
     }
 }
@@ -222,6 +260,24 @@ fun setDuration(view: TextView, hours: Int?, minutes: Int?) {
             String.format(view.context.getString(R.string.hours_minutes_pattern), hours, minutes)
     }
 }
+@BindingAdapter("app:formatDate")
+fun formatDate(textView: TextView, dateString: String?) {
+    if (!dateString.isNullOrEmpty()) {
+        try {
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val date = inputFormat.parse(dateString)
+
+            val outputFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
+            val formattedDate = outputFormat.format(date)
+
+            textView.text = "Born on $formattedDate"
+        } catch (e: Exception) {
+            textView.text = "Born on $dateString"
+        }
+    } else {
+        textView.text = ""
+    }
+}
 
 @BindingAdapter("app:setGenres", "app:listener", "app:selectedChip")
 fun <T> setGenresChips(
@@ -255,6 +311,6 @@ fun setRating(view: RatingBar?, rating: Float) {
 }
 
 @BindingAdapter("showWhenTextNotEmpty")
-fun <T> showWhenTextNotEmpty(view: View,text:String){
+fun <T> showWhenTextNotEmpty(view: View, text: String) {
     view.isVisible = text.isNotEmpty()
 }

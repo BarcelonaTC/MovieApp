@@ -36,9 +36,11 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="spread_inside"
-            app:posterImage="@{item.imageUrl}"
+            app:actorGalleryImage="@{item.imageUrl}"
+            android:background="@color/card_background_color"
+            app:placeholderImage="@{placeholder}"
             app:shapeAppearanceOverlay="@style/CardCorners.Medium"
-            tools:background="@color/yellow" />
+            />
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="50dp"
@@ -96,6 +98,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/media_image"
             tools:text="Mission: Impossible - Ghost Protocol" />
+
+        <ImageView
+            android:id="@+id/placeholder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/media_name"
+            app:layout_constraintEnd_toEndOf="@+id/media_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:visibility="gone"
+            app:srcCompat="@drawable/actor_placeholder" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

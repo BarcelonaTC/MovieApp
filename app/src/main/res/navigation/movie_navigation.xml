@@ -60,6 +60,10 @@
         <action
             android:id="@+id/action_actorDetailsFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_actorDetailsFragment_to_actorGalleryFragment"
+            app:destination="@id/actorGalleryFragment" />
+
     </fragment>
 
     <fragment
@@ -326,6 +330,18 @@
         <action
             android:id="@+id/action_tvShowDetailFragment_to_youtubePlayerActivity"
             app:destination="@id/youtubePlayerActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/actorGalleryFragment"
+        android:name="com.karrar.movieapp.ui.actorDetails.ActorGalleryFragment"
+        tools:layout="@layout/fragment_actor_gallery"
+        android:label="ActorGalleryFragment" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="name"
+            app:argType="string" />
     </fragment>
 
 </navigation>

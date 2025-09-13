@@ -333,7 +333,7 @@
     </fragment>
     <fragment
         android:id="@+id/actorGalleryFragment"
-        android:name="com.karrar.movieapp.ui.actorDetails.ActorGalleryFragment"
+        android:name="com.karrar.movieapp.ui.actorGallery.ActorGalleryFragment"
         tools:layout="@layout/fragment_actor_gallery"
         android:label="ActorGalleryFragment" >
         <argument

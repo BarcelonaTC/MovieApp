@@ -1,9 +1,13 @@
 package com.karrar.movieapp.ui.myList.listDetails
 
+import android.content.Context
 import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.RectF
 import android.os.Bundle
-import android.util.Log
+import android.util.TypedValue
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -24,40 +28,14 @@ class ListDetailsFragment : BaseFragment<FragmentListDetailsBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setTitle(true, viewModel.args.listName)
-        binding.lists.adapter = ListDetailsAdapter(mutableListOf(), viewModel)
 
-        val swipeCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean = false
+        val adapter = ListDetailsAdapter(mutableListOf(), viewModel)
+        binding.lists.adapter = adapter
 
-            override fun onSwiped(
-                viewHolder: RecyclerView.ViewHolder,
-                direction: Int
-            ) {
-
-            }
-
-
-            override fun onChildDraw(
-                c: Canvas,
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                dX: Float,
-                dY: Float,
-                actionState: Int,
-                isCurrentlyActive: Boolean
-            ) {
-                val clampedDX = dX.coerceAtLeast((-viewHolder.itemView.width / 6).toFloat())
-                super.onChildDraw(c, recyclerView, viewHolder, clampedDX, dY, actionState, isCurrentlyActive)
-            }
-        }
+        val swipeCallback = SwipeToDeleteCallback(requireContext())
 
         ItemTouchHelper(swipeCallback).attachToRecyclerView(binding.lists)
 
-        binding.lists.adapter = ListDetailsAdapter(mutableListOf(), viewModel)
         collectLast(viewModel.listDetailsUIEvent) {
             it.getContentIfNotHandled()?.let { onEvent(it) }
         }
@@ -85,4 +63,82 @@ class ListDetailsFragment : BaseFragment<FragmentListDetailsBinding>() {
         )
     }
 
+    private class SwipeToDeleteCallback(
+        context: Context,
+    ) : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+
+        private val paint = Paint().apply {
+            color = ContextCompat.getColor(context, R.color.additional_primary_red)
+        }
+        private val icon = ContextCompat.getDrawable(context, R.drawable.trash)
+
+        private val metrics = context.resources.displayMetrics
+
+        private val verticalMargin = 8f.toPx()
+        private val horizontalMargin = 12f.toPx()
+        private val radius = 12f.toPx()
+
+        override fun onMove(
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            target: RecyclerView.ViewHolder
+        ) = false
+
+        override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) = Unit
+
+        override fun onChildDraw(
+            c: Canvas,
+            recyclerView: RecyclerView,
+            viewHolder: RecyclerView.ViewHolder,
+            dX: Float,
+            dY: Float,
+            actionState: Int,
+            isCurrentlyActive: Boolean
+        ) {
+            val itemView = viewHolder.itemView
+            val drawWidth = minOf(-dX, MAX_WIDTH)
+
+            val rect = RectF(
+                itemView.right - drawWidth,
+                itemView.top + verticalMargin * 4,
+                itemView.right - horizontalMargin,
+                itemView.bottom - verticalMargin * 2
+            )
+
+            c.drawRoundRect(rect, radius, radius, paint)
+            drawIcon(c, rect)
+
+            val clampedDX = dX.coerceAtLeast((-itemView.width / 4.5f))
+            super.onChildDraw(
+                c,
+                recyclerView,
+                viewHolder,
+                clampedDX,
+                dY,
+                actionState,
+                isCurrentlyActive
+            )
+        }
+
+        private fun drawIcon(c: Canvas, rect: RectF) {
+            icon?.let {
+                val left = (rect.left + rect.right) / 2f - it.intrinsicWidth / 2f
+                val top = (rect.top + rect.bottom) / 2f - it.intrinsicHeight / 2f
+                it.setBounds(
+                    left.toInt(),
+                    top.toInt(),
+                    (left + it.intrinsicWidth).toInt(),
+                    (top + it.intrinsicHeight).toInt()
+                )
+                it.draw(c)
+            }
+        }
+
+        private fun Float.toPx() =
+            TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, this, metrics)
+
+        companion object {
+            private const val MAX_WIDTH = 200f
+        }
+    }
 }

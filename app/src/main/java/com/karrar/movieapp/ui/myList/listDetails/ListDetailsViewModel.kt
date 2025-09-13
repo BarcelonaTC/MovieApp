@@ -1,10 +1,10 @@
 package com.karrar.movieapp.ui.myList.listDetails
 
-import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.karrar.movieapp.domain.usecases.movieDetails.GetMovieDetailsUseCase
 import com.karrar.movieapp.domain.usecases.mylist.GetMyMediaListDetailsUseCase
+import com.karrar.movieapp.domain.usecases.mylist.RemoveMovieFromListUseCase
 import com.karrar.movieapp.ui.base.BaseViewModel
 import com.karrar.movieapp.ui.category.uiState.ErrorUIState
 import com.karrar.movieapp.ui.myList.listDetails.listDetailsUIState.ListDetailsUIEvent
@@ -23,6 +23,7 @@ import javax.inject.Inject
 class ListDetailsViewModel @Inject constructor(
     private val getMyMediaListDetailsUseCase: GetMyMediaListDetailsUseCase,
     private val getMovieDetailsUseCase: GetMovieDetailsUseCase,
+    private val removeMovieFromListUseCase: RemoveMovieFromListUseCase,
     private val mediaUIStateMapper: MediaUIStateMapper,
     saveStateHandle: SavedStateHandle
 ) : BaseViewModel(), ListDetailsInteractionListener {
@@ -81,6 +82,12 @@ class ListDetailsViewModel @Inject constructor(
 
     fun onCloseClick() {
         _listDetailsUIState.update { it.copy(showDeleteInfo = false) }
+    }
+
+    override fun onDeleteClick(item: SavedMediaUIState) {
+        viewModelScope.launch {
+            removeMovieFromListUseCase(args.id,item.mediaID)
+        }
     }
 }
 

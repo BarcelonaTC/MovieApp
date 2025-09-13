@@ -1,5 +1,6 @@
 package com.karrar.movieapp.utilities
 
+import android.app.Activity
 import android.content.res.Resources
 import android.graphics.Rect
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.chip.ChipGroup
 import com.karrar.movieapp.R
 import com.karrar.movieapp.data.remote.response.MyListsDto
@@ -22,12 +24,11 @@ import com.karrar.movieapp.ui.base.BasePagingAdapter
 import com.karrar.movieapp.ui.category.CategoryInteractionListener
 import com.karrar.movieapp.ui.category.uiState.GenreUIState
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Date
+import java.util.Locale
 
 fun <T> ChipGroup.createChip(item: GenreUIState, listener: T): View {
     val chipBinding: ChipItemCategoryBinding = DataBindingUtil.inflate(
@@ -101,4 +102,15 @@ fun <T : Any> GridLayoutManager.setSpanSize(
 fun Date.convertToDayMonthYearFormat(): String {
     val formatter = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
     return formatter.format(this)
+}
+
+fun Activity.hideBottomNav() {
+    findViewById<BottomNavigationView>(R.id.bottom_navigation)?.let {
+        it.post { it.visibility = View.GONE }
+    }
+}
+
+fun Activity.showBottomNav() {
+    val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+    bottomNav?.visibility = View.VISIBLE
 }

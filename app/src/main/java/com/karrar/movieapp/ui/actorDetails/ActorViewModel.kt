@@ -10,7 +10,6 @@ import com.karrar.movieapp.ui.base.BaseViewModel
 import com.karrar.movieapp.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -23,7 +22,7 @@ class ActorViewModel @Inject constructor(
     private val getActorMoviesUseCase: GetActorMoviesUseCase,
     private val actorDetailsUIMapper: ActorDetailsUIMapper,
     private val actorMoviesUIMapper: ActorMoviesUIMapper
-) : BaseViewModel(), MovieInteractionListener {
+) : BaseViewModel(), MovieInteractionListener, ActorDetailsInteraction {
 
     val args = ActorDetailsFragmentArgs.fromSavedStateHandle(state)
 
@@ -54,6 +53,8 @@ class ActorViewModel @Inject constructor(
                         birthday = actorDetails.birthday,
                         knownFor = actorDetails.knownFor,
                         actorMovies = actorMovies,
+                        galleryGroups = actorDetails.galleryGroups,
+                        socialMedia = actorDetails.socialMedia,
                         isLoading = false,
                         isSuccess = true
                     )
@@ -84,5 +85,14 @@ class ActorViewModel @Inject constructor(
     override fun onClickSeeAllMovie(homeItemsType: HomeItemsType) {
         _actorDetailsUIEvent.update { Event(ActorDetailsUIEvent.SeeAllMovies) }
     }
+
+    override fun onClickSeeAllActorGallery() {
+        _actorDetailsUIEvent.update { Event(ActorDetailsUIEvent.SeeAllGallery) }
+    }
+
+    override fun onSocialMediaClick(url: String) {
+        _actorDetailsUIEvent.update { Event(ActorDetailsUIEvent.ClickSocialMediaLink(url)) }
+    }
+
 
 }

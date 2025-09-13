@@ -1,4 +1,4 @@
-package com.karrar.movieapp.ui.actorDetails
+package com.karrar.movieapp.ui.actorGallery
 
 import android.os.Bundle
 import android.view.View
@@ -26,11 +26,9 @@ class ActorGalleryFragment : BaseFragment<FragmentActorGalleryBinding>() {
         binding.arrowBack.setOnClickListener {
             removeFragment()
         }
-        binding.galleryRV.adapter =
-            GalleryAdapter(
-                items = mutableListOf(),
-                viewModel
-            )
+        binding.galleryRV.adapter = GalleryAdapter(
+            items = mutableListOf(), viewModel
+        )
     }
 
     private fun removeFragment() {

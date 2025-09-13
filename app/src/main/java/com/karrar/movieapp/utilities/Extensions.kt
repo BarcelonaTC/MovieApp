@@ -19,6 +19,7 @@ import com.karrar.movieapp.R
 import com.karrar.movieapp.data.remote.response.MyListsDto
 import com.karrar.movieapp.data.remote.response.trailerVideosDto.ResultDto
 import com.karrar.movieapp.databinding.ChipItemCategoryBinding
+import com.karrar.movieapp.ui.actorGallery.GalleryGroup
 import com.karrar.movieapp.ui.adapters.LoadUIStateAdapter
 import com.karrar.movieapp.ui.base.BasePagingAdapter
 import com.karrar.movieapp.ui.category.CategoryInteractionListener
@@ -52,6 +53,22 @@ fun MyListsDto.checkIfExist(movie_id: Int): Boolean {
         }
     }
     return false
+}
+fun splitImagesIntoGroups(allImages: List<String>): List<GalleryGroup> {
+    val groups = mutableListOf<GalleryGroup>()
+    var index = 0
+
+    while (index < allImages.size) {
+        val bigImages = allImages.subList(index, (index + 1).coerceAtMost(allImages.size))
+        val smallImages = allImages.subList(
+            (index + 1).coerceAtMost(allImages.size),
+            (index + 3).coerceAtMost(allImages.size)
+        )
+        val isReversed = index % 2 != 0
+        groups.add(GalleryGroup(bigImages, smallImages, isReversed))
+        index += 3
+    }
+    return groups
 }
 
 fun DialogFragment.setWidthPercent(percentage: Int) {

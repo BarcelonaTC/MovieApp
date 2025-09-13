@@ -185,49 +185,71 @@
 <!--            app:showWhenNoInternet="@{viewModel.createdListUIState.error}" />-->
 
 
-        <!--        empty List          -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="60dp"
+               app:isListEmpty="@{viewModel.createdListUIState.isEmpty}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.4">
 
-<!--        <com.airbnb.lottie.LottieAnimationView-->
-<!--            android:id="@+id/no_data"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="300dp"-->
-<!--            app:layout_constraintBottom_toBottomOf="parent"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toTopOf="parent"-->
-<!--            app:lottie_autoPlay="true"-->
-<!--            app:lottie_loop="true"-->
-<!--            app:lottie_rawRes="@raw/no_data" />-->
+            <ImageView
+                android:id="@+id/no_collection_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/empty_collection"
+                android:padding="18dp"
+                android:src="@drawable/video_library"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/title"-->
-<!--            style="@style/SemiBold.Large"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="-64dp"-->
-<!--            android:text="@string/empty"-->
-<!--            android:textColor="@color/brand_color"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/no_data"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/no_data"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/no_data" />-->
+            <TextView
+                android:id="@+id/primary_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/manrope_medium"
+                android:text="@string/no_collections_yet"
+                android:textColor="@color/shade_primary"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@+id/no_collection_image"
+                app:layout_constraintStart_toStartOf="@+id/no_collection_image"
+                app:layout_constraintTop_toBottomOf="@+id/no_collection_image"
+                app:layout_constraintVertical_chainStyle="spread_inside" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/description_empty_list"-->
-<!--            style="@style/Regular.Medium.Secondary"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="@dimen/spacing_small"-->
-<!--            android:text="@string/this_list_has_no_movies"-->
-<!--            app:layout_constraintEnd_toEndOf="@+id/no_data"-->
-<!--            app:layout_constraintStart_toStartOf="@+id/no_data"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/title" />-->
+            <TextView
+                android:id="@+id/secondary_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/start_building_your_personal_library_by_saving_movies_or_series_you_want_to_remember"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/no_collection_image"
+                app:layout_constraintStart_toStartOf="@+id/no_collection_image"
+                app:layout_constraintTop_toBottomOf="@+id/primary_text" />
 
-<!--        <androidx.constraintlayout.widget.Group-->
-<!--            android:id="@+id/empty_group"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:constraint_referenced_ids="description_empty_list,title,no_data"-->
-<!--            app:isListEmpty="@{viewModel.createdListUIState.isEmpty}" />-->
-
+            <com.google.android.material.button.MaterialButton
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="24dp"
+                android:text="Start Collecting"
+                app:cornerRadius="10dp"
+                android:textAllCaps="false"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:textColor="@color/button_onPrimary"
+                android:textSize="12sp"
+                android:fontFamily="@font/manrope_medium"
+                android:backgroundTint="@color/button_primary"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/secondary_text" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,7 +1,9 @@
 package com.karrar.movieapp.ui.myList.listDetails
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.karrar.movieapp.domain.usecases.movieDetails.GetMovieDetailsUseCase
 import com.karrar.movieapp.domain.usecases.mylist.GetMyMediaListDetailsUseCase
 import com.karrar.movieapp.ui.base.BaseViewModel
 import com.karrar.movieapp.ui.category.uiState.ErrorUIState
@@ -20,6 +22,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ListDetailsViewModel @Inject constructor(
     private val getMyMediaListDetailsUseCase: GetMyMediaListDetailsUseCase,
+    private val getMovieDetailsUseCase: GetMovieDetailsUseCase,
     private val mediaUIStateMapper: MediaUIStateMapper,
     saveStateHandle: SavedStateHandle
 ) : BaseViewModel(), ListDetailsInteractionListener {
@@ -43,7 +46,15 @@ class ListDetailsViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val result =
-                    getMyMediaListDetailsUseCase(args.id).map { mediaUIStateMapper.map(it) }
+                    getMyMediaListDetailsUseCase(args.id).map {
+                        val getMovieDetails = getMovieDetailsUseCase.getMovieDetails(it.id)
+                        mediaUIStateMapper.map(
+                            it.copy(
+                                runtime = getMovieDetails.movieDuration,
+                                genres = getMovieDetails.movieGenres
+                            )
+                        )
+                    }
                 _listDetailsUIState.update {
                     it.copy(
                         isLoading = false,
@@ -68,5 +79,8 @@ class ListDetailsViewModel @Inject constructor(
         _listDetailsUIEvent.update { Event(ListDetailsUIEvent.OnItemSelected(item)) }
     }
 
+    fun onCloseClick() {
+        _listDetailsUIState.update { it.copy(showDeleteInfo = false) }
+    }
 }
 

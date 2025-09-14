@@ -141,6 +141,12 @@
         <item name="cornerSize">@dimen/radius_md</item>
     </style>
 
+    <style name="CardCorners.Custom">
+        <item name="cornerSizeTopLeft">@dimen/radius_medium_small</item>
+        <item name="cornerSizeTopRight">@dimen/radius_medium_small</item>
+        <item name="cornerSizeBottomLeft">@dimen/radius_medium_small</item>
+    </style>
+
     <style name="Login" parent="Widget.MaterialComponents.TextInputLayout.FilledBox">
         <item name="android:textColorHint">@color/shade_secondary_color</item>
         <item name="boxBackgroundColor">@color/text_field_background_color</item>
@@ -197,8 +203,9 @@
         <item name="chipBackgroundColor">@color/selector_chip_background</item>
         <item name="chipStrokeColor">@color/selector_chip_stroke</item>
         <item name="chipStrokeWidth">1dp</item>
+        <item name="rippleColor">@android:color/transparent</item>
         <item name="android:textColor">@color/selector_chip_text</item>
-        <item name="chipCornerRadius">8dp</item>
+        <item name="chipCornerRadius">1000dp</item>
     </style>
 
 

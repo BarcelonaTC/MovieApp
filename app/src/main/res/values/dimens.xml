@@ -4,6 +4,7 @@
     <dimen name="spacing_extra_large">32dp</dimen>
     <dimen name="spacing_large">24dp</dimen>
     <dimen name="spacing_medium">16dp</dimen>
+    <dimen name="spacing_normal">12dp</dimen>
     <dimen name="spacing_small">8dp</dimen>
     <dimen name="spacing_too_small">4dp</dimen>
     <dimen name="season_card_width">88dp</dimen>
@@ -14,7 +15,8 @@
 
     <!--  layout -->
     <dimen name="spacing_actor">72dp</dimen>
-    <dimen name="media_card_width">128dp</dimen>
+    <dimen name="media_card_width">156dp</dimen>
+    <dimen name="media_card_width_small">64dp</dimen>
     <dimen name="media_card_airing_today_height">145dp</dimen>
     <dimen name="media_card_popular_movie">350dp</dimen>
     <!-- texts -->

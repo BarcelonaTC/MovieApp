@@ -82,11 +82,12 @@
                 android:hint="@string/userName_Input"
                 android:inputType="textPersonName"
                 android:maxLines="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:paddingVertical="@dimen/spacing_medium"
                 android:textColor="@color/shade_primary"
-                android:textColorHint="@color/shade_tertiary"
-                android:textCursorDrawable="@drawable/color_cursor"
-                />
+                android:textColorHint="@color/shade_tertiary">
+            </com.google.android.material.textfield.TextInputEditText>
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -107,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/spacing_medium"
             android:layout_marginTop="@dimen/spacing_small"
-            app:endIconDrawable="@drawable/eye_opened"
+            app:endIconDrawable="@drawable/eye_closed"
             app:endIconMode="custom"
             style="@style/Widget.App.TextInputLayout.Outlined"
             app:endIconTint="@color/shade_secondary"
@@ -128,10 +129,11 @@
                 android:hint="@string/password_Input"
                 android:inputType="textPassword"
                 android:maxLines="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:paddingVertical="@dimen/spacing_medium"
                 android:textColor="@color/shade_primary"
                 android:textColorHint="@color/shade_tertiary"
-                android:textCursorDrawable="@drawable/color_cursor"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 

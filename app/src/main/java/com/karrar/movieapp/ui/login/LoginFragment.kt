@@ -20,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 class LoginFragment : BaseFragment<FragmentLoginBinding>() {
     override val layoutIdFragment = R.layout.fragment_login
     override val viewModel: LoginViewModel by viewModels()
-    private var isPasswordVisible = true
+    private var isPasswordVisible = false
 
 
     override fun onStart() {

@@ -2,6 +2,7 @@ package com.karrar.movieapp.ui.actorDetails
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.karrar.movieapp.R
 import com.karrar.movieapp.domain.enums.HomeItemsType
 import com.karrar.movieapp.domain.usecases.GetActorDetailsUseCase
 import com.karrar.movieapp.domain.usecases.GetActorMoviesUseCase
@@ -25,7 +26,7 @@ class ActorViewModel @Inject constructor(
 ) : BaseViewModel(), MovieInteractionListener, ActorDetailsInteraction {
 
     val args = ActorDetailsFragmentArgs.fromSavedStateHandle(state)
-
+    val toggleIds = intArrayOf(R.id.appbar_profile_image, R.id.appbar_actor_name)
     private val _actorDetailsUIState = MutableStateFlow(ActorDetailsUIState())
     val actorDetailsUIState = _actorDetailsUIState.asStateFlow()
 

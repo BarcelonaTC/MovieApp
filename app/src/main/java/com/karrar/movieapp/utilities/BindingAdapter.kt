@@ -1,8 +1,10 @@
 package com.karrar.movieapp.utilities
 
+import android.graphics.Rect
 import android.view.View
 import android.widget.ImageView
 import android.widget.RatingBar
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
@@ -32,6 +34,24 @@ fun <T> showWhenListNotEmpty(view: View, list: List<T>) {
 @BindingAdapter("app:showWhenListEmpty")
 fun <T> showWhenListEmpty(view: View, list: List<T>) {
     view.isVisible = list.isEmpty() == true
+}
+
+@BindingAdapter(value = ["toggleViewsOnScroll", "targetViewId"], requireAll = true)
+fun ScrollView.toggleViewsOnScroll(viewIds: IntArray?, targetViewId: Int) {
+    if (viewIds == null) return
+    post {
+        val targetView = rootView.findViewById<View>(targetViewId)
+        if (targetView == null) return@post
+        viewTreeObserver.addOnScrollChangedListener {
+            val rect = Rect()
+            val isVisible = targetView.getGlobalVisibleRect(rect)
+
+            viewIds.forEach { id ->
+                val v = rootView.findViewById<View>(id)
+                v?.visibility = if (isVisible) View.GONE else View.VISIBLE
+            }
+        }
+    }
 }
 
 @BindingAdapter("app:hideWhenListIsEmpty")
@@ -143,6 +163,7 @@ fun <T> setRecyclerItems(view: RecyclerView, items: List<T>?) {
     (view.adapter as BaseAdapter<T>?)?.setItems(items ?: emptyList())
     view.scrollToPosition(0)
 }
+
 @BindingAdapter("app:reverseGalleryLayout")
 fun reverseGalleryLayout(view: ConstraintLayout, reverse: Boolean) {
     view.layoutDirection = if (reverse) {
@@ -260,6 +281,7 @@ fun setDuration(view: TextView, hours: Int?, minutes: Int?) {
             String.format(view.context.getString(R.string.hours_minutes_pattern), hours, minutes)
     }
 }
+
 @BindingAdapter("app:formatDate")
 fun formatDate(textView: TextView, dateString: String?) {
     if (!dateString.isNullOrEmpty()) {

@@ -10,7 +10,8 @@ class TopRatedSeriesMapper @Inject constructor() : Mapper<TVShowsDTO, TopRatedSe
         return TopRatedSeriesEntity(
             id = input.id ?:0,
             name = input.originalName?:"",
-            imageUrl = input.posterPath ?:""
+            imageUrl = input.posterPath ?:"",
+            rating = input.voteAverage ?: 0.0
         )
     }
 }

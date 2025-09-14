@@ -13,7 +13,7 @@ class AiringTodaySeriesMapper @Inject constructor() : Mapper<AiringTodaySeriesEn
             mediaID = input.id,
             mediaName = input.name,
             mediaImage = BuildConfig.IMAGE_BASE_PATH + input.imageUrl,
-            mediaRate = 0f,
+            mediaRate = input.rating.toFloat(),
             mediaDate = "",
             mediaType = MediaType.TV_SHOW.value,
         )

@@ -13,7 +13,7 @@ class TrendingMovieMapper @Inject constructor() : Mapper<TrendingMovieEntity, Me
             mediaID = input.id,
             mediaName = input.name,
             mediaImage = BuildConfig.IMAGE_BASE_PATH + input.imageUrl,
-            mediaRate = 0f,
+            mediaRate = input.rating.toFloat(),
             mediaDate = "",
             mediaType = MediaType.MOVIE.value,
         )

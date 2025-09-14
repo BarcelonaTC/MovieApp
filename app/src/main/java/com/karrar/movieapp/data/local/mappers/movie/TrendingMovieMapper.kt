@@ -10,7 +10,8 @@ class TrendingMovieMapper @Inject constructor() : Mapper<MovieDto, TrendingMovie
         return TrendingMovieEntity(
             id = input.id ?:0,
             name = input.originalTitle?:"",
-            imageUrl = input.posterPath ?:""
+            imageUrl = input.posterPath ?:"",
+            rating = input.voteAverage ?: 0.0
         )
     }
 }

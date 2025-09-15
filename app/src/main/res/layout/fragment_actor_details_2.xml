@@ -24,8 +24,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/arrowBackContainer"
             android:layout_width="match_parent"
-            android:visibility="@{viewModel.actorDetailsUIState.isLoading || viewModel.actorDetailsUIState.error.isEmpty() ? View.VISIBLE : View.GONE}"
-            android:layout_height="56dp">
+            android:layout_height="56dp"
+            android:visibility="@{viewModel.actorDetailsUIState.isLoading || viewModel.actorDetailsUIState.error.isEmpty() ? View.VISIBLE : View.GONE}">
 
             <ImageView
                 android:id="@+id/arrow_back"
@@ -511,10 +511,10 @@
                         android:layout_marginTop="24dp"
                         android:fontFamily="@font/manrope_medium"
                         android:gravity="start"
-                        android:visibility="@{viewModel.actorDetailsUIState.biography.isEmpty() ? View.GONE : View.VISIBLE}"
                         android:text="@string/biography"
                         android:textColor="@color/shade_primary"
                         android:textSize="16sp"
+                        android:visibility="@{viewModel.actorDetailsUIState.biography.isEmpty() ? View.GONE : View.VISIBLE}"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/gallery_container" />
 
@@ -544,12 +544,13 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:visibility="@{viewModel.actorDetailsUIState.isLoading ? View.VISIBLE : View.GONE}" />
+
         <include
             layout="@layout/error"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:visibility="@{viewModel.actorDetailsUIState.error.size > 1 ? View.VISIBLE : View.GONE}"/>
+            android:visibility="@{viewModel.actorDetailsUIState.error.size > 1 ? View.VISIBLE : View.GONE}" />
     </LinearLayout>
 
 

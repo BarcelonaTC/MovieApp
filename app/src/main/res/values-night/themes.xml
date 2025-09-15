@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.MovieApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
 
-        <item name="colorPrimary">@color/brand_color</item>
+        <item name="colorPrimary">@color/brand_primary</item>
         <item name="colorPrimaryVariant">@color/background_color</item>
 
         <item name="actionBarTheme">@style/MyTheme</item>

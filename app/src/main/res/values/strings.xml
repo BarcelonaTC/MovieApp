@@ -109,4 +109,11 @@
     <string name="join_cineverse">Join CineVerse</string>
     <string name="sign_up_bottom_sheet_text">Let’s get you set up! We’ll take you to the website to create your account.</string>
     <string name="go_to_website">Go to Website</string>
+    <string name="show_more">Show More</string>
+    <string name="gallery">Gallery</string>
+    <string name="try_again">Try Again</string>
+    <string name="try_again_connect_description">Looks like you\'re offline. Let\'s reconnect so\n you don\'t miss out!</string>
+    <string name="oops_no_internet">Oops! No Internet</string>
+    <string name="best_of">Best of %1$s</string>
+    <string name="born_on">Born on %1$s</string>
 </resources>

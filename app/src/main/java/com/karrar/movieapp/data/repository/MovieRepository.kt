@@ -7,13 +7,14 @@ import com.karrar.movieapp.data.local.database.entity.WatchHistoryEntity
 import com.karrar.movieapp.data.local.database.entity.movie.*
 import com.karrar.movieapp.data.remote.response.*
 import com.karrar.movieapp.data.remote.response.actor.ActorDto
+import com.karrar.movieapp.data.remote.response.actor.ActorProfileImagesDto
 import com.karrar.movieapp.data.remote.response.actor.ActorMoviesDto
+import com.karrar.movieapp.data.remote.response.actor.ActorSocialLinksDto
 import com.karrar.movieapp.data.remote.response.genre.GenreDto
 import com.karrar.movieapp.data.remote.response.movie.MovieDetailsDto
 import com.karrar.movieapp.data.remote.response.movie.RatingDto
 import com.karrar.movieapp.data.remote.response.review.ReviewsDto
 import com.karrar.movieapp.data.remote.response.trailerVideosDto.TrailerDto
-import com.karrar.movieapp.domain.models.*
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {
@@ -25,6 +26,10 @@ interface MovieRepository {
     suspend fun getMovieTrailer(movieId: Int): TrailerDto?
 
     suspend fun getActorDetails(actorId: Int): ActorDto?
+
+    suspend fun getActorProfileImages(actorId: Int): ActorProfileImagesDto?
+
+    suspend fun getActorSocialLinks(actorId: Int): ActorSocialLinksDto?
 
     suspend fun getActorMovies(actorId: Int): ActorMoviesDto?
 
@@ -56,7 +61,7 @@ interface MovieRepository {
 
     suspend fun getTrendingMovies(): Flow<List<TrendingMovieEntity>>
 
-   suspend fun getNowStreamingMovies(): Flow<List<NowStreamingMovieEntity>>
+    suspend fun getNowStreamingMovies(): Flow<List<NowStreamingMovieEntity>>
 
     suspend fun getUpcomingMovies(): Flow<List<UpcomingMovieEntity>>
 

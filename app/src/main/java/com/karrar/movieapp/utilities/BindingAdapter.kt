@@ -1,9 +1,12 @@
 package com.karrar.movieapp.utilities
 
+import android.graphics.Rect
 import android.view.View
 import android.widget.ImageView
 import android.widget.RatingBar
+import android.widget.ScrollView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -19,6 +22,8 @@ import com.karrar.movieapp.utilities.Constants.FIRST_CATEGORY_ID
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 
 @BindingAdapter("app:showWhenListNotEmpty")
@@ -29,6 +34,24 @@ fun <T> showWhenListNotEmpty(view: View, list: List<T>) {
 @BindingAdapter("app:showWhenListEmpty")
 fun <T> showWhenListEmpty(view: View, list: List<T>) {
     view.isVisible = list.isEmpty() == true
+}
+
+@BindingAdapter(value = ["toggleViewsOnScroll", "targetViewId"], requireAll = true)
+fun ScrollView.toggleViewsOnScroll(viewIds: IntArray?, targetViewId: Int) {
+    if (viewIds == null) return
+    post {
+        val targetView = rootView.findViewById<View>(targetViewId)
+        if (targetView == null) return@post
+        viewTreeObserver.addOnScrollChangedListener {
+            val rect = Rect()
+            val isVisible = targetView.getGlobalVisibleRect(rect)
+
+            viewIds.forEach { id ->
+                val v = rootView.findViewById<View>(id)
+                v?.visibility = if (isVisible) View.GONE else View.VISIBLE
+            }
+        }
+    }
 }
 
 @BindingAdapter("app:hideWhenListIsEmpty")
@@ -141,6 +164,14 @@ fun <T> setRecyclerItems(view: RecyclerView, items: List<T>?) {
     view.scrollToPosition(0)
 }
 
+@BindingAdapter("app:reverseGalleryLayout")
+fun reverseGalleryLayout(view: ConstraintLayout, reverse: Boolean) {
+    view.layoutDirection = if (reverse) {
+        View.LAYOUT_DIRECTION_RTL
+    } else {
+        View.LAYOUT_DIRECTION_LTR
+    }
+}
 
 @BindingAdapter(value = ["app:usePagerSnapHelper"])
 fun usePagerSnapHelperWithRecycler(recycler: RecyclerView, useSnapHelper: Boolean = false) {
@@ -154,6 +185,34 @@ fun bindMovieImage(image: ImageView, imageURL: String?) {
         image.load(imageURL) {
             placeholder(R.drawable.loading)
             error(R.drawable.ic_profile_place_holder)
+        }
+    }
+}
+
+@BindingAdapter(value = ["actorGalleryImage", "placeholderImage"], requireAll = true)
+fun bindActorGalleryImage(
+    image: ImageView,
+    imageURL: String?,
+    placeholder: ImageView
+) {
+    if (!imageURL.isNullOrEmpty()) {
+        placeholder.visibility = View.GONE
+
+        image.load(imageURL) {
+            crossfade(true)
+            placeholder(R.drawable.loading)
+            fallback(R.drawable.actor_placeholder)
+            listener(
+                onStart = {
+                    placeholder.visibility = View.GONE
+                },
+                onSuccess = { _, _ ->
+                    placeholder.visibility = View.GONE
+                },
+                onError = { _, _ ->
+                    placeholder.visibility = View.VISIBLE
+                }
+            )
         }
     }
 }
@@ -223,6 +282,24 @@ fun setDuration(view: TextView, hours: Int?, minutes: Int?) {
     }
 }
 
+@BindingAdapter("app:formatDate")
+fun formatDate(textView: TextView, dateString: String?) {
+    if (!dateString.isNullOrEmpty()) {
+        try {
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val date = inputFormat.parse(dateString)
+
+            val outputFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
+            val formattedDate = outputFormat.format(date)
+
+            textView.text = textView.context.getString(R.string.born_on, formattedDate)
+        } catch (e: Exception) {
+            textView.text = textView.context.getString(R.string.born_on, dateString)
+        }
+    } else {
+        textView.text = ""
+    }
+}
 @BindingAdapter("app:setGenres", "app:listener", "app:selectedChip")
 fun <T> setGenresChips(
     view: ChipGroup, chipList: List<GenreUIState>?, listener: T,
@@ -255,6 +332,6 @@ fun setRating(view: RatingBar?, rating: Float) {
 }
 
 @BindingAdapter("showWhenTextNotEmpty")
-fun <T> showWhenTextNotEmpty(view: View,text:String){
+fun <T> showWhenTextNotEmpty(view: View, text: String) {
     view.isVisible = text.isNotEmpty()
 }

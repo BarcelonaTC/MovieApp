@@ -8,6 +8,10 @@
     <dimen name="spacing_small">8dp</dimen>
     <dimen name="spacing_too_small">4dp</dimen>
     <dimen name="season_card_width">88dp</dimen>
+    <dimen name="spacing20">20dp</dimen>
+    <dimen name="spacing48">48dp</dimen>
+    <dimen name="spacing12">12dp</dimen>
+
 
     <!--  layout -->
     <dimen name="spacing_actor">72dp</dimen>
@@ -21,11 +25,15 @@
     <dimen name="text_small">12sp</dimen>
 
     <!-- radius -->
-    <dimen name="radius_large">24dp</dimen>
-    <dimen name="radius_medium">16dp</dimen>
-    <dimen name="radius_medium_small">12dp</dimen>
+    <dimen name="radius_lg">12dp</dimen>
+    <dimen name="radius_md">10dp</dimen>
+    <dimen name="radius_xl">16dp</dimen>
+    <dimen name="radius_full">1000dp</dimen>
     <dimen name="radius_small">8dp</dimen>
     <dimen name="radius_too_small">4dp</dimen>
+    <dimen name="radius_large">24dp</dimen>
+    <dimen name="radius_medium">16dp</dimen>
+    <dimen name="radius_medium_small">10dp</dimen>
 
     <!-- chips -->
     <dimen name="chip_height">32dp</dimen>
@@ -49,5 +57,7 @@
 
     <!-- Label -->
     <dimen name="text_label_md">12sp</dimen>
+    <dimen name="spacing14">14dp</dimen>
+    <dimen name="spacing28">28dp</dimen>
 
 </resources>

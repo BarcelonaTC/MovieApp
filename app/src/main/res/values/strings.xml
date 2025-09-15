@@ -104,4 +104,7 @@
     <string name="season_number">(%1$s Seasons)</string>
     <string name="show_more">Show More</string>
     <string name="gallery">Gallery</string>
+    <string name="try_again">Try Again</string>
+    <string name="try_again_connect_description">Looks like you\'re offline. Let\'s reconnect so\n you don\'t miss out!</string>
+    <string name="oops_no_internet">Oops! No Internet</string>
 </resources>

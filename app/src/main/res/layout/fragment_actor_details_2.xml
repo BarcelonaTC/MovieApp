@@ -24,6 +24,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/arrowBackContainer"
             android:layout_width="match_parent"
+            android:visibility="@{viewModel.actorDetailsUIState.isLoading || viewModel.actorDetailsUIState.error.isEmpty() ? View.VISIBLE : View.GONE}"
             android:layout_height="56dp">
 
             <ImageView
@@ -152,6 +153,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="8dp"
+                                        android:visibility="@{viewModel.actorDetailsUIState.name.isEmpty() ? View.GONE : View.VISIBLE}"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toBottomOf="@+id/actor_name"
                                         app:srcCompat="@drawable/cake" />
@@ -173,6 +175,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="8dp"
+                                        android:visibility="@{viewModel.actorDetailsUIState.birthday.isEmpty() ? View.GONE : View.VISIBLE}"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toBottomOf="@+id/actor_birthday_icon"
                                         app:srcCompat="@drawable/location" />
@@ -508,9 +511,10 @@
                         android:layout_marginTop="24dp"
                         android:fontFamily="@font/manrope_medium"
                         android:gravity="start"
-                        android:text="Biography"
+                        android:visibility="@{viewModel.actorDetailsUIState.biography.isEmpty() ? View.GONE : View.VISIBLE}"
+                        android:text="@string/biography"
                         android:textColor="@color/shade_primary"
-                        android:textSize="16dp"
+                        android:textSize="16sp"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/gallery_container" />
 
@@ -539,7 +543,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:visibility="@{viewModel.actorDetailsUIState.loading ? View.VISIBLE : View.GONE}" />
+            android:visibility="@{viewModel.actorDetailsUIState.isLoading ? View.VISIBLE : View.GONE}" />
+        <include
+            layout="@layout/error"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="@{viewModel.actorDetailsUIState.error.size > 1 ? View.VISIBLE : View.GONE}"/>
     </LinearLayout>
 
 

@@ -7,14 +7,28 @@ import javax.inject.Inject
 
 class GetActorDetailsUseCase @Inject constructor(
     private val movieRepository: MovieRepository,
-    private val movieMappersContainer: MovieMappersContainer,
+    private val movieMappersContainer: MovieMappersContainer
 ) {
     suspend operator fun invoke(actorId: Int): ActorDetails {
-        val response = movieRepository.getActorDetails(actorId = actorId)
-        return if (response != null) {
-            movieMappersContainer.actorDetailsMapper.map(response)
-        } else {
-            throw Throwable("Not Success")
-        }
+        val actorDto = movieRepository.getActorDetails(actorId)
+            ?: throw IllegalStateException("Actor details not found for id=$actorId")
+
+        val profileImagesDto = movieRepository.getActorProfileImages(actorId)
+        val socialLinksDto = movieRepository.getActorSocialLinks(actorId)
+
+        val actorDetails = movieMappersContainer.actorDetailsMapper.map(actorDto)
+
+        return actorDetails.copy(
+            actorProfileImages = profileImagesDto?.let {
+                movieMappersContainer.actorProfileImagesMapper.map(
+                    it
+                )
+            },
+            actorSocialLinks = socialLinksDto?.let {
+                movieMappersContainer.actorSocialLinksMapper.map(
+                    it
+                )
+            }
+        )
     }
 }

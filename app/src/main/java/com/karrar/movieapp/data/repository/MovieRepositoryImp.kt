@@ -12,7 +12,9 @@ import com.karrar.movieapp.data.local.database.entity.movie.*
 import com.karrar.movieapp.data.local.mappers.movie.LocalMovieMappersContainer
 import com.karrar.movieapp.data.remote.response.*
 import com.karrar.movieapp.data.remote.response.actor.ActorDto
+import com.karrar.movieapp.data.remote.response.actor.ActorProfileImagesDto
 import com.karrar.movieapp.data.remote.response.actor.ActorMoviesDto
+import com.karrar.movieapp.data.remote.response.actor.ActorSocialLinksDto
 import com.karrar.movieapp.data.remote.response.genre.GenreDto
 import com.karrar.movieapp.data.remote.response.movie.MovieDetailsDto
 import com.karrar.movieapp.data.remote.response.movie.RatingDto
@@ -64,6 +66,14 @@ class MovieRepositoryImp @Inject constructor(
 
     override suspend fun getActorDetails(actorId: Int): ActorDto? {
         return movieService.getActorDetails(actorId = actorId).body()
+    }
+
+    override suspend fun getActorProfileImages(actorId: Int): ActorProfileImagesDto? {
+        return movieService.getActorImages(actorId = actorId).body()
+    }
+
+    override suspend fun getActorSocialLinks(actorId: Int): ActorSocialLinksDto? {
+        return movieService.getActorExternalIds(actorId = actorId).body()
     }
 
     override suspend fun getActorMovies(actorId: Int): ActorMoviesDto? {
@@ -209,17 +219,20 @@ class MovieRepositoryImp @Inject constructor(
 
 
     override suspend fun getTrendingMoviesPager(): Pager<Int, MovieDto> {
-        return Pager(config = config,
+        return Pager(
+            config = config,
             pagingSourceFactory = { movieMovieDataSource.trendingMovieDataSource })
     }
 
     override suspend fun getNowPlayingMoviesPager(): Pager<Int, MovieDto> {
-        return Pager(config = config,
+        return Pager(
+            config = config,
             pagingSourceFactory = { movieMovieDataSource.nowStreamingMovieMovieDataSource })
     }
 
     override suspend fun getUpcomingMoviesPager(): Pager<Int, MovieDto> {
-        return Pager(config = config,
+        return Pager(
+            config = config,
             pagingSourceFactory = { movieMovieDataSource.upcomingMovieMovieDataSource })
     }
 

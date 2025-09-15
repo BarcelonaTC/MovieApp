@@ -102,6 +102,13 @@
     <string name="this_list_has_no_lists">No lists found</string>
     <string name="episode_title">%1$d. %2$s</string>
     <string name="season_number">(%1$s Seasons)</string>
+    <string name="show_more">Show More</string>
+    <string name="gallery">Gallery</string>
+    <string name="try_again">Try Again</string>
+    <string name="try_again_connect_description">Looks like you\'re offline. Let\'s reconnect so\n you don\'t miss out!</string>
+    <string name="oops_no_internet">Oops! No Internet</string>
+    <string name="best_of">Best of %1$s</string>
+    <string name="born_on">Born on %1$s</string>
     <string name="delete">delete</string>
     <string name="no_collections_yet">No Collections Yet</string>
     <string name="start_building_your_personal_library_by_saving_movies_or_series_you_want_to_remember">Start building your personal library by saving movies or series you want to remember.</string>

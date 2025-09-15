@@ -16,14 +16,16 @@ class ActorDetailsMapper @Inject constructor() : Mapper<ActorDto, ActorDetails> 
         }
 
         return ActorDetails(
-            input.id ?: 0,
-            input.name ?: "",
-            BuildConfig.IMAGE_BASE_PATH + input.profilePath,
-            input.birthday ?: "",
-            input.placeOfBirth ?: "unknown",
-            input.biography ?: "",
-            input.knownForDepartment ?: "-",
-            gender,
+            actorID = input.id ?: 0,
+            actorName = input.name ?: "",
+            actorImage = BuildConfig.IMAGE_BASE_PATH + input.profilePath,
+            actorBirthday = input.birthday ?: "",
+            actorPlaceOfBirth = input.placeOfBirth ?: "unknown",
+            actorBiography = input.biography ?: "",
+            knownForDepartment = input.knownForDepartment ?: "-",
+            actorGender = gender,
+            actorSocialLinks = null,
+            actorProfileImages = null
         )
     }
 }

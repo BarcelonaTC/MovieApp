@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="isError"
+            type="Boolean" />
+
+        <variable
+            name="viewModel"
+            type="com.karrar.movieapp.ui.base.BaseViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/background_screen">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="64dp"
+                android:gravity="center"
+                android:background="@drawable/no_internet_rounded_shape"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:layout_height="64dp">
+
+                <ImageView
+                    android:id="@+id/animation_lost_connection"
+                    android:layout_width="wrap_content"
+                    android:contentDescription="no_internet"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/station" />
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/title_lost_connection"
+                style="@style/SemiBold.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/manrope_regular"
+                android:text="@string/oops_no_internet"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/description_lost_connection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:fontFamily="@font/manrope_regular"
+                android:gravity="center"
+                android:text="@string/try_again_connect_description"
+                android:textColor="@color/shade_secondary"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_retry"
+                android:layout_width="240dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginEnd="60dp"
+                android:background="@drawable/button_rounded_10_shape"
+                android:fontFamily="@font/manrope_regular"
+                android:onClick="@{() -> viewModel.getData()}"
+                android:text="@string/try_again"
+                android:textColor="@color/white_primary"
+                android:textSize="12sp"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <androidx.constraintlayout.widget.Group
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:constraint_referenced_ids="title_lost_connection,animation_lost_connection,description_lost_connection,button_retry"
+                app:isVisible="@{isError}" />
+
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -31,6 +31,9 @@
     <dimen name="radius_full">1000dp</dimen>
     <dimen name="radius_small">8dp</dimen>
     <dimen name="radius_too_small">4dp</dimen>
+    <dimen name="radius_large">24dp</dimen>
+    <dimen name="radius_medium">16dp</dimen>
+    <dimen name="radius_medium_small">10dp</dimen>
 
     <!-- chips -->
     <dimen name="chip_height">32dp</dimen>

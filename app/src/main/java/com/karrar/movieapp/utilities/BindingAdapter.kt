@@ -292,15 +292,14 @@ fun formatDate(textView: TextView, dateString: String?) {
             val outputFormat = SimpleDateFormat("MMM dd, yyyy", Locale.getDefault())
             val formattedDate = outputFormat.format(date)
 
-            textView.text = "Born on $formattedDate"
+            textView.text = textView.context.getString(R.string.born_on, formattedDate)
         } catch (e: Exception) {
-            textView.text = "Born on $dateString"
+            textView.text = textView.context.getString(R.string.born_on, dateString)
         }
     } else {
         textView.text = ""
     }
 }
-
 @BindingAdapter("app:setGenres", "app:listener", "app:selectedChip")
 fun <T> setGenresChips(
     view: ChipGroup, chipList: List<GenreUIState>?, listener: T,

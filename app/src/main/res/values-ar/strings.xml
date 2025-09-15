@@ -110,4 +110,6 @@
     يبدو أنك غير متصل بالإنترنت. دعنا نعيد الاتصال حتى لا يفوتك أي شيء!
 </string>
     <string name="oops_no_internet">عذرًا ! لا يوجد إنترنت</string>
+    <string name="best_of">أفضل ما لدى %1$s</string>
+    <string name="born_on">وُلد في %1$s</string>
 </resources>

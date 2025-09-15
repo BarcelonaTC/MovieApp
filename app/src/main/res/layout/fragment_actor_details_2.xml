@@ -388,7 +388,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="@font/manrope_medium"
-                            android:text='@{"Best of " + viewModel.actorDetailsUIState.name}'
+                            android:text='@{String.format(@string/best_of,  viewModel.actorDetailsUIState.name)}'
                             android:textColor="@color/shade_primary"
                             android:textSize="16sp" />
 

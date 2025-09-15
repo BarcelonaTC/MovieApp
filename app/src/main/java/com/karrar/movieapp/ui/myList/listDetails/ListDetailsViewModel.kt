@@ -1,5 +1,6 @@
 package com.karrar.movieapp.ui.myList.listDetails
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.karrar.movieapp.domain.usecases.movieDetails.GetMovieDetailsUseCase
@@ -10,6 +11,7 @@ import com.karrar.movieapp.ui.category.uiState.ErrorUIState
 import com.karrar.movieapp.ui.myList.listDetails.listDetailsUIState.ListDetailsUIEvent
 import com.karrar.movieapp.ui.myList.listDetails.listDetailsUIState.ListDetailsUIState
 import com.karrar.movieapp.ui.myList.listDetails.listDetailsUIState.SavedMediaUIState
+import com.karrar.movieapp.ui.myList.myListUIState.MyListUIEvent
 import com.karrar.movieapp.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -80,14 +82,32 @@ class ListDetailsViewModel @Inject constructor(
         _listDetailsUIEvent.update { Event(ListDetailsUIEvent.OnItemSelected(item)) }
     }
 
-    fun onCloseClick() {
-        _listDetailsUIState.update { it.copy(showDeleteInfo = false) }
-    }
-
-    override fun onDeleteClick(item: SavedMediaUIState) {
+    override fun onDeleteClick(id: Int)  {
         viewModelScope.launch {
-            removeMovieFromListUseCase(args.id,item.mediaID)
+            try {
+                val updatedList = removeMovieFromListUseCase(
+                    listID = args.id,
+                    mediaId = id
+                )
+                _listDetailsUIState.update {
+                    it.copy(
+                        isLoading = false,
+                        error = emptyList(),
+                        isEmpty = updatedList.isEmpty(),
+                    )
+                }
+            } catch (t: Throwable) {
+                _listDetailsUIState.update {
+                    it.copy(
+                        error = listOf(ErrorUIState(0, t.message.toString()))
+                    )
+                }
+            }
+            getData()
         }
     }
+
+    fun onCloseClick() = _listDetailsUIState.update { it.copy(showDeleteInfo = false) }
+
 }
 

@@ -15,6 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_marginHorizontal="16dp"
+        android:tag="@{item.mediaID}"
         android:layout_height="wrap_content">
 
         <ImageButton
@@ -29,8 +30,7 @@
             android:contentDescription="@string/delete"
             app:layout_constraintTop_toTopOf="@+id/movie_details_card"
             app:layout_constraintBottom_toBottomOf="@+id/movie_details_card"
-            app:layout_constraintEnd_toEndOf="parent"
-             />
+            app:layout_constraintStart_toEndOf="parent" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/movie_details_card"

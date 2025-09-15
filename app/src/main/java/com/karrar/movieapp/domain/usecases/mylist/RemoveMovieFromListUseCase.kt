@@ -1,5 +1,6 @@
 package com.karrar.movieapp.domain.usecases.mylist
 
+import android.util.Log
 import com.karrar.movieapp.data.repository.AccountRepository
 import com.karrar.movieapp.data.repository.MovieRepository
 import com.karrar.movieapp.utilities.ErrorUI
@@ -11,16 +12,10 @@ class RemoveMovieFromListUseCase @Inject constructor(
     private val movieRepository: MovieRepository
 ) {
     suspend operator fun invoke(listID: Int, mediaId: Int): String {
-        val result = movieRepository.getListDetails(listID)
-
-        return if (result?.checkIfExist(mediaId) == true) {
-            "Fail: this movie is already removed from list"
-        } else {
-            removeMovieFromList(listID, mediaId)
-        }
+        return removeMovieFromList(listID, mediaId)
     }
 
-        private suspend fun removeMovieFromList(listID: Int, mediaId: Int): String {
+    private suspend fun removeMovieFromList(listID: Int, mediaId: Int): String {
         val sessionID = accountRepository.getSessionId()
         return sessionID?.let {
             movieRepository.removeMovieFromList(it, listID, mediaId)

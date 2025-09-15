@@ -105,7 +105,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/start_building_your_personal_library_by_saving_movies_or_series_you_want_to_remember"
+                android:text="@string/start_building"
                 android:textAlignment="center"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@+id/no_collection_image"

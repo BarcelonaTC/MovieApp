@@ -40,7 +40,7 @@
 
             <TextView
                 android:id="@+id/movie_name"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 android:textColor="@color/shade_primary"
                 android:fontFamily="@font/manrope_medium"
                 android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
                 android:text="@{item.name}"
                 app:layout_constraintStart_toEndOf="@+id/folder_Id"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="My Favorite TV Shows" />
+                tools:text="@string/my_favorite_tv_shows" />
 
             <TextView
                 android:layout_width="wrap_content"

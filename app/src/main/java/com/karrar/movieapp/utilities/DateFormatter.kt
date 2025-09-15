@@ -1,7 +1,7 @@
 package com.karrar.movieapp.utilities
 
 
-class DataFormatter  {
+class DateFormatter  {
 
     fun releasedDate(isoDate: String): String {
         val (year, month, day) = isoDate.split("-")

@@ -50,7 +50,7 @@
                 android:textSize="12sp"
                 android:textColor="@color/shade_primary"
                 android:layout_marginHorizontal="8dp"
-                android:text="@string/tip_swipe_left_to_remove_movies_from_your_collection"
+                android:text="@string/tip_swipe"
                 app:layout_constraintBottom_toBottomOf="@+id/info_icon"
                 app:layout_constraintEnd_toStartOf="@+id/close_button"
                 app:layout_constraintStart_toEndOf="@+id/info_icon"

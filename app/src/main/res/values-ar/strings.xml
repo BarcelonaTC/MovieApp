@@ -112,4 +112,12 @@
     <string name="oops_no_internet">عذرًا ! لا يوجد إنترنت</string>
     <string name="best_of">أفضل ما لدى %1$s</string>
     <string name="born_on">وُلد في %1$s</string>
+    <string name="collection_name">اسم المجموعة</string>
+    <string name="create_new_collection">إنشاء مجموعة</string>
+    <string name="delete">حذف</string>
+    <string name="no_collections_yet">لا يوجد مجموعات</string>
+    <string name="start_building">ابدأ ببناء مكتبتك بحفظ الأفلام أو المسلسلات التي تريد تذكرها.</string>
+    <string name="tip_swipe">نصيحة: اسحب لليسار لإزالة الأفلام من مجموعتك.</string>
+    <string name="my_favorite_tv_shows">My Favorite TV Shows</string>
+
 </resources>

@@ -118,6 +118,8 @@
     <string name="born_on">Born on %1$s</string>
     <string name="delete">delete</string>
     <string name="no_collections_yet">No Collections Yet</string>
-    <string name="start_building_your_personal_library_by_saving_movies_or_series_you_want_to_remember">Start building your personal library by saving movies or series you want to remember.</string>
-    <string name="tip_swipe_left_to_remove_movies_from_your_collection">Tip: Swipe left to remove movies from your collection.</string>
+    <string name="start_building">Start building your personal library by saving movies or series you want to remember.</string>
+    <string name="tip_swipe">Tip: Swipe left to remove movies from your collection.</string>
+    <string name="collection_name">Collection Name</string>
+    <string name="my_favorite_tv_shows">My Favorite TV Shows</string>
 </resources>

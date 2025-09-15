@@ -3,7 +3,7 @@ package com.karrar.movieapp.ui.myList.listDetails
 import com.karrar.movieapp.domain.mappers.Mapper
 import com.karrar.movieapp.domain.models.SaveListDetails
 import com.karrar.movieapp.ui.myList.listDetails.listDetailsUIState.SavedMediaUIState
-import com.karrar.movieapp.utilities.DataFormatter
+import com.karrar.movieapp.utilities.DateFormatter
 import com.karrar.movieapp.utilities.roundToOneDecimal
 import javax.inject.Inject
 
@@ -15,9 +15,9 @@ class MediaUIStateMapper @Inject constructor() : Mapper<SaveListDetails, SavedMe
             mediaID = input.id,
             title = input.title,
             movieGenre = input.genres,
-            runtime = DataFormatter().runtimeToDate(input.runtime),
+            runtime = DateFormatter().runtimeToDate(input.runtime),
             voteAverage = input.voteAverage.roundToOneDecimal(),
-            releaseDate = DataFormatter().releasedDate(input.releaseDate),
+            releaseDate = DateFormatter().releasedDate(input.releaseDate),
             mediaType = input.mediaType
         )
     }

@@ -236,33 +236,33 @@
     </style>
 
     <style name="TextStyle.Title.xl">
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">@dimen/text_title_xl</item>
     </style>
 
     <style name="TextStyle.Title.lg">
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">@dimen/text_title_lg</item>
     </style>
 
     <style name="TextStyle.Title.md">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">@dimen/text_title_md</item>
     </style>
 
     <style name="TextStyle.Title.sm">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/text_title_sm</item>
     </style>
 
     <style name="TextStyle.Body" />
 
     <style name="TextStyle.Body.lg">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">@dimen/text_body_lg</item>
     </style>
 
     <style name="TextStyle.Body.md">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/text_body_md</item>
     </style>
 
     <style name="TextStyle.Body.sm">
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">@dimen/text_body_sm</item>
     </style>
 
     <style name="TextStyle.Body.lg.regular">
@@ -304,7 +304,7 @@
     <style name="TextStyle.Label" />
 
     <style name="TextStyle.Label.md">
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">@dimen/spacing14</item>
     </style>
 
     <style name="TextStyle.Label.md.regular">

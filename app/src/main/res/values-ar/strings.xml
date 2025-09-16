@@ -112,4 +112,9 @@
     <string name="oops_no_internet">عذرًا ! لا يوجد إنترنت</string>
     <string name="best_of">أفضل ما لدى %1$s</string>
     <string name="born_on">وُلد في %1$s</string>
+    <string name="welcome">مرحبا</string>
+    <string name="cine_verse_logo">أيقونة الشعار</string>
+    <string name="rating_icon">أيقونة التقييم</string>
+    <string name="match">مطابقة</string>
+    <string name="me">أنا</string>
 </resources>

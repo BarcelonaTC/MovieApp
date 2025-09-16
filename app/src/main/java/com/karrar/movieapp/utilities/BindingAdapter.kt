@@ -11,6 +11,8 @@ import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.PagerSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.CompositePageTransformer
+import androidx.viewpager2.widget.ViewPager2
 import coil.load
 import com.google.android.material.chip.ChipGroup
 import com.karrar.movieapp.R
@@ -300,6 +302,7 @@ fun formatDate(textView: TextView, dateString: String?) {
         textView.text = ""
     }
 }
+
 @BindingAdapter("app:setGenres", "app:listener", "app:selectedChip")
 fun <T> setGenresChips(
     view: ChipGroup, chipList: List<GenreUIState>?, listener: T,
@@ -315,7 +318,7 @@ fun <T> setGenresChips(
 @BindingAdapter("app:genre")
 fun setAllGenre(textView: TextView, genreList: List<String>?) {
     genreList?.let {
-        textView.text = genreList.joinToString(" . ") { it }
+        textView.text = genreList.joinToString(" , ") { it }
     }
 }
 
@@ -334,4 +337,40 @@ fun setRating(view: RatingBar?, rating: Float) {
 @BindingAdapter("showWhenTextNotEmpty")
 fun <T> showWhenTextNotEmpty(view: View, text: String) {
     view.isVisible = text.isNotEmpty()
+}
+
+@BindingAdapter("viewPagerAdapter")
+fun setViewPagerAdapter(viewPager: ViewPager2, adapter: RecyclerView.Adapter<*>?) {
+    adapter?.let {
+        viewPager.adapter = it
+    }
+}
+
+@BindingAdapter("setupCarousel")
+fun setupCarousel(viewPager: ViewPager2, adapter: BaseAdapter<*>) {
+
+    viewPager.adapter = adapter
+    viewPager.offscreenPageLimit = 3
+    viewPager.clipToPadding = false
+    viewPager.clipChildren = false
+    viewPager.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+
+    val nextItemVisiblePx = 48
+    viewPager.setPadding(nextItemVisiblePx, 0, nextItemVisiblePx, 0)
+
+    val compositePageTransformer = CompositePageTransformer().apply {
+        addTransformer { page, position ->
+            if (position == 0f) {
+                page.alpha = 1f
+                page.translationX = 0f
+                page.translationZ = 1f
+            } else {
+                page.alpha = 0.6f
+                page.translationX = -position * 40
+                page.translationZ =  0f
+            }
+        }
+    }
+
+    viewPager.setPageTransformer(compositePageTransformer)
 }

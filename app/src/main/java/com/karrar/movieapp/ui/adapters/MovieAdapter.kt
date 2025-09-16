@@ -6,6 +6,7 @@ import com.karrar.movieapp.domain.models.Media
 import com.karrar.movieapp.ui.base.BaseAdapter
 import com.karrar.movieapp.ui.base.BaseInteractionListener
 import com.karrar.movieapp.ui.models.MediaUiState
+import com.karrar.movieapp.ui.models.TypeOfMedia
 
 class MovieAdapter(items: List<MediaUiState>,val listener: MovieInteractionListener) :
     BaseAdapter<MediaUiState>(items, listener) {
@@ -13,7 +14,7 @@ class MovieAdapter(items: List<MediaUiState>,val listener: MovieInteractionListe
 }
 
 interface MovieInteractionListener : BaseInteractionListener {
-    fun onClickMovie(movieId: Int)
+    fun onClickMovie(movieId: Int, typeOfMedia: TypeOfMedia = TypeOfMedia.MOVIE)
     fun onClickSeeAllMovie(homeItemsType: HomeItemsType)
 }
 

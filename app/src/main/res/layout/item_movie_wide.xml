@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_small"
         android:layout_marginVertical="@dimen/spacing_small"
-        android:onClick="@{()->listener.onClickMovie(item.id)}"
+        android:onClick="@{()->listener.onClickMovie(item.id,item.typeOfMedia)}"
         app:cardBackgroundColor="@color/background_card"
         app:cardCornerRadius="@dimen/radius_medium_small"
         app:cardElevation="0dp"

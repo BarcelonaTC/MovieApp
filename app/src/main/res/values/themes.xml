@@ -3,7 +3,7 @@
     <style name="Theme.MovieApp" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="colorPrimary">@color/brand_primary</item>
         <item name="colorPrimaryVariant">@color/background_color</item>
-        <item name="android:statusBarColor">@color/background_color</item>
+        <item name="android:statusBarColor">@color/background_screen</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
 
         <item name="textInputStyle">@style/Login</item>
@@ -23,7 +23,7 @@
 
 
     <style name="MyTheme" parent="@style/ThemeOverlay.MaterialComponents.ActionBar">
-        <item name="android:background">@color/background_color</item>
+        <item name="android:background">@color/background_screen</item>
         <item name="android:textColorPrimary">@color/shade_primary_color</item>
         <item name="contentInsetStartWithNavigation">0dp</item>
         <item name="contentInsetStart">0dp</item>
@@ -181,6 +181,7 @@
     <style name="CircleImage">
         <item name="cornerSize">50%</item>
     </style>
+
     <style name="RoundedCorner12" parent="">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">12dp</item>
@@ -234,6 +235,96 @@
         <item name="boxCornerRadiusTopEnd">@dimen/spacing12</item>
         <item name="boxCornerRadiusTopStart">@dimen/spacing12</item>
         <item name="boxCornerRadiusBottomStart">@dimen/spacing12</item>
+    </style>
+
+    <style name="TextStyle" />
+
+    <style name="TextStyle.Title">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+    </style>
+
+    <style name="TextStyle.Title.xl">
+        <item name="android:textSize">@dimen/text_title_xl</item>
+    </style>
+
+    <style name="TextStyle.Title.lg">
+        <item name="android:textSize">@dimen/text_title_lg</item>
+    </style>
+
+    <style name="TextStyle.Title.md">
+        <item name="android:textSize">@dimen/text_title_md</item>
+    </style>
+
+    <style name="TextStyle.Title.sm">
+        <item name="android:textSize">@dimen/text_title_sm</item>
+    </style>
+
+    <style name="TextStyle.Body" />
+
+    <style name="TextStyle.Body.lg">
+        <item name="android:textSize">@dimen/text_body_lg</item>
+    </style>
+
+    <style name="TextStyle.Body.md">
+        <item name="android:textSize">@dimen/text_body_md</item>
+    </style>
+
+    <style name="TextStyle.Body.sm">
+        <item name="android:textSize">@dimen/text_body_sm</item>
+    </style>
+
+    <style name="TextStyle.Body.lg.regular">
+        <item name="android:fontFamily">@font/manrope_regular</item>
+    </style>
+
+    <style name="TextStyle.Body.md.regular">
+        <item name="android:fontFamily">@font/manrope_regular</item>
+    </style>
+
+    <style name="TextStyle.Body.sm.regular">
+        <item name="android:fontFamily">@font/manrope_regular</item>
+    </style>
+
+    <style name="TextStyle.Body.lg.medium">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+    </style>
+
+    <style name="TextStyle.Body.md.medium">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+    </style>
+
+    <style name="TextStyle.Body.sm.medium">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+    </style>
+
+    <style name="TextStyle.Body.lg.semi_bold">
+        <item name="android:fontFamily">@font/manrope_semi_bold</item>
+    </style>
+
+    <style name="TextStyle.Body.md.semi_bold">
+        <item name="android:fontFamily">@font/manrope_semi_bold</item>
+    </style>
+
+    <style name="TextStyle.Body.sm.semi_bold">
+        <item name="android:fontFamily">@font/manrope_semi_bold</item>
+    </style>
+
+    <style name="TextStyle.Label" />
+
+    <style name="TextStyle.Label.md">
+        <item name="android:textSize">@dimen/spacing14</item>
+    </style>
+
+    <style name="TextStyle.Label.md.regular">
+        <item name="android:fontFamily">@font/manrope_regular</item>
+    </style>
+
+    <style name="TextStyle.Label.md.medium">
+        <item name="android:fontFamily">@font/manrope_medium</item>
+    </style>
+
+    <style name="TextStyle.Label.md.semi_bold">
+        <item name="android:fontFamily">@font/manrope_semi_bold</item>
     </style>
 
     <style name="Widget.App.TextInputLayout.Outlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">

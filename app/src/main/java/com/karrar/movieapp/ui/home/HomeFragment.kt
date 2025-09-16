@@ -35,15 +35,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 homeAdapter.setItems(
                     mutableListOf(
                         it.popularMovies,
-                        it.tvShowsSeries,
-                        it.onTheAiringSeries,
-                        it.airingTodaySeries,
+                        it.topRatedTvShows,
                         it.upcomingMovies,
-                        it.nowStreamingMovies,
-                        it.mysteryMovies,
-                        it.adventureMovies,
-                        it.trendingMovies,
-                        it.actors,
+                        it.recentlyReleased
                     )
                 )
             }
@@ -63,30 +57,28 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private fun onEvent(event: HomeUIEvent) {
         val action = when (event) {
-            is HomeUIEvent.ClickActorEvent -> {
-                HomeFragmentDirections.actionHomeFragmentToActorDetailsFragment(
-                    event.actorID
-                )
-            }
+
             is HomeUIEvent.ClickMovieEvent -> {
                 HomeFragmentDirections.actionHomeFragmentToMovieDetailFragment(
                     event.movieID
                 )
             }
-            HomeUIEvent.ClickSeeAllActorEvent -> {
-                HomeFragmentDirections.actionHomeFragmentToActorsFragment()
-            }
+
+
+
             is HomeUIEvent.ClickSeeAllMovieEvent -> {
                 HomeFragmentDirections.actionHomeFragmentToAllMovieFragment(
                     -1, event.mediaType
                 )
             }
+
             is HomeUIEvent.ClickSeeAllTVShowsEvent -> {
                 HomeFragmentDirections.actionHomeFragmentToAllMovieFragment(
                     -1,
                     event.mediaType
                 )
             }
+
             is HomeUIEvent.ClickSeriesEvent -> {
                 HomeFragmentDirections.actionHomeFragmentToTvShowDetailsFragment(
                     event.seriesID

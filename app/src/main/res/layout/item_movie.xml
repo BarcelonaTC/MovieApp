@@ -28,7 +28,7 @@
             android:layout_width="@dimen/media_card_width"
             android:layout_height="0dp"
             android:layout_marginHorizontal="@dimen/spacing_small"
-            android:onClick="@{()->listener.onClickMovie(item.id)}"
+            android:onClick="@{()->listener.onClickMovie(item.id,item.typeOfMedia)}"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toTopOf="@id/media_name"
             app:layout_constraintDimensionRatio="1:1.338"
@@ -62,12 +62,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    style="@style/TextStyle.Label.md.medium"
                     android:layout_marginStart="@dimen/spacing_small"
                     android:layout_marginEnd="2dp"
-                    android:fontFamily="@font/manrope_medium"
                     android:text="@{item.rating}"
                     android:textColor="@color/shade_primary"
-                    android:textSize="@dimen/text_body_sm"
                     tools:text="7.5" />
 
                 <ImageView
@@ -83,13 +82,13 @@
             android:id="@+id/media_name"
             android:layout_width="@dimen/media_card_width"
             android:layout_height="wrap_content"
+            style="@style/TextStyle.Body.md.medium"
             android:layout_marginHorizontal="@dimen/spacing_small"
             android:layout_marginTop="@dimen/spacing_small"
             android:ellipsize="end"
-            android:fontFamily="@font/manrope_medium"
             android:maxLines="1"
+            android:textColor="@color/shade_secondary"
             android:text="@{item.name}"
-            android:textSize="@dimen/text_body_md"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0"

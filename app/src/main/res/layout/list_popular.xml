@@ -4,26 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="adapterRecycler"
             type="com.karrar.movieapp.ui.home.adapter.PopularMovieAdapter" />
-
     </data>
 
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_popular_movie"
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewpager2_popular_movie"
         android:layout_width="match_parent"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="@dimen/spacing_small"
         android:layout_height="wrap_content"
-        app:usePagerSnapHelper="@{true}"
-        android:adapter="@{adapterRecycler}"
-        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/spacing_extra_large"
+        android:layout_marginTop="@dimen/spacing_medium"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:overScrollMode="never"
-        tools:listitem="@layout/item_popular_movie"
-        android:scrollbars="none"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        />
-
+        android:paddingTop="24dp"
+        app:viewPagerAdapter="@{adapterRecycler}"
+        app:setupCarousel="@{adapterRecycler}"
+        tools:listitem="@layout/item_popular_movie" />
 </layout>

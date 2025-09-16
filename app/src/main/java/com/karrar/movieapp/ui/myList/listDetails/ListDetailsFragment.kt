@@ -5,7 +5,6 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.RectF
 import android.os.Bundle
-import android.util.Log
 import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
@@ -40,7 +39,7 @@ class ListDetailsFragment : BaseFragment<FragmentListDetailsBinding>() {
             val tag = vh?.itemView?.tag as? Int
 
             tag?.let {
-                viewModel.onDeleteClick(it) }
+                viewModel.onDeleteMovieFromList(it) }
         }
 
         val itemTouchHelper = ItemTouchHelper(swipeCallback)

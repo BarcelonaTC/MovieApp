@@ -1,10 +1,8 @@
 package com.karrar.movieapp.ui.myList.listDetails
 
 import com.karrar.movieapp.R
-import com.karrar.movieapp.domain.models.SaveListDetails
 import com.karrar.movieapp.ui.base.BaseAdapter
 import com.karrar.movieapp.ui.base.BaseInteractionListener
-import com.karrar.movieapp.ui.category.uiState.MediaUIState
 import com.karrar.movieapp.ui.myList.listDetails.listDetailsUIState.SavedMediaUIState
 
 class ListDetailsAdapter(
@@ -15,5 +13,5 @@ class ListDetailsAdapter(
 }
 interface ListDetailsInteractionListener : BaseInteractionListener {
     fun onItemClick(item: SavedMediaUIState)
-    fun onDeleteClick(id: Int)
+    fun onDeleteMovieFromList(id: Int)
 }

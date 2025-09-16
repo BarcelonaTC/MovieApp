@@ -1,10 +1,8 @@
 package com.karrar.movieapp.domain.usecases.mylist
 
-import android.util.Log
 import com.karrar.movieapp.data.repository.AccountRepository
 import com.karrar.movieapp.data.repository.MovieRepository
 import com.karrar.movieapp.utilities.ErrorUI
-import com.karrar.movieapp.utilities.checkIfExist
 import javax.inject.Inject
 
 class RemoveMovieFromListUseCase @Inject constructor(
@@ -12,10 +10,6 @@ class RemoveMovieFromListUseCase @Inject constructor(
     private val movieRepository: MovieRepository
 ) {
     suspend operator fun invoke(listID: Int, mediaId: Int): String {
-        return removeMovieFromList(listID, mediaId)
-    }
-
-    private suspend fun removeMovieFromList(listID: Int, mediaId: Int): String {
         val sessionID = accountRepository.getSessionId()
         return sessionID?.let {
             movieRepository.removeMovieFromList(it, listID, mediaId)

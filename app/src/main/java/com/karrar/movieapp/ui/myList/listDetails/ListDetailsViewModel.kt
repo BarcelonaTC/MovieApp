@@ -82,7 +82,7 @@ class ListDetailsViewModel @Inject constructor(
         _listDetailsUIEvent.update { Event(ListDetailsUIEvent.OnItemSelected(item)) }
     }
 
-    override fun onDeleteClick(id: Int)  {
+    override fun onDeleteMovieFromList(id: Int)  {
         viewModelScope.launch {
             try {
                 val updatedList = removeMovieFromListUseCase(
@@ -108,6 +108,4 @@ class ListDetailsViewModel @Inject constructor(
     }
 
     fun onCloseClick() = _listDetailsUIState.update { it.copy(showDeleteInfo = false) }
-
 }
-

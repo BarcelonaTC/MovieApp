@@ -12,7 +12,17 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_color">
+        android:background="@color/background_screen">
+
+        <include
+            android:id="@+id/app_bar_layout"
+            layout="@layout/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:userName="@{viewModel.homeUiState.userName}" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -20,10 +30,10 @@
             android:layout_height="0dp"
             android:overScrollMode="never"
             android:scrollbars="none"
+            app:hideIfTrue="@{viewModel.homeUiState.loading || viewModel.homeUiState.error.size() &gt;5}"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:hideIfTrue="@{viewModel.homeUiState.loading || viewModel.homeUiState.error.size() &gt;5}"
+            app:layout_constraintTop_toBottomOf="@id/app_bar_layout"
             app:spanCount="1" />
 
         <include
@@ -33,13 +43,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:isLoading="@{viewModel.homeUiState.loading}"
+            app:isLoading="@{viewModel.homeUiState.isLoading}"
             />
 
         <include
             android:id="@+id/error"
             layout="@layout/error2"
-            app:isError="@{viewModel.homeUiState.error.size() &gt;5 &amp;&amp; !viewModel.homeUiState.loading}"
+            app:isError="@{viewModel.homeUiState.error.size() &gt;5 &amp;&amp; !viewModel.homeUiState.isLoading}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

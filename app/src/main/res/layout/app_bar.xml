@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="userName"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appBar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/app_bar_background"
+        android:paddingStart="16dp"
+        android:paddingEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/cine_verce_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:contentDescription="@string/cine_verse_logo"
+            android:src="@drawable/cineverse_logo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/welcome_tv"
+            style="@style/TextStyle.Body.sm.regular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/welcome"
+            android:textColor="@color/shade_secondary"
+            android:visibility='@{userName.isBlank() ? View.GONE : View.VISIBLE}'
+            app:layout_constraintBottom_toTopOf="@+id/user_name_tv"
+            app:layout_constraintStart_toEndOf="@id/cine_verce_icon"
+            app:layout_constraintTop_toTopOf="@id/cine_verce_icon"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/user_name_tv"
+            style="@style/TextStyle.Title.sm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@{userName.isBlank() ? @string/home : userName}"
+            android:textColor="@color/shade_primary"
+            app:layout_constraintBottom_toBottomOf="@id/cine_verce_icon"
+            app:layout_constraintStart_toEndOf="@id/cine_verce_icon"
+            app:layout_constraintTop_toBottomOf="@+id/welcome_tv"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -8,6 +8,7 @@ import com.karrar.movieapp.domain.usecases.GetActorDetailsUseCase
 import com.karrar.movieapp.domain.usecases.GetActorMoviesUseCase
 import com.karrar.movieapp.ui.adapters.MovieInteractionListener
 import com.karrar.movieapp.ui.base.BaseViewModel
+import com.karrar.movieapp.ui.models.TypeOfMedia
 import com.karrar.movieapp.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -79,7 +80,7 @@ class ActorViewModel @Inject constructor(
         _actorDetailsUIEvent.update { Event(ActorDetailsUIEvent.BackEvent) }
     }
 
-    override fun onClickMovie(movieId: Int) {
+    override fun onClickMovie(movieId: Int, typeOfMedia: TypeOfMedia) {
         _actorDetailsUIEvent.update { Event(ActorDetailsUIEvent.ClickMovieEvent(movieId)) }
     }
 

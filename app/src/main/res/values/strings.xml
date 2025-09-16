@@ -10,11 +10,13 @@
     <string name="movies_chip">Movies</string>
     <string name="tv_shows_chip">TV Shows</string>
     <string name="actors_label">Actors</string>
-    <string name="login_to_your_account">Login to your account</string>
+    <string name="welcome_back_CineVerse">Welcome back to CineVerse!</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="password_Input">Enter your password</string>
+    <string name="userName_Input">Enter your email or username</string>
     <string name="login">Login</string>
-    <string name="don_t_have_an_account">Don’t have an account?</string>
+    <string name="create_new_account">Create a New Account</string>
     <string name="sign_up">Sign up</string>
     <string name="place_of_birth">place of Birth</string>
     <string name="konwn_for">Known For</string>
@@ -102,6 +104,11 @@
     <string name="this_list_has_no_lists">No lists found</string>
     <string name="episode_title">%1$d. %2$s</string>
     <string name="season_number">(%1$s Seasons)</string>
+    <string name="join_as_guest">Join as Guest</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="join_cineverse">Join CineVerse</string>
+    <string name="sign_up_bottom_sheet_text">Let’s get you set up! We’ll take you to the website to create your account.</string>
+    <string name="go_to_website">Go to Website</string>
     <string name="show_more">Show More</string>
     <string name="gallery">Gallery</string>
     <string name="try_again">Try Again</string>

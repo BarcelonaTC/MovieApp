@@ -28,7 +28,7 @@
             android:layout_marginVertical="@dimen/spacing_small"
             android:backgroundTint="@color/card_background_color"
             android:onClick="@{() -> listener.onClickSeason(item.seasonNumber)}"
-            app:cardCornerRadius="@dimen/radius_medium"
+            app:cardCornerRadius="@dimen/radius_md"
             app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="@+id/image_episode"
             app:layout_constraintEnd_toEndOf="parent"

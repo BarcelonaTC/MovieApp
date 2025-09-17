@@ -6,9 +6,11 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.karrar.movieapp.R
 import com.karrar.movieapp.databinding.FragmentActorGalleryBinding
+import com.karrar.movieapp.ui.actorDetails.ActorDetailsUIEvent
 import com.karrar.movieapp.ui.adapters.GalleryAdapter
 import com.karrar.movieapp.ui.base.BaseFragment
 import com.karrar.movieapp.ui.main.MainActivity
+import com.karrar.movieapp.utilities.collectLast
 import com.karrar.movieapp.utilities.hideBottomNav
 import com.karrar.movieapp.utilities.showBottomNav
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,12 +25,20 @@ class ActorGalleryFragment : BaseFragment<FragmentActorGalleryBinding>() {
         super.onViewCreated(view, savedInstanceState)
         (requireActivity() as MainActivity).hideBottomNav()
         setTitle(false)
-        binding.arrowBack.setOnClickListener {
-            removeFragment()
-        }
         binding.galleryRV.adapter = GalleryAdapter(
             items = mutableListOf(), viewModel
         )
+        collectLast(viewModel.actorGalleryUIEvent) {
+            it.getContentIfNotHandled()?.let { onEvent(it) }
+        }
+    }
+
+    private fun onEvent(event: ActorGalleryUIEvent) {
+        when (event) {
+            ActorGalleryUIEvent.BackEvent -> {
+                removeFragment()
+            }
+        }
     }
 
     private fun removeFragment() {

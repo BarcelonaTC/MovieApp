@@ -3,9 +3,11 @@ package com.karrar.movieapp.ui.actorGallery
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.karrar.movieapp.domain.usecases.GetActorImagesUseCase
+import com.karrar.movieapp.ui.actorDetails.ActorDetailsUIEvent
 import com.karrar.movieapp.ui.actorDetails.Error
 import com.karrar.movieapp.ui.adapters.GalleryAdapter
 import com.karrar.movieapp.ui.base.BaseViewModel
+import com.karrar.movieapp.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -22,6 +24,9 @@ class ActorGalleryViewModel @Inject constructor(
     val args = ActorGalleryFragmentArgs.fromSavedStateHandle(state)
     private val _actorGalleryUIState = MutableStateFlow(ActorGalleryUiState())
     val actorDetailsUIState = _actorGalleryUIState.asStateFlow()
+    private val _actorGalleryUIEvent: MutableStateFlow<Event<ActorGalleryUIEvent?>> =
+        MutableStateFlow(Event(null))
+    val actorGalleryUIEvent = _actorGalleryUIEvent.asStateFlow()
 
     init {
         getData()
@@ -56,7 +61,7 @@ class ActorGalleryViewModel @Inject constructor(
     }
 
     override fun onClickBack() {
-        TODO("Not yet implemented")
+        _actorGalleryUIEvent.update { Event(ActorGalleryUIEvent.BackEvent) }
     }
 
 }

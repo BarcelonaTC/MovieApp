@@ -20,14 +20,10 @@ class GetActorDetailsUseCase @Inject constructor(
 
         return actorDetails.copy(
             actorProfileImages = profileImagesDto?.let {
-                movieMappersContainer.actorProfileImagesMapper.map(
-                    it
-                )
+                movieMappersContainer.actorProfileImagesMapper.map(it)
             },
             actorSocialLinks = socialLinksDto?.let {
-                movieMappersContainer.actorSocialLinksMapper.map(
-                    it
-                )
+                movieMappersContainer.actorSocialLinksMapper.map(it)
             }
         )
     }

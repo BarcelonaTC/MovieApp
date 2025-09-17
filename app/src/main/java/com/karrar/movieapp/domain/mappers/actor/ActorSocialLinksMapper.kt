@@ -17,7 +17,8 @@ class ActorSocialLinksMapper @Inject constructor() : Mapper<ActorSocialLinksDto,
                 ?.let { "https://www.tiktok.com/@$it" },
             youtube = input.youtubeId?.takeIf { it.isNotBlank() }
                 ?.let { "https://www.youtube.com/$it" },
-            imdb = input.imdbId?.takeIf { it.isNotBlank() }?.let { "https://www.imdb.com/name/$it" }
+            imdb = input.imdbId?.takeIf { it.isNotBlank() }
+                ?.let { "https://www.imdb.com/name/$it" }
         )
     }
 }

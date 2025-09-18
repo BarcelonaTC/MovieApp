@@ -117,4 +117,9 @@
     <string name="rating_icon">أيقونة التقييم</string>
     <string name="match">مطابقة</string>
     <string name="me">أنا</string>
+    <string name="magic_stick_icon">أيقونة العصا السحرية</string>
+    <string name="alt_arrow_icon">أيقونة السهم البديل</string>
+    <string name="we_ll_help_you_skip_the_scroll_and_go_nstraight_to_the_good_stuff">سنساعدك على تخطي التمرير والانتقال مباشرة إلى الأشياء الجيدة.</string>
+    <string name="let_us_choose_for_you">دعونا نختار لك!</string>
+    <string name="what_should_i_watch">ماذا يجب أن أشاهد؟</string>
 </resources>

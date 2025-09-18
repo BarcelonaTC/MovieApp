@@ -64,6 +64,8 @@ class HomeAdapter(
                 is HomeItem.TopRatedTvShows -> {
                     bindSeries(holder, currentItem.items, currentItem.type)
                 }
+
+                HomeItem.ExploreCRACard -> {holder.binding.setVariable(BR.listener, listener as HomeInteractionListener)}
             }
     }
 
@@ -111,6 +113,8 @@ class HomeAdapter(
                 is HomeItem.RecentlyReleased,
                 is HomeItem.UpcomingMovies,
                     -> R.layout.list_movie
+
+                is HomeItem.ExploreCRACard -> R.layout.what_should_i_watch
             }
         }
         return -1

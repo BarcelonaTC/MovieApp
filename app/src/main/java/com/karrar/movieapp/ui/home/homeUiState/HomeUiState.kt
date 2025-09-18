@@ -8,6 +8,7 @@ data class HomeUiState(
     val recentlyReleased: HomeItem = HomeItem.RecentlyReleased(emptyList()),
     val upcomingMovies: HomeItem = HomeItem.UpcomingMovies(emptyList()),
     val topRatedTvShows: HomeItem = HomeItem.TopRatedTvShows(emptyList()),
+    val exploreCRACard: HomeItem = HomeItem.ExploreCRACard,
     val isLoading: Boolean = false,
     val error: List<String> = emptyList(),
 )

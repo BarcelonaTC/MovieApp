@@ -13,13 +13,15 @@ sealed class HomeItem(val priority: Int) {
         val type: HomeItemsType = HomeItemsType.RECENTLY_RELEASED
     ) : HomeItem(1)
 
+    data object ExploreCRACard : HomeItem(2)
+
     data class UpcomingMovies(
         val items: List<MediaUiState>,
         val type: HomeItemsType = HomeItemsType.UPCOMING_MOVIES
-    ) : HomeItem(2)
+    ) : HomeItem(3)
 
     data class TopRatedTvShows(
         val items: List<MediaUiState>,
         val type: HomeItemsType = HomeItemsType.TOP_RATED_TV_SHOWS
-    ) : HomeItem(3)
+    ) : HomeItem(4)
 }

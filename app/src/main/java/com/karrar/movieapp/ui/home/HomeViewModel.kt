@@ -189,4 +189,10 @@ class HomeViewModel @Inject constructor(
     override fun onClickSeeAllSeries(homeItemsType: HomeItemsType) {
         _homeUIEvent.update { Event(HomeUIEvent.ClickSeeAllTVShowsEvent(AllMediaType.TOP_RATED)) }
     }
+
+    override fun onClickExploreCTA() {
+    }
+
+    override fun onClickMatchCTA() {
+    }
 }

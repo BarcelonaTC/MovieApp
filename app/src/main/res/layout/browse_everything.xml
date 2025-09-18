@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="listener"
             type="com.karrar.movieapp.ui.home.HomeInteractionListener" />
@@ -11,15 +12,16 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginBottom="32dp">
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical">
+
 
         <TextView
             style="@style/TextStyle.Title.sm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/what_should_i_watch"
+            android:text="@string/need_more_to_watch"
             android:textColor="@color/shade_primary"
             tools:ignore="MissingConstraints" />
 
@@ -28,8 +30,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing12"
             android:background="@drawable/cta_card_background"
+            android:onClick="@{()->listener.onClickExploreCTA()}"
             android:orientation="horizontal"
-            android:onClick="@{()->listener.onClickMatchCTA()}"
             android:paddingVertical="11dp"
             android:paddingStart="16dp"
             android:paddingEnd="12dp">
@@ -61,7 +63,7 @@
                     style="@style/TextStyle.Title.sm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/let_us_choose_for_you"
+                    android:text="@string/browse_everything"
                     android:textColor="@color/shade_primary" />
 
                 <TextView
@@ -69,7 +71,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="@string/we_ll_help_you_skip_the_scroll_and_go_nstraight_to_the_good_stuff"
+                    android:text="@string/explore_all_movies_and_series_by_ngenre_or_search_for_anything_you_like"
                     android:textColor="@color/shade_secondary" />
             </LinearLayout>
 

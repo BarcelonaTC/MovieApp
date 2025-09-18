@@ -65,7 +65,13 @@ class HomeAdapter(
                     bindSeries(holder, currentItem.items, currentItem.type)
                 }
 
-                HomeItem.ExploreCRACard -> {holder.binding.setVariable(BR.listener, listener as HomeInteractionListener)}
+                HomeItem.MatchCTACard -> {
+                    holder.binding.setVariable(BR.listener, listener as HomeInteractionListener)
+                }
+
+                HomeItem.ExploreCTACard -> {
+                    holder.binding.setVariable(BR.listener, listener as HomeInteractionListener)
+                }
             }
     }
 
@@ -114,7 +120,8 @@ class HomeAdapter(
                 is HomeItem.UpcomingMovies,
                     -> R.layout.list_movie
 
-                is HomeItem.ExploreCRACard -> R.layout.what_should_i_watch
+                is HomeItem.MatchCTACard -> R.layout.what_should_i_watch
+                is HomeItem.ExploreCTACard -> R.layout.browse_everything
             }
         }
         return -1

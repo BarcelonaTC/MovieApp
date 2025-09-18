@@ -122,4 +122,7 @@
     <string name="we_ll_help_you_skip_the_scroll_and_go_nstraight_to_the_good_stuff">سنساعدك على تخطي التمرير والانتقال مباشرة إلى الأشياء الجيدة.</string>
     <string name="let_us_choose_for_you">دعونا نختار لك!</string>
     <string name="what_should_i_watch">ماذا يجب أن أشاهد؟</string>
+    <string name="need_more_to_watch">هل تحتاج إلى المزيد لمشاهدته؟</string>
+    <string name="browse_everything">تصفح كل شيء</string>
+    <string name="explore_all_movies_and_series_by_ngenre_or_search_for_anything_you_like">استكشف جميع الأفلام والمسلسلات حسب النوع أو ابحث عن أي شيء تريده.</string>
 </resources>

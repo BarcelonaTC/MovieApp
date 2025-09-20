@@ -40,7 +40,7 @@ class ProfileViewModel @Inject constructor(
     }
 
     private fun getProfileDetails() {
-        if (checkIfLoggedInUseCase()) {
+        if (checkIfLoggedInUseCase().not()) {
             _profileDetailsUIState.update {
                 it.copy(isLoading = true, isLoggedIn = true, error = false)
             }
@@ -73,8 +73,20 @@ class ProfileViewModel @Inject constructor(
         _profileUIEvent.update { Event(ProfileUIEvent.RatedMoviesEvent) }
     }
 
+    fun showLogOutBottomSheet(){
+        _profileUIEvent.update { Event(ProfileUIEvent.LogOutBottomSheetEvent) }
+    }
     fun onClickLogout() {
-        _profileUIEvent.update { Event(ProfileUIEvent.DialogLogoutEvent) }
+        wrapWithState(
+            function = {
+                accountRepository.logout()
+            },
+            errorFunction = {
+                _profileDetailsUIState.update {
+                    it.copy(error = true)
+                }
+            }
+        )
     }
 
     fun onClickWatchHistory() {
@@ -83,6 +95,10 @@ class ProfileViewModel @Inject constructor(
 
     fun onClickLogin() {
         _profileUIEvent.update { Event(ProfileUIEvent.LoginEvent) }
+    }
+
+    fun onClickEditProfile(){
+        _profileUIEvent.update { Event(ProfileUIEvent.EditProfileEvent) }
     }
 
     fun onThemeSwitchChanged(isChecked: Boolean){

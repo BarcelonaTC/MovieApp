@@ -31,24 +31,33 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
 
 
     private fun onEvent(event: ProfileUIEvent) {
-        val action = when (event) {
-            ProfileUIEvent.DialogLogoutEvent -> {
-                ProfileFragmentDirections.actionProfileFragmentToLogoutDialog()
+        when (event) {
+
+            ProfileUIEvent.LogOutBottomSheetEvent -> {
+                LogoutBottomSheet()
+                    .show(childFragmentManager, "TAG")
             }
 
             ProfileUIEvent.LoginEvent -> {
-                ProfileFragmentDirections.actionProfileFragmentToLoginFragment(Constants.PROFILE)
+                val action = ProfileFragmentDirections.actionProfileFragmentToLoginFragment(Constants.PROFILE)
+                findNavController().navigate(action)
             }
 
             ProfileUIEvent.RatedMoviesEvent -> {
-                ProfileFragmentDirections.actionProfileFragmentToRatedMoviesFragment()
+                val action = ProfileFragmentDirections.actionProfileFragmentToRatedMoviesFragment()
+                findNavController().navigate(action)
             }
 
             ProfileUIEvent.WatchHistoryEvent -> {
-                ProfileFragmentDirections.actionProfileFragmentToWatchHistoryFragment()
+                val action = ProfileFragmentDirections.actionProfileFragmentToWatchHistoryFragment()
+                findNavController().navigate(action)
             }
+
+            ProfileUIEvent.EditProfileEvent -> {
+                EditAccountBottomSheet().show(childFragmentManager, "TAG")
+            }
+
         }
-        findNavController().navigate(action)
     }
 }
 

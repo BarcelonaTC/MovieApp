@@ -17,16 +17,16 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background_screen"
-        >
+        android:background="@color/background_screen">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/profile_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="33dp"
             android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="33dp"
             android:background="@drawable/profile_section_card"
+            android:onClick="@{() -> viewModel.onClickEditProfile()}"
             android:padding="12dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,10 +84,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
+            android:overScrollMode="never"
             android:paddingStart="16dp"
             android:paddingEnd="8dp"
             android:scrollbars="none"
-            android:overScrollMode="never"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profile_section">
 
@@ -100,33 +100,32 @@
                 <com.google.android.material.chip.Chip
                     android:id="@+id/History"
                     style="@style/TextStyle.Label.md.medium"
-                    android:textSize="12sp"
-                    android:textColor="@color/shade_primary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
+                    android:onClick="@{() -> viewModel.onClickWatchHistory()}"
                     android:text="History"
                     android:textAlignment="center"
+                    android:textColor="@color/shade_primary"
+                    android:textSize="12sp"
                     app:chipBackgroundColor="@color/background_card"
                     app:chipIcon="@drawable/ic_movie_history"
                     app:chipIconTint="@color/brand_primary"
                     app:chipMinHeight="39dp"
                     app:iconStartPadding="10dp"
                     app:textEndPadding="12dp"
-                    app:textStartPadding="7dp"
-                    android:onClick="@{() -> viewModel.onClickWatchHistory()}"
-                    />
+                    app:textStartPadding="7dp" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/My_Collections"
                     style="@style/TextStyle.Label.md.medium"
-                    android:textSize="12sp"
-                    android:textColor="@color/shade_primary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:text="My Collections"
                     android:textAlignment="center"
+                    android:textColor="@color/shade_primary"
+                    android:textSize="12sp"
                     app:chipBackgroundColor="@color/background_card"
                     app:chipIcon="@drawable/ic_my_collections"
                     app:chipIconTint="@color/brand_primary"
@@ -138,20 +137,20 @@
                 <com.google.android.material.chip.Chip
                     android:id="@+id/My_Ratings"
                     style="@style/TextStyle.Label.md.medium"
-                    android:textSize="12sp"
-                    android:textColor="@color/shade_primary"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="My Ratings"
                     android:onClick="@{() -> viewModel.onClickRatedMovies()}"
+                    android:text="My Ratings"
                     android:textAlignment="center"
+                    android:textColor="@color/shade_primary"
+                    android:textSize="12sp"
                     app:chipBackgroundColor="@color/background_card"
                     app:chipIcon="@drawable/ic_movie_rating"
                     app:chipIconTint="@color/brand_primary"
                     app:chipMinHeight="39dp"
                     app:iconStartPadding="10dp"
                     app:textEndPadding="12dp"
-                    app:textStartPadding="7dp"  />
+                    app:textStartPadding="7dp" />
             </LinearLayout>
         </HorizontalScrollView>
 
@@ -160,8 +159,8 @@
             style="@style/TextStyle.Title.sm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
             android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="24dp"
             android:text="Settings"
             android:textColor="@color/shade_primary_color"
             android:textSize="16sp"
@@ -172,8 +171,8 @@
             android:id="@+id/setting_section"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/profile_section_card"
             android:paddingHorizontal="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -198,15 +197,14 @@
                 android:id="@+id/mySwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onCheckedChanged="@{(button, isChecked) -> viewModel.onThemeSwitchChanged(isChecked)}"
+                android:thumb="@drawable/switch_thumb"
                 app:layout_constraintBottom_toTopOf="@id/language"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/dark_mode"
                 app:layout_constraintTop_toTopOf="parent"
                 app:switchMinWidth="40dp"
-                android:thumb="@drawable/switch_thumb"
-                app:track="@drawable/switch_track_background"
-                android:onCheckedChanged="@{(button, isChecked) -> viewModel.onThemeSwitchChanged(isChecked)}"
-                />
+                app:track="@drawable/switch_track_background" />
 
 
             <com.google.android.material.divider.MaterialDivider
@@ -293,6 +291,7 @@
                 android:drawableStart="@drawable/ic_movie_logout"
                 android:drawablePadding="8dp"
                 android:paddingVertical="20dp"
+                android:onClick="@{()->viewModel.showLogOutBottomSheet()}"
                 android:text="Logout"
                 android:textColor="@color/additional_primary_red"
                 app:layout_constraintEnd_toStartOf="@id/log_out_arrow"
@@ -304,6 +303,7 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:src="@drawable/ic_arrow_back"
+                android:onClick="@{()->viewModel.showLogOutBottomSheet()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/text_log_out"

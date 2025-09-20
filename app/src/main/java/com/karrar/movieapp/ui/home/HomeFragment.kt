@@ -39,7 +39,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         it.exploreCRACard,
                         it.topRatedTvShows,
                         it.upcomingMovies,
-                        it.recentlyReleased
+                        it.recentlyReleased,
+                        it.yourCollections
                     )
                 )
             }
@@ -84,6 +85,17 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 HomeFragmentDirections.actionHomeFragmentToTvShowDetailsFragment(
                     event.seriesID
                 )
+            }
+
+            is HomeUIEvent.ClickCollection -> {
+                HomeFragmentDirections.actionHomeFragmentToListDetailsFragment(
+                    event.createdListUIState.listID,
+                    event.createdListUIState.name
+                )
+            }
+
+            HomeUIEvent.ClickSeeAllYourCollection -> {
+                HomeFragmentDirections.actionHomeFragmentToMyListFragment()
             }
         }
         findNavController().navigate(action)

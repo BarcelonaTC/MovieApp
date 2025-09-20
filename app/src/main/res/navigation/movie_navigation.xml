@@ -24,6 +24,12 @@
         <action
             android:id="@+id/action_homeFragment_to_tvShowDetailsFragment"
             app:destination="@id/tvShowDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_listDetailsFragment"
+            app:destination="@id/listDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_myListFragment"
+            app:destination="@id/myListFragment" />
 
     </fragment>
 
@@ -34,8 +40,8 @@
 
         <argument
             android:name="from"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:defaultValue="0"
+            app:argType="integer" />
 
         <action
             android:id="@+id/action_loginFragment_to_myListFragment"
@@ -341,8 +347,8 @@
     <fragment
         android:id="@+id/actorGalleryFragment"
         android:name="com.karrar.movieapp.ui.actorGallery.ActorGalleryFragment"
-        tools:layout="@layout/fragment_actor_gallery"
-        android:label="ActorGalleryFragment" >
+        android:label="ActorGalleryFragment"
+        tools:layout="@layout/fragment_actor_gallery">
         <argument
             android:name="id"
             app:argType="integer" />

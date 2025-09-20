@@ -125,4 +125,6 @@
     <string name="need_more_to_watch">هل تحتاج إلى المزيد لمشاهدته؟</string>
     <string name="browse_everything">تصفح كل شيء</string>
     <string name="explore_all_movies_and_series_by_ngenre_or_search_for_anything_you_like">استكشف جميع الأفلام والمسلسلات حسب النوع أو ابحث عن أي شيء تريده.</string>
+    <string name="your_collections">مجموعاتك</string>
+    <string name="folder_icon">أيقونة المجلد</string>
 </resources>

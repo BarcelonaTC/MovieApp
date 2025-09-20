@@ -15,6 +15,8 @@ import com.karrar.movieapp.ui.base.BaseInteractionListener
 import com.karrar.movieapp.ui.home.HomeInteractionListener
 import com.karrar.movieapp.ui.home.HomeItem
 import com.karrar.movieapp.ui.models.MediaUiState
+import com.karrar.movieapp.ui.myList.CreatedListInteractionListener
+import com.karrar.movieapp.ui.myList.myListUIState.CreatedListUIState
 
 class HomeAdapter(
     private var homeItems: MutableList<HomeItem>,
@@ -72,6 +74,12 @@ class HomeAdapter(
                 HomeItem.ExploreCTACard -> {
                     holder.binding.setVariable(BR.listener, listener as HomeInteractionListener)
                 }
+
+                is HomeItem.YourCollections -> bindYourCollections(
+                    holder,
+                    currentItem.items,
+                    currentItem.type
+                )
             }
     }
 
@@ -92,6 +100,20 @@ class HomeAdapter(
                 SeriesAdapter(items, listener as SeriesInteractionListener)
             )
             setVariable(BR.seriesType, type)
+        }
+    }
+
+    private fun bindYourCollections(
+        holder: ItemViewHolder,
+        items: List<CreatedListUIState>,
+        type: HomeItemsType
+    ) {
+        holder.binding.run {
+            setVariable(
+                BR.adapterRecycler,
+                YourCollectionsAdapter(items, listener as YourCollectionsInteractionListener)
+            )
+            setVariable(BR.yourCollectionsType, type)
         }
     }
 
@@ -122,6 +144,7 @@ class HomeAdapter(
 
                 is HomeItem.MatchCTACard -> R.layout.what_should_i_watch
                 is HomeItem.ExploreCTACard -> R.layout.browse_everything
+                is HomeItem.YourCollections -> R.layout.list_your_collections
             }
         }
         return -1

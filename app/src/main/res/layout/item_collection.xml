@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.karrar.movieapp.ui.myList.myListUIState.CreatedListUIState" />
+
+        <variable
+            name="listener"
+            type="com.karrar.movieapp.ui.home.adapter.YourCollectionsInteractionListener" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/collection_card_background"
+        android:gravity="center_vertical"
+        android:onClick="@{()->listener.onListClick(item)}"
+        android:orientation="horizontal"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:layout_marginBottom="@dimen/spacing_normal"
+        android:padding="12dp">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:contentDescription="@string/folder_icon"
+            android:src="@drawable/folder" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/spacing_small"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TextStyle.Body.md.medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/items(item.mediaCounts)}"
+                android:textColor="@color/shade_primary"
+                tools:text="My Favorite TV Shows" />
+
+            <TextView
+                style="@style/TextStyle.Body.sm.regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{@string/items(item.mediaCounts)}"
+                android:textColor="@color/shade_secondary"
+                tools:text="5 shows" />
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/alt_arrow_icon"
+            android:src="@drawable/alt_arrow_right" />
+
+    </LinearLayout>
+</layout>

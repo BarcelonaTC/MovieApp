@@ -2,22 +2,22 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
-
     <data>
-
+        <import type="android.view.View"/>
         <variable
             name="adapterRecycler"
-            type="com.karrar.movieapp.ui.adapters.MovieAdapter" />
+            type="com.karrar.movieapp.ui.home.adapter.YourCollectionsAdapter" />
 
         <variable
-            name="movieType"
+            name="yourCollectionsType"
             type="com.karrar.movieapp.domain.enums.HomeItemsType" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing_extra_large">
+        android:visibility="@{adapterRecycler.getItemCount() > 0 ? View.VISIBLE : View.GONE}"
+        >
 
         <TextView
             android:id="@+id/text_title"
@@ -25,7 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/spacing_medium"
-            android:text="@{movieType.value}"
+            android:text="@{yourCollectionsType.value}"
             android:textColor="@color/shade_primary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/spacing_medium"
-            android:onClick="@{() -> adapterRecycler.listener.onClickSeeAllMovie(movieType)}"
+            android:onClick="@{() -> adapterRecycler.listener.onClickSeeAllYourCollections()}"
             android:text="@string/see_all"
             android:textColor="@color/brand_primary"
             app:layout_constraintBaseline_toBaselineOf="@+id/text_title"
@@ -51,15 +51,16 @@
             android:clipToPadding="false"
             android:orientation="horizontal"
             android:overScrollMode="never"
-            android:paddingHorizontal="@dimen/spacing_small"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing20"
             android:scrollbars="none"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_title"
-            tools:listitem="@layout/item_movie" />
+            tools:listitem="@layout/item_collection" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

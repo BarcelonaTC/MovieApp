@@ -6,5 +6,7 @@ enum class HomeItemsType(val value: String) {
 
     TOP_RATED_TV_SHOWS("Top Rated TV Shows"),
 
+    YOUR_COLLECTIONS("Your Collections"),
+
     NON("")
 }

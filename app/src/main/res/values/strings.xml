@@ -135,4 +135,6 @@
     <string name="tip_swipe">Tip: Swipe left to remove movies from your collection.</string>
     <string name="collection_name">Collection Name</string>
     <string name="my_favorite_tv_shows">My Favorite TV Shows</string>
+    <string name="your_collections">Your Collections</string>
+    <string name="folder_icon">folder icon</string>
 </resources>

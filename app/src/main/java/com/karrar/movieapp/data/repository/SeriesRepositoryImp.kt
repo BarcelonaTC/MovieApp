@@ -24,7 +24,7 @@ import com.karrar.movieapp.data.repository.mediaDataSource.series.SeriesDataSour
 import com.karrar.movieapp.data.repository.serchDataSource.SearchDataSourceContainer
 import com.karrar.movieapp.domain.mappers.MediaDataSourceContainer
 import kotlinx.coroutines.flow.Flow
-import java.util.*
+import java.util.Date
 import javax.inject.Inject
 
 class SeriesRepositoryImp @Inject constructor(
@@ -162,26 +162,22 @@ class SeriesRepositoryImp @Inject constructor(
     }
 
     private suspend fun refreshTopRatedTvShow(currentDate: Date) {
-        try {
-            val items = mutableListOf<TopRatedSeriesEntity>()
-            service.getTopRatedTvShow().body()?.items?.first()?.let {
-                items.add(localSeriesMappersContainer.topRatedSeriesMapper.map(it))
-            }
-            service.getPopularTvShow().body()?.items?.first()?.let {
-                items.add(localSeriesMappersContainer.topRatedSeriesMapper.map(it))
-            }
-            service.getAiringToday().body()?.items?.first()?.let {
-                items.add(localSeriesMappersContainer.topRatedSeriesMapper.map(it))
-            }
-            seriesDao.deleteAllTopRatedSeries()
-            seriesDao.insertTopRatedSeries(items)
-            appConfiguration.saveRequestDate(
-                Constants.TOP_RATED_SERIES_REQUEST_DATE_KEY,
-                currentDate.time
-            )
-        } catch (_: Throwable) {
-
-        }
+        refreshWrapper(
+            { service.getTopRatedTvShow() },
+            { list ->
+                list?.map {
+                    localSeriesMappersContainer.topRatedSeriesMapper.map(it)
+                }
+            },
+            {
+                seriesDao.deleteAllTopRatedSeries()
+                seriesDao.insertTopRatedSeries(it)
+                appConfiguration.saveRequestDate(
+                    Constants.TOP_RATED_SERIES_REQUEST_DATE_KEY,
+                    currentDate.time
+                )
+            },
+        )
     }
 
 

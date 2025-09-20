@@ -28,8 +28,9 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
-import java.util.Date
 import java.util.Locale
+import java.util.*
+import kotlin.math.round
 
 fun <T> ChipGroup.createChip(item: GenreUIState, listener: T): View {
     val chipBinding: ChipItemCategoryBinding = DataBindingUtil.inflate(
@@ -131,3 +132,5 @@ fun Activity.showBottomNav() {
     val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
     bottomNav?.visibility = View.VISIBLE
 }
+
+fun Double.roundToOneDecimal(): Double = (round(this * 10)) / 10

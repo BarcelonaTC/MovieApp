@@ -89,6 +89,10 @@ class MyListsViewModel @Inject constructor(
         _myListUIEvent.update { Event(MyListUIEvent.OnSelectItem(item)) }
     }
 
+    fun onCancelClick() {
+        _myListUIEvent.update { Event(MyListUIEvent.CancelClicked) }
+    }
+
     private fun setError(t: Throwable) {
         _createdListUIState.update {
             val error = if (t.message == NO_LOGIN) {

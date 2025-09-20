@@ -48,7 +48,7 @@
     <string name="trending_today_label">Trending Today</string>
     <string name="home">Home</string>
     <string name="explore">Explore</string>
-    <string name="myList">My Lists</string>
+    <string name="myList">My Collections</string>
     <string name="profile">Profile</string>
     <string name="play_trailer">Play Trailer</string>
     <string name="duration">%1$d Minutes</string>
@@ -79,11 +79,11 @@
     <string name="this_list_has_no_movies">This list has no movies</string>
     <string name="zero">\.0</string>
     <string name="my_ratings">My Ratings</string>
-    <string name="items">%1$s Items</string>
+    <string name="items">%1$s movies</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create">Create</string>
-    <string name="list_name">List Name</string>
+    <string name="list_name">e.g. My Watchlist</string>
     <string name="explore_some_movies_on_home_or_search_and_then_create_your_movie_list">Explore some movies on “Home” or “Search” and then create your movie list.</string>
     <string name="empty_overview_text">This season has no description.</string>
     <string name="one_season">%1$d Season</string>
@@ -95,7 +95,7 @@
     <string name="log_in">Log In</string>
     <string name="you_must_be_logged_in_to_use_list_features">You must be logged in to use lists feature.</string>
     <string name="empty">Empty</string>
-    <string name="create_a_new_list">Create a new list</string>
+    <string name="create_new_collection">Create New Collection</string>
     <string name="save_to">Save to…</string>
     <string name="hours_pattern">%1$s hours</string>
     <string name="minutes_pattern">%1$s minutes</string>
@@ -129,4 +129,10 @@
     <string name="need_more_to_watch">Need More to Watch?</string>
     <string name="browse_everything">Browse Everything</string>
     <string name="explore_all_movies_and_series_by_ngenre_or_search_for_anything_you_like">Explore all movies and series by\ngenre or search for anything you like.</string>
+    <string name="delete">delete</string>
+    <string name="no_collections_yet">No Collections Yet</string>
+    <string name="start_building">Start building your personal library by saving movies or series you want to remember.</string>
+    <string name="tip_swipe">Tip: Swipe left to remove movies from your collection.</string>
+    <string name="collection_name">Collection Name</string>
+    <string name="my_favorite_tv_shows">My Favorite TV Shows</string>
 </resources>

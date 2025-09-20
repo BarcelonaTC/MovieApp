@@ -109,8 +109,16 @@ class MovieRepositoryImp @Inject constructor(
         sessionId: String,
         listId: Int,
         movieId: Int,
-    ): AddMovieDto? {
+    ): MovieListReponse? {
         return movieService.addMovieToList(listId, sessionId, movieId).body()
+    }
+
+    override suspend fun removeMovieFromList(
+        sessionId: String,
+        listId: Int,
+        movieId: Int
+    ): MovieListReponse? {
+        return movieService.removeMovieFromList(listId , sessionId , movieId).body()
     }
 
     override suspend fun clearWatchHistory() {

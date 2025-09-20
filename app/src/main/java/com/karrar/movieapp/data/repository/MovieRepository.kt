@@ -41,8 +41,9 @@ interface MovieRepository {
 
     suspend fun createList(sessionId: String, name: String): AddListResponse?
 
-    suspend fun addMovieToList(sessionId: String, listId: Int, movieId: Int): AddMovieDto?
+    suspend fun addMovieToList(sessionId: String, listId: Int, movieId: Int): MovieListReponse?
 
+    suspend fun removeMovieFromList(sessionId: String, listId: Int, movieId: Int): MovieListReponse?
     suspend fun clearWatchHistory()
 
     suspend fun insertSearchItem(item: SearchHistoryEntity)

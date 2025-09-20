@@ -49,6 +49,9 @@ class MyListsFragment : BaseFragment<FragmentMyListsBinding>() {
                     event.createdListUIState.name
                 )
             }
+            is MyListUIEvent.CancelClicked -> {
+                findNavController().popBackStack()
+            }
             else -> {
             }
         }

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.karrar.movieapp.ui.profile.ProfileViewModel"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bottom_sheet_shape"
+            android:gravity="center"
+            android:layout_marginHorizontal="@dimen/spacing12"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_medium"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <View
+                android:layout_width="48dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="@dimen/spacing12"
+                android:layout_marginBottom="@dimen/spacing20"
+                android:background="@drawable/bottom_sheet_view" />
+
+            <FrameLayout
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/bottom_sheet_icon_shape">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_logout_bottom_sheet" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_medium"
+                style="@style/Medium.TitleSmall"
+                android:text="@string/are_you_sure_you_want_to_logout" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_small"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:gravity="center"
+                style="@style/Medium.BodySmall"
+                android:text="@string/you_can_always_sign_back_in_with_your_account"
+                 />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="2"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/cancel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spacing12"
+                    android:layout_weight="1"
+                    android:paddingVertical="@dimen/spacing14"
+                    android:stateListAnimator="@null"
+                    android:text="@string/cancel"
+                    android:textColor="@color/button_onSecondary"
+                    android:textAppearance="@style/Medium.BodyMedium"
+                    app:backgroundTint="@color/button_secondary"
+                    app:cornerRadius="@dimen/radius_lg" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/logout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:paddingVertical="@dimen/spacing14"
+                    android:stateListAnimator="@null"
+                    android:text="@string/logout"
+                    android:onClick="@{()->viewModel.onClickLogout()}"
+                    android:textAppearance="@style/Medium.Body"
+                    android:textColor="@color/button_onPrimary"
+                    app:backgroundTint="@color/additional_primary_red"
+                    app:cornerRadius="@dimen/radius_lg" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

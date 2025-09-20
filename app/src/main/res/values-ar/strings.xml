@@ -117,4 +117,8 @@
     <string name="rating_icon">أيقونة التقييم</string>
     <string name="match">مطابقة</string>
     <string name="me">أنا</string>
+    <string name="edit_profile">تعديل الصفحة الشخصية</string>
+    <string name="you_ll_be_taken_to_the_website_to_update_your_name_username_or_profile_picture">سيتم الذهاب الي الصفحة الرئيسية من اجل التعديل </string>
+    <string name="are_you_sure_you_want_to_logout">عايز تسجل خروج ليه ؟</string>
+    <string name="you_can_always_sign_back_in_with_your_account">تقدر تسجل وقت دخول وقت ما تحب</string>
 </resources>

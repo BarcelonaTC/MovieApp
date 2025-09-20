@@ -33,6 +33,7 @@ android {
         buildConfigField "String", "IMAGE_BASE_PATH", "\"https://image.tmdb.org/t/p/w500\""
         buildConfigField "String", "TMDB_SIGNUP_URL", "\"https://www.themoviedb.org/signup\""
         buildConfigField "String", "RESET_PASSWORD_URL", "\"https://www.themoviedb.org/reset-password\""
+        buildConfigField "String", "EDIT_PROFILE_URL", "\"https://www.themoviedb.org/settings/profile\""
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         testInstrumentationRunnerArgument "runnerBuilder", "de.mannodermaus.junit5.AndroidJUnitPlatformBuilder"

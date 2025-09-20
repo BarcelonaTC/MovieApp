@@ -7,7 +7,7 @@
 
         <variable
             name="listener"
-            type="com.karrar.movieapp.ui.home.adapter.TVShowInteractionListener" />
+            type="com.karrar.movieapp.ui.adapters.SeriesInteractionListener" />
 
         <variable
             name="item"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing_small"
         android:layout_marginVertical="@dimen/spacing_small"
-        android:onClick="@{()->listener.onClickTVShow(item.id)}"
+        android:onClick="@{()->listener.onClickSeries(item.id)}"
         app:cardBackgroundColor="@color/background_card"
         app:cardCornerRadius="@dimen/radius_medium_small"
         app:cardElevation="0dp"

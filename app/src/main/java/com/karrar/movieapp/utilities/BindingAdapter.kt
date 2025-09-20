@@ -1,12 +1,14 @@
 package com.karrar.movieapp.utilities
 
 import android.graphics.Rect
+import android.os.Looper
 import android.view.View
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.os.postDelayed
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -14,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import androidx.viewpager2.widget.ViewPager2
 import coil.load
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.ChipGroup
 import com.karrar.movieapp.R
 import com.karrar.movieapp.domain.enums.MediaType
@@ -26,6 +29,8 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import java.text.SimpleDateFormat
 import java.util.Locale
+import java.util.logging.Handler
+import kotlin.math.abs
 
 
 @BindingAdapter("app:showWhenListNotEmpty")
@@ -360,17 +365,61 @@ fun setupCarousel(viewPager: ViewPager2, adapter: BaseAdapter<*>) {
 
     val compositePageTransformer = CompositePageTransformer().apply {
         addTransformer { page, position ->
-            if (position == 0f) {
+
+            val pageWidth = page.width
+            page.translationX = -position * (pageWidth * 0.18f)
+            val isCenter = abs(position) < 0.1f
+
+            if (isCenter) {
+                page.scaleY = 1f
                 page.alpha = 1f
-                page.translationX = 0f
+                page.translationY = 0f
                 page.translationZ = 1f
+
             } else {
+                page.scaleY = 1.15f
                 page.alpha = 0.6f
-                page.translationX = -position * 40
-                page.translationZ =  0f
+                page.translationY = 40f
+                page.translationZ = 0f
+            }
+
+
+            val title = page.findViewById<TextView>(R.id.title_popular_text_view)
+            val genre = page.findViewById<TextView>(R.id.genre_popular_text_view)
+            val rating = page.findViewById<MaterialCardView>(R.id.rating_popular_movie)
+
+            if (isCenter) {
+                title?.visibility = View.VISIBLE
+                genre?.visibility = View.VISIBLE
+                rating?.visibility = View.VISIBLE
+            } else {
+                title?.visibility = View.GONE
+                genre?.visibility = View.GONE
+                rating?.visibility = View.GONE
             }
         }
     }
 
     viewPager.setPageTransformer(compositePageTransformer)
+
+    val handler = android.os.Handler(Looper.getMainLooper())
+    val runnable = object : Runnable {
+        override fun run() {
+            val itemCount = adapter.itemCount
+            if (itemCount > 0) {
+                val nextItem = (viewPager.currentItem + 1) % itemCount
+                viewPager.setCurrentItem(nextItem, true)
+                handler.postDelayed(this, 4000)
+            }
+        }
+    }
+
+    handler.postDelayed(runnable, 4000)
+
+    viewPager.addOnAttachStateChangeListener(object : View.OnAttachStateChangeListener {
+        override fun onViewAttachedToWindow(v: View) {}
+        override fun onViewDetachedFromWindow(v: View) {
+            handler.removeCallbacks(runnable)
+        }
+    })
 }

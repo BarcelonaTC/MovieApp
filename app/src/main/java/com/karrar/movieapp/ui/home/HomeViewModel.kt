@@ -7,6 +7,7 @@ import com.karrar.movieapp.domain.usecase.home.HomeUseCasesContainer
 import com.karrar.movieapp.domain.usecases.CheckIfLoggedInUseCase
 import com.karrar.movieapp.domain.usecases.GetAccountDetailsUseCase
 import com.karrar.movieapp.ui.adapters.MovieInteractionListener
+import com.karrar.movieapp.ui.adapters.SeriesInteractionListener
 import com.karrar.movieapp.ui.base.BaseViewModel
 import com.karrar.movieapp.ui.home.homeUiState.HomeUIEvent
 import com.karrar.movieapp.ui.home.homeUiState.HomeUiState
@@ -29,7 +30,7 @@ class HomeViewModel @Inject constructor(
     private val getAccountDetailsUseCase: GetAccountDetailsUseCase,
     private val accountUIStateMapper: AccountUIStateMapper,
     private val checkIfLoggedInUseCase: CheckIfLoggedInUseCase
-) : BaseViewModel(), HomeInteractionListener, MovieInteractionListener {
+) : BaseViewModel(), HomeInteractionListener, MovieInteractionListener, SeriesInteractionListener {
 
     private val _homeUiState = MutableStateFlow(HomeUiState())
     val homeUiState = _homeUiState.asStateFlow()
@@ -179,5 +180,19 @@ class HomeViewModel @Inject constructor(
             HomeItemsType.NON -> AllMediaType.RECENTLY_RELEASED
         }
         _homeUIEvent.update { Event(HomeUIEvent.ClickSeeAllMovieEvent(type)) }
+    }
+
+    override fun onClickSeries(seriesId: Int) {
+        _homeUIEvent.update { Event(HomeUIEvent.ClickSeriesEvent(seriesId)) }
+    }
+
+    override fun onClickSeeAllSeries(homeItemsType: HomeItemsType) {
+        _homeUIEvent.update { Event(HomeUIEvent.ClickSeeAllTVShowsEvent(AllMediaType.TOP_RATED)) }
+    }
+
+    override fun onClickExploreCTA() {
+    }
+
+    override fun onClickMatchCTA() {
     }
 }

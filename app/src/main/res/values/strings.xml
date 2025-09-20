@@ -121,6 +121,14 @@
     <string name="rating_icon">Rating icon</string>
     <string name="match">Match</string>
     <string name="me">Me</string>
+    <string name="magic_stick_icon">magic stick icon</string>
+    <string name="alt_arrow_icon">alt arrow icon</string>
+    <string name="we_ll_help_you_skip_the_scroll_and_go_nstraight_to_the_good_stuff">We’ll help you skip the scroll and go\nstraight to the good stuff.</string>
+    <string name="let_us_choose_for_you">Let Us Choose For You!</string>
+    <string name="what_should_i_watch">What Should I Watch?</string>
+    <string name="need_more_to_watch">Need More to Watch?</string>
+    <string name="browse_everything">Browse Everything</string>
+    <string name="explore_all_movies_and_series_by_ngenre_or_search_for_anything_you_like">Explore all movies and series by\ngenre or search for anything you like.</string>
     <string name="delete">delete</string>
     <string name="no_collections_yet">No Collections Yet</string>
     <string name="start_building">Start building your personal library by saving movies or series you want to remember.</string>

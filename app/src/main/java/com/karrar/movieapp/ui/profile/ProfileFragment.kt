@@ -20,27 +20,35 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>() {
         super.onViewCreated(view, savedInstanceState)
         setTitle(true, getString(R.string.profile))
 
-        collectLast(viewModel.profileUIEvent) {
-            it.getContentIfNotHandled()?.let { onEvent(it) }
+        collectLast(viewModel.profileUIEvent) { event ->
+            event.getContentIfNotHandled()?.let { onEvent(it) }
+        }
+
+        collectLast(viewModel.isDarkMode) { isDark ->
+            binding.mySwitch.isChecked = isDark
         }
     }
+
 
     private fun onEvent(event: ProfileUIEvent) {
         val action = when (event) {
             ProfileUIEvent.DialogLogoutEvent -> {
                 ProfileFragmentDirections.actionProfileFragmentToLogoutDialog()
             }
+
             ProfileUIEvent.LoginEvent -> {
                 ProfileFragmentDirections.actionProfileFragmentToLoginFragment(Constants.PROFILE)
             }
+
             ProfileUIEvent.RatedMoviesEvent -> {
                 ProfileFragmentDirections.actionProfileFragmentToRatedMoviesFragment()
             }
+
             ProfileUIEvent.WatchHistoryEvent -> {
                 ProfileFragmentDirections.actionProfileFragmentToWatchHistoryFragment()
             }
         }
         findNavController().navigate(action)
     }
-
 }
+

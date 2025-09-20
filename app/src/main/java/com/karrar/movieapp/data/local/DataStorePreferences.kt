@@ -7,7 +7,6 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.longPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
@@ -38,6 +37,17 @@ class DataStorePreferences(context: Context) {
     fun readString(key: String): String? {
         return runBlocking { prefDataStore.data.map { it[stringPreferencesKey(key)] }.first() }
     }
+
+    suspend fun writeBoolean(key: String, value: Boolean) {
+        prefDataStore.edit { preferences ->
+            preferences[booleanPreferencesKey(key)] = value
+        }
+    }
+
+    fun readBoolean(key: String): Boolean? {
+        return runBlocking { prefDataStore.data.map { it[booleanPreferencesKey(key)] }.first() }
+    }
+
 
     companion object {
         private const val PREFERENCES_FILE_NAME = "movie"

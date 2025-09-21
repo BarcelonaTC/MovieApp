@@ -1,13 +1,17 @@
 package com.karrar.movieapp.ui.myList.listDetails
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
+import com.karrar.movieapp.domain.usecases.movieDetails.GetMovieDetailsUseCase
 import com.karrar.movieapp.domain.usecases.mylist.GetMyMediaListDetailsUseCase
+import com.karrar.movieapp.domain.usecases.mylist.RemoveMovieFromListUseCase
 import com.karrar.movieapp.ui.base.BaseViewModel
 import com.karrar.movieapp.ui.category.uiState.ErrorUIState
 import com.karrar.movieapp.ui.myList.listDetails.listDetailsUIState.ListDetailsUIEvent
 import com.karrar.movieapp.ui.myList.listDetails.listDetailsUIState.ListDetailsUIState
 import com.karrar.movieapp.ui.myList.listDetails.listDetailsUIState.SavedMediaUIState
+import com.karrar.movieapp.ui.myList.myListUIState.MyListUIEvent
 import com.karrar.movieapp.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,6 +24,8 @@ import javax.inject.Inject
 @HiltViewModel
 class ListDetailsViewModel @Inject constructor(
     private val getMyMediaListDetailsUseCase: GetMyMediaListDetailsUseCase,
+    private val getMovieDetailsUseCase: GetMovieDetailsUseCase,
+    private val removeMovieFromListUseCase: RemoveMovieFromListUseCase,
     private val mediaUIStateMapper: MediaUIStateMapper,
     saveStateHandle: SavedStateHandle
 ) : BaseViewModel(), ListDetailsInteractionListener {
@@ -43,7 +49,15 @@ class ListDetailsViewModel @Inject constructor(
         viewModelScope.launch {
             try {
                 val result =
-                    getMyMediaListDetailsUseCase(args.id).map { mediaUIStateMapper.map(it) }
+                    getMyMediaListDetailsUseCase(args.id).map {
+                        val getMovieDetails = getMovieDetailsUseCase.getMovieDetails(it.id)
+                        mediaUIStateMapper.map(
+                            it.copy(
+                                runtime = getMovieDetails.movieDuration,
+                                genres = getMovieDetails.movieGenres
+                            )
+                        )
+                    }
                 _listDetailsUIState.update {
                     it.copy(
                         isLoading = false,
@@ -68,5 +82,30 @@ class ListDetailsViewModel @Inject constructor(
         _listDetailsUIEvent.update { Event(ListDetailsUIEvent.OnItemSelected(item)) }
     }
 
-}
+    override fun onDeleteMovieFromList(id: Int)  {
+        viewModelScope.launch {
+            try {
+                val updatedList = removeMovieFromListUseCase(
+                    listID = args.id,
+                    mediaId = id
+                )
+                _listDetailsUIState.update {
+                    it.copy(
+                        isLoading = false,
+                        error = emptyList(),
+                        isEmpty = updatedList.isEmpty(),
+                    )
+                }
+            } catch (t: Throwable) {
+                _listDetailsUIState.update {
+                    it.copy(
+                        error = listOf(ErrorUIState(0, t.message.toString()))
+                    )
+                }
+            }
+            getData()
+        }
+    }
 
+    fun onCloseClick() = _listDetailsUIState.update { it.copy(showDeleteInfo = false) }
+}

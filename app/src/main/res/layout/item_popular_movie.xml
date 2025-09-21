@@ -26,7 +26,7 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/image_movie"
+                    android:id="@+id/image_popular_movie"
                     android:layout_width="312dp"
                     android:layout_height="0dp"
                     android:scaleType="centerCrop"
@@ -38,17 +38,19 @@
                     app:shapeAppearanceOverlay="@style/CardCorners.Medium" />
 
                 <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/image_shadow_popular_movie"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:background="@drawable/gradient"
-                    app:layout_constraintBottom_toBottomOf="@id/image_movie"
-                    app:layout_constraintEnd_toEndOf="@id/image_movie"
-                    app:layout_constraintStart_toStartOf="@id/image_movie"
-                    app:layout_constraintTop_toTopOf="@id/image_movie"
+                    app:layout_constraintBottom_toBottomOf="@id/image_popular_movie"
+                    app:layout_constraintEnd_toEndOf="@id/image_popular_movie"
+                    app:layout_constraintStart_toStartOf="@id/image_popular_movie"
+                    app:layout_constraintTop_toTopOf="@id/image_popular_movie"
                     app:shapeAppearanceOverlay="@style/CardCorners.Medium" />
 
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/rating_popular_movie"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/spacing_normal"
@@ -88,11 +90,11 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/title_text_view"
+            android:id="@+id/title_popular_text_view"
             style="@style/TextStyle.Body.md.medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_small"
+            android:paddingTop="@dimen/spacing_small"
             android:ellipsize="end"
             android:gravity="center"
             android:lines="1"
@@ -102,11 +104,11 @@
             tools:text="Until Dawn" />
 
         <TextView
-            android:id="@+id/genre_text_view"
+            android:id="@+id/genre_popular_text_view"
             style="@style/TextStyle.Body.sm.regular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_too_small"
+            android:paddingTop="@dimen/spacing_too_small"
             android:layout_marginBottom="7dp"
             android:gravity="center"
             android:textColor="@color/shade_secondary"

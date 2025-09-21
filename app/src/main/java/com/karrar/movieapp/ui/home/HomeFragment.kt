@@ -35,6 +35,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                 homeAdapter.setItems(
                     mutableListOf(
                         it.popularMovies,
+                        it.matchCRACard,
+                        it.exploreCRACard,
                         it.topRatedTvShows,
                         it.upcomingMovies,
                         it.recentlyReleased
@@ -63,7 +65,6 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                     event.movieID
                 )
             }
-
 
 
             is HomeUIEvent.ClickSeeAllMovieEvent -> {

@@ -17,6 +17,8 @@ class SaveListDetailsMapper @Inject constructor() : Mapper<SavedListDto, SaveLis
                 .first().toString(),
             voteAverage = input.voteAverage ?: 0.0,
             posterPath = BuildConfig.IMAGE_BASE_PATH + input.backdropPath,
+            runtime = 0,
+            genres = "",
         )
     }
 }

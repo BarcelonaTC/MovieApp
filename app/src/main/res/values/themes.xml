@@ -137,6 +137,14 @@
         <item name="cornerSize">@dimen/radius_small</item>
     </style>
 
+    <style name="CardCorners.ImageShapable">
+        <item name="cornerFamily">rounded</item>
+
+        <item name="cornerSizeTopLeft">12dp</item>
+        <item name="cornerSizeTopRight">12dp</item>
+        <item name="cornerSizeBottomLeft">12dp</item>
+    </style>
+
     <style name="CardCorners.Medium">
         <item name="cornerSize">@dimen/radius_md</item>
     </style>
@@ -319,9 +327,21 @@
         <item name="android:fontFamily">@font/manrope_semi_bold</item>
     </style>
 
-    <style name="RoundedFlagShape">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">3dp</item>
+    <style name="Widget.App.TextInputLayout.Outlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundMode">outline</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+
+        <item name="boxStrokeColor">@color/edit_text_stroke</item>
+        <item name="boxStrokeWidth">1dp</item>
+
+        <item name="hintEnabled">false</item>
+    </style>
+
+    <style name="DeleteShape">
+        <item name="android:textColor">@color/additional_primary_red</item>
     </style>
 
 </resources>

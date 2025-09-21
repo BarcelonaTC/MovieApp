@@ -8,6 +8,8 @@ import com.karrar.movieapp.R
 import com.karrar.movieapp.domain.enums.HomeItemsType
 import com.karrar.movieapp.ui.adapters.MovieAdapter
 import com.karrar.movieapp.ui.adapters.MovieInteractionListener
+import com.karrar.movieapp.ui.adapters.SeriesAdapter
+import com.karrar.movieapp.ui.adapters.SeriesInteractionListener
 import com.karrar.movieapp.ui.base.BaseAdapter
 import com.karrar.movieapp.ui.base.BaseInteractionListener
 import com.karrar.movieapp.ui.home.HomeInteractionListener
@@ -60,7 +62,15 @@ class HomeAdapter(
                 }
 
                 is HomeItem.TopRatedTvShows -> {
-                    bindMovie(holder, currentItem.items, currentItem.type)
+                    bindSeries(holder, currentItem.items, currentItem.type)
+                }
+
+                HomeItem.MatchCTACard -> {
+                    holder.binding.setVariable(BR.listener, listener as HomeInteractionListener)
+                }
+
+                HomeItem.ExploreCTACard -> {
+                    holder.binding.setVariable(BR.listener, listener as HomeInteractionListener)
                 }
             }
     }
@@ -72,6 +82,16 @@ class HomeAdapter(
                 MovieAdapter(items, listener as MovieInteractionListener)
             )
             setVariable(BR.movieType, type)
+        }
+    }
+
+    private fun bindSeries(holder: ItemViewHolder, items: List<MediaUiState>, type: HomeItemsType) {
+        holder.binding.run {
+            setVariable(
+                BR.adapterRecycler,
+                SeriesAdapter(items, listener as SeriesInteractionListener)
+            )
+            setVariable(BR.seriesType, type)
         }
     }
 
@@ -95,10 +115,13 @@ class HomeAdapter(
         if (homeItems.isNotEmpty()) {
             return when (homeItems[position]) {
                 is HomeItem.Slider -> R.layout.list_popular
+                is HomeItem.TopRatedTvShows -> R.layout.list_series
                 is HomeItem.RecentlyReleased,
-                is HomeItem.TopRatedTvShows,
                 is HomeItem.UpcomingMovies,
                     -> R.layout.list_movie
+
+                is HomeItem.MatchCTACard -> R.layout.what_should_i_watch
+                is HomeItem.ExploreCTACard -> R.layout.browse_everything
             }
         }
         return -1

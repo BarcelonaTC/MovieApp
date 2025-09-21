@@ -17,5 +17,10 @@ interface AccountRepository {
     suspend fun saveTheme(value: Boolean)
 
     fun isDarkTheme(): Boolean?
+
+    suspend fun saveLanguage(language: String)
+
+    fun getLanguage(): String?
+
 }
 

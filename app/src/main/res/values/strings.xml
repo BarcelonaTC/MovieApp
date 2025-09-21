@@ -125,4 +125,13 @@
     <string name="you_ll_be_taken_to_the_website_to_update_your_name_username_or_profile_picture">You’ll be taken to the website to update your name, username, or profile picture.</string>
     <string name="are_you_sure_you_want_to_logout">Are you sure you want to logout?</string>
     <string name="you_can_always_sign_back_in_with_your_account">You can always sign back in with your account.</string>
+    <string name="change_language">Change Language</string>
+    <string name="english">English</string>
+    <string name="arabic">Arabic</string>
+    <string name="history">History</string>
+    <string name="my_collections">My Collections</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="language">Language</string>
+    <string name="content_preferences">Content Preferences</string>
+    <string name="version_1_0_1">Version 1.0.1</string>
 </resources>

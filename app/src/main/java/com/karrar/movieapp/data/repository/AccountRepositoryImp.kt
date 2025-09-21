@@ -57,6 +57,14 @@ class AccountRepositoryImp @Inject constructor(
         return appConfiguration.isDarkTheme()
     }
 
+    override suspend fun saveLanguage(language: String) {
+        appConfiguration.saveLanguage(language)
+    }
+
+    override fun getLanguage(): String? {
+        return appConfiguration.getLanguage()
+    }
+
     override suspend fun saveTheme(value: Boolean) {
         appConfiguration.saveTheme(value)
     }

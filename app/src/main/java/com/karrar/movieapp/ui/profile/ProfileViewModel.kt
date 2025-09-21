@@ -25,11 +25,15 @@ class ProfileViewModel @Inject constructor(
     private val _profileDetailsUIState = MutableStateFlow(ProfileUIState())
     val profileDetailsUIState = _profileDetailsUIState.asStateFlow()
 
-    private val _profileUIEvent: MutableStateFlow<Event<ProfileUIEvent?>> = MutableStateFlow(Event(null))
-    val profileUIEvent= _profileUIEvent.asStateFlow()
+    private val _profileUIEvent: MutableStateFlow<Event<ProfileUIEvent?>> =
+        MutableStateFlow(Event(null))
+    val profileUIEvent = _profileUIEvent.asStateFlow()
 
     private val _isDarkMode = MutableStateFlow(accountRepository.isDarkTheme() == true)
     val isDarkMode = _isDarkMode.asStateFlow()
+
+    private val _language: MutableStateFlow<String?> = MutableStateFlow(null)
+    val language = _language.asStateFlow()
 
     init {
         getData()
@@ -40,7 +44,7 @@ class ProfileViewModel @Inject constructor(
     }
 
     private fun getProfileDetails() {
-        if (checkIfLoggedInUseCase().not()) {
+        if (checkIfLoggedInUseCase()) {
             _profileDetailsUIState.update {
                 it.copy(isLoading = true, isLoggedIn = true, error = false)
             }
@@ -73,13 +77,17 @@ class ProfileViewModel @Inject constructor(
         _profileUIEvent.update { Event(ProfileUIEvent.RatedMoviesEvent) }
     }
 
-    fun showLogOutBottomSheet(){
+    fun showLogOutBottomSheet() {
         _profileUIEvent.update { Event(ProfileUIEvent.LogOutBottomSheetEvent) }
     }
+
     fun onClickLogout() {
         wrapWithState(
             function = {
                 accountRepository.logout()
+                _profileUIEvent.update {
+                    Event(ProfileUIEvent.LogoutEvent)
+                }
             },
             errorFunction = {
                 _profileDetailsUIState.update {
@@ -97,14 +105,22 @@ class ProfileViewModel @Inject constructor(
         _profileUIEvent.update { Event(ProfileUIEvent.LoginEvent) }
     }
 
-    fun onClickEditProfile(){
+    fun onClickEditProfile() {
         _profileUIEvent.update { Event(ProfileUIEvent.EditProfileEvent) }
     }
 
-    fun onThemeSwitchChanged(isChecked: Boolean){
+    fun onClickLanguage() {
+        _profileUIEvent.update { Event(ProfileUIEvent.LanguageBottomSheetEvent) }
+    }
+
+    fun onThemeSwitchChanged(isChecked: Boolean) {
         wrapWithState(
             function = {
                 accountRepository.saveTheme(isChecked)
+//                accountRepository.getLanguage()?.let {
+//                    Log.d("ProfileViewModel", "onThemeSwitchChanged: $it")
+//                    AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(it))
+//                }
                 AppCompatDelegate.setDefaultNightMode(
                     if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
                 )
@@ -116,6 +132,12 @@ class ProfileViewModel @Inject constructor(
                 }
             }
         )
+    }
 
+    fun onLanguageChanged(languageCode: String) {
+        viewModelScope.launch {
+            accountRepository.saveLanguage(languageCode)
+            _profileUIEvent.update { Event(ProfileUIEvent.LanguageEvent(languageCode)) }
+        }
     }
 }

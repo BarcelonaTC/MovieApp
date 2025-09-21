@@ -1,27 +1,26 @@
-package com.karrar.movieapp.ui.profile
+package com.karrar.movieapp.ui.profile.components
 
-import android.content.Intent
+import android.R
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.activityViewModels
-import com.karrar.movieapp.BuildConfig
-import com.karrar.movieapp.databinding.EditAccountBottomSheetBinding
+import androidx.fragment.app.viewModels
+import com.karrar.movieapp.databinding.LogoutAccountBottomSheetBinding
+import com.karrar.movieapp.ui.profile.ProfileViewModel
 
-class EditAccountBottomSheet : DialogFragment() {
+class LogoutBottomSheet : DialogFragment() {
 
-    lateinit var binding: EditAccountBottomSheetBinding
-    private val viewModel: ProfileViewModel by activityViewModels()
+    lateinit var binding: LogoutAccountBottomSheetBinding
+    private val viewModel: ProfileViewModel by viewModels({ requireParentFragment() })
 
     override fun onStart() {
         super.onStart()
 
         dialog?.window?.setGravity(Gravity.BOTTOM)
-        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog?.window?.setBackgroundDrawableResource(R.color.transparent)
 
         val params = dialog?.window?.attributes
         val marginBottomInDp = 28
@@ -40,7 +39,7 @@ class EditAccountBottomSheet : DialogFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = EditAccountBottomSheetBinding.inflate(inflater, container, false)
+        binding = LogoutAccountBottomSheetBinding.inflate(inflater, container, false)
         binding.viewModel = viewModel
         return binding.root
     }
@@ -49,12 +48,6 @@ class EditAccountBottomSheet : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.cancel.setOnClickListener { dismiss() }
-        binding.gotoWebsite.setOnClickListener {
-            val browserIntent =
-                Intent(Intent.ACTION_VIEW, BuildConfig.EDIT_PROFILE_URL.toUri())
-            startActivity(browserIntent)
-
-        }
     }
 
 }

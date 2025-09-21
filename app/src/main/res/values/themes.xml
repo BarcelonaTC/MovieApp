@@ -319,5 +319,9 @@
         <item name="android:fontFamily">@font/manrope_semi_bold</item>
     </style>
 
+    <style name="RoundedFlagShape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">3dp</item>
+    </style>
 
 </resources>

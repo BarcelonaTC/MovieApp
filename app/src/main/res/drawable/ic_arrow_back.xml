@@ -3,7 +3,9 @@
     android:width="8dp"
     android:height="16dp"
     android:viewportWidth="8"
-    android:viewportHeight="16">
+    android:viewportHeight="16"
+    android:autoMirrored="true"
+    >
     <path
         android:fillColor="#FF72727B"
         android:pathData="M1.42 15.22c-0.15 0-0.31-0.05-0.44-0.18-0.24-0.24-0.24-0.64 0-0.88l5.44-5.44c0.4-0.4 0.4-1.05 0-1.45L0.98 1.84c-0.24-0.24-0.24-0.64 0-0.88s0.64-0.24 0.89 0L7.3 6.39C7.72 6.82 7.97 7.4 7.97 8c0 0.6-0.24 1.18-0.67 1.6l-5.43 5.44c-0.13 0.12-0.29 0.18-0.45 0.18Z"/>

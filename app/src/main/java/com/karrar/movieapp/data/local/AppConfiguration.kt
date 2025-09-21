@@ -17,6 +17,10 @@ interface AppConfiguration {
 
     fun isDarkTheme(): Boolean?
 
+    suspend fun saveLanguage(language: String)
+
+    fun getLanguage(): String?
+
 }
 
 class AppConfigurator @Inject constructor(private val dataStorePreferences: DataStorePreferences) :
@@ -46,9 +50,18 @@ class AppConfigurator @Inject constructor(private val dataStorePreferences: Data
         return dataStorePreferences.readBoolean(IS_DARK_THEME_KEY)
     }
 
+    override suspend fun saveLanguage(language: String) {
+        dataStorePreferences.writeString(LANGUAGE_KEY, language)
+    }
+
+    override fun getLanguage(): String? {
+        return dataStorePreferences.readString(LANGUAGE_KEY)
+    }
+
 
     companion object DataStorePreferencesKeys {
         const val SESSION_ID_KEY = "session_id"
         const val IS_DARK_THEME_KEY = "is_dark_theme"
+        const val LANGUAGE_KEY = "language"
     }
 }

@@ -121,4 +121,13 @@
     <string name="you_ll_be_taken_to_the_website_to_update_your_name_username_or_profile_picture">سيتم الذهاب الي الصفحة الرئيسية من اجل التعديل </string>
     <string name="are_you_sure_you_want_to_logout">عايز تسجل خروج ليه ؟</string>
     <string name="you_can_always_sign_back_in_with_your_account">تقدر تسجل وقت دخول وقت ما تحب</string>
+    <string name="change_language">تغيير اللغة</string>
+    <string name="english">انجليزي</string>
+    <string name="arabic">عربي</string>
+    <string name="history">السجل</string>
+    <string name="my_collections">تجميعتي</string>
+    <string name="dark_mode">الوضع الليلي</string>
+    <string name="language">اللغة</string>
+    <string name="content_preferences">تفضيلاتك للمحتوي</string>
+    <string name="version_1_0_1">نسخة 1.0.1</string>
 </resources>

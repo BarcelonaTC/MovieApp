@@ -1,6 +1,5 @@
 package com.karrar.movieapp.ui.profile.components
 
-import android.R
 import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
@@ -23,7 +22,7 @@ class EditAccountBottomSheet : DialogFragment() {
         super.onStart()
 
         dialog?.window?.setGravity(Gravity.BOTTOM)
-        dialog?.window?.setBackgroundDrawableResource(R.color.transparent)
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         val params = dialog?.window?.attributes
         val marginBottomInDp = 28

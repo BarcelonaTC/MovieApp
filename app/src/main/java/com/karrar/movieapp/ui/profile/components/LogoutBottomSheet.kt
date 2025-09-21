@@ -1,6 +1,5 @@
 package com.karrar.movieapp.ui.profile.components
 
-import android.R
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
@@ -20,7 +19,7 @@ class LogoutBottomSheet : DialogFragment() {
         super.onStart()
 
         dialog?.window?.setGravity(Gravity.BOTTOM)
-        dialog?.window?.setBackgroundDrawableResource(R.color.transparent)
+        dialog?.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         val params = dialog?.window?.attributes
         val marginBottomInDp = 28

@@ -1,17 +1,13 @@
 package com.karrar.movieapp.ui.profile.components
 
 import android.R
-import android.content.Intent
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.net.toUri
 import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import com.karrar.movieapp.BuildConfig
 import com.karrar.movieapp.databinding.ChangeLanguageBottomSheetBinding
 import com.karrar.movieapp.ui.profile.ProfileViewModel
 

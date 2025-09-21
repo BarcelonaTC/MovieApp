@@ -45,13 +45,28 @@ class AccountRepositoryImp @Inject constructor(
             throw Throwable(e)
         }
     }
-
     override suspend fun logout() {
         appConfiguration.saveSessionId("")
     }
 
     override suspend fun getAccountDetails(): AccountDto? {
         return service.getAccountDetails().body()
+    }
+
+    override fun isDarkTheme(): Boolean? {
+        return appConfiguration.isDarkTheme()
+    }
+
+    override suspend fun saveLanguage(language: String) {
+        appConfiguration.saveLanguage(language)
+    }
+
+    override fun getLanguage(): String? {
+        return appConfiguration.getLanguage()
+    }
+
+    override suspend fun saveTheme(value: Boolean) {
+        appConfiguration.saveTheme(value)
     }
 
     private suspend fun getRequestToken(): String {

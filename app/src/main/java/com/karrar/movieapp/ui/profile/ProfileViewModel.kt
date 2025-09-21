@@ -1,6 +1,8 @@
 package com.karrar.movieapp.ui.profile
 
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.viewModelScope
+import com.karrar.movieapp.data.repository.AccountRepository
 import com.karrar.movieapp.domain.usecases.CheckIfLoggedInUseCase
 import com.karrar.movieapp.domain.usecases.GetAccountDetailsUseCase
 import com.karrar.movieapp.ui.base.BaseViewModel
@@ -16,14 +18,22 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     private val getAccountDetailsUseCase: GetAccountDetailsUseCase,
     private val accountUIStateMapper: AccountUIStateMapper,
-    private val checkIfLoggedInUseCase: CheckIfLoggedInUseCase
+    private val checkIfLoggedInUseCase: CheckIfLoggedInUseCase,
+    private val accountRepository: AccountRepository
 ) : BaseViewModel() {
 
     private val _profileDetailsUIState = MutableStateFlow(ProfileUIState())
     val profileDetailsUIState = _profileDetailsUIState.asStateFlow()
 
-    private val _profileUIEvent: MutableStateFlow<Event<ProfileUIEvent?>> = MutableStateFlow(Event(null))
-    val profileUIEvent= _profileUIEvent.asStateFlow()
+    private val _profileUIEvent: MutableStateFlow<Event<ProfileUIEvent?>> =
+        MutableStateFlow(Event(null))
+    val profileUIEvent = _profileUIEvent.asStateFlow()
+
+    private val _isDarkMode = MutableStateFlow(accountRepository.isDarkTheme() == true)
+    val isDarkMode = _isDarkMode.asStateFlow()
+
+    private val _language: MutableStateFlow<String?> = MutableStateFlow(null)
+    val language = _language.asStateFlow()
 
     init {
         getData()
@@ -67,8 +77,24 @@ class ProfileViewModel @Inject constructor(
         _profileUIEvent.update { Event(ProfileUIEvent.RatedMoviesEvent) }
     }
 
+    fun showLogOutBottomSheet() {
+        _profileUIEvent.update { Event(ProfileUIEvent.LogOutBottomSheetEvent) }
+    }
+
     fun onClickLogout() {
-        _profileUIEvent.update { Event(ProfileUIEvent.DialogLogoutEvent) }
+        wrapWithState(
+            function = {
+                accountRepository.logout()
+                _profileUIEvent.update {
+                    Event(ProfileUIEvent.LogoutEvent)
+                }
+            },
+            errorFunction = {
+                _profileDetailsUIState.update {
+                    it.copy(error = true)
+                }
+            }
+        )
     }
 
     fun onClickWatchHistory() {
@@ -77,5 +103,41 @@ class ProfileViewModel @Inject constructor(
 
     fun onClickLogin() {
         _profileUIEvent.update { Event(ProfileUIEvent.LoginEvent) }
+    }
+
+    fun onClickEditProfile() {
+        _profileUIEvent.update { Event(ProfileUIEvent.EditProfileEvent) }
+    }
+
+    fun onClickLanguage() {
+        _profileUIEvent.update { Event(ProfileUIEvent.LanguageBottomSheetEvent) }
+    }
+
+    fun onThemeSwitchChanged(isChecked: Boolean) {
+        wrapWithState(
+            function = {
+                accountRepository.saveTheme(isChecked)
+//                accountRepository.getLanguage()?.let {
+//                    Log.d("ProfileViewModel", "onThemeSwitchChanged: $it")
+//                    AppCompatDelegate.setApplicationLocales(LocaleListCompat.forLanguageTags(it))
+//                }
+                AppCompatDelegate.setDefaultNightMode(
+                    if (isChecked) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+                )
+                _isDarkMode.update { isChecked }
+            },
+            errorFunction = {
+                _profileDetailsUIState.update {
+                    it.copy(error = true)
+                }
+            }
+        )
+    }
+
+    fun onLanguageChanged(languageCode: String) {
+        viewModelScope.launch {
+            accountRepository.saveLanguage(languageCode)
+            _profileUIEvent.update { Event(ProfileUIEvent.LanguageEvent(languageCode)) }
+        }
     }
 }

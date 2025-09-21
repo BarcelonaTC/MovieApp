@@ -71,5 +71,6 @@
     <color name="additional_secondary_red">#FBEEEE</color>
     <color name="additional_secondary_green">#EEF5EF</color>
     <color name="additional_secondary_yellow">#FFFAEB</color>
+    <color name="transparent">#00FFFAEB</color>
 
 </resources>

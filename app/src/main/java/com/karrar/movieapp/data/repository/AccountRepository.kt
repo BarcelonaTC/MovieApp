@@ -13,5 +13,14 @@ interface AccountRepository {
     suspend fun logout()
 
     suspend fun getAccountDetails(): AccountDto?
+
+    suspend fun saveTheme(value: Boolean)
+
+    fun isDarkTheme(): Boolean?
+
+    suspend fun saveLanguage(language: String)
+
+    fun getLanguage(): String?
+
 }
 

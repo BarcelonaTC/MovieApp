@@ -148,4 +148,5 @@
     <string name="version_1_0_1">نسخة 1.0.1</string>
     <string name="your_collections">مجموعاتك</string>
     <string name="folder_icon">أيقونة المجلد</string>
+    <string name="featured_collection_image">featured collection image</string>
 </resources>

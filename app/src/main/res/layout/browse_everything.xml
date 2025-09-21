@@ -81,7 +81,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="12dp"
                 android:contentDescription="@string/alt_arrow_icon"
-                android:src="@drawable/alt_arrow_right" />
+                android:src="@drawable/arrow_right" />
         </LinearLayout>
     </LinearLayout>
 </layout>

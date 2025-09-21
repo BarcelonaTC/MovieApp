@@ -326,7 +326,7 @@
         <item name="android:fontFamily">@font/manrope_semi_bold</item>
     </style>
 
-    <style name="Widget.App.TextInputLayout.Outlined" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+    <style name="Widget.App.TextInputLayout.Outlined2" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxBackgroundMode">outline</item>
         <item name="boxCornerRadiusTopStart">12dp</item>
         <item name="boxCornerRadiusTopEnd">12dp</item>

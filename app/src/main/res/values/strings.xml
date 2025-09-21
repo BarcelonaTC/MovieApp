@@ -150,4 +150,5 @@
     <string name="version_1_0_1">Version 1.0.1</string>
     <string name="your_collections">Your Collections</string>
     <string name="folder_icon">folder icon</string>
+    <string name="featured_collection_image">featured collection image</string>
 </resources>

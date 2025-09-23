@@ -24,6 +24,9 @@
         <action
             android:id="@+id/action_homeFragment_to_tvShowDetailsFragment"
             app:destination="@id/tvShowDetailsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_matchMainFragment"
+            app:destination="@id/matchMainFragment" />
 
     </fragment>
 
@@ -350,5 +353,32 @@
             android:name="name"
             app:argType="string" />
     </fragment>
-
+    <fragment
+        android:id="@+id/matchResultsFragment"
+        android:name="com.karrar.movieapp.ui.match.MatchResultsFragment"
+        tools:layout="@layout/fragment_match_results"
+        android:label="MatchResultsFragment" />
+    <fragment
+        android:id="@+id/matchMainFragment"
+        android:name="com.karrar.movieapp.ui.matchMain.MatchMainFragment"
+        android:label="MatchMainFragment" >
+        <action
+            android:id="@+id/action_matchMainFragment_to_matchResultsFragment"
+            app:destination="@id/matchResultsFragment" />
+        <action
+            android:id="@+id/action_matchMainFragment_self"
+            app:destination="@id/matchMainFragment" />
+        <action
+            android:id="@+id/action_matchMainFragment_to_matchSelectionFragment"
+            app:destination="@id/matchSelectionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/matchSelectionFragment"
+        tools:layout="@layout/fragment_match_selection"
+        android:name="com.karrar.movieapp.ui.matchSelection.MatchSelectionFragment"
+        android:label="MatchSelectionFragment" >
+        <action
+            android:id="@+id/action_matchSelectionFragment_to_matchResultsFragment"
+            app:destination="@id/matchResultsFragment" />
+    </fragment>
 </navigation>

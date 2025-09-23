@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             setOf(
                 R.id.homeFragment,
                 R.id.exploringFragment,
-                R.id.myListFragment,
+                R.id.matchResultsFragment,
                 R.id.profileFragment,
             )
         )

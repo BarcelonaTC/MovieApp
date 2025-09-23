@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/frameLayout3"
+        android:layout_width="match_parent"
+        android:background="@color/background_screen"
+        android:layout_height="match_parent"
+        tools:context=".ui.matchMain.MatchMainFragment">
+
+        <LinearLayout
+            android:id="@+id/arrowBackContainer"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/appbar_actor_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/manrope_medium"
+                android:text="Discover Your Match"
+                android:textColor="@color/shade_primary"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/arrowBackContainer">
+
+            <LinearLayout
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/magic_stick_container_shape"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_match"
+                    app:tint="@color/brand_primary" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/manrope_regular"
+                android:text="Not sure what to watch?"
+                android:textColor="@color/shade_primary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/manrope_regular"
+                android:gravity="center"
+                android:text="Answer a few quick questions and we’ll match you with the perfect picks."
+                android:textColor="@color/shade_secondary"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/button"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/rounded_button_primary_10_shape"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Start Matching"
+                    android:textColor="@color/button_onPrimary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.karrar.movieapp.ui.matchSelection.MatchSelectionViewModel" />
+
+        <variable
+            name="listener"
+            type="com.karrar.movieapp.ui.matchSelection.MatchSelectionInteractionListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/manrope_regular"
+                android:text="What mood are you in?"
+                android:textColor="@color/shade_primary"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing12"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/chip_chill"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:onClick="@{() -> listener.onMoodClicked(viewModel.matchSelectionUIState.moodList[0])}"
+                    app:chipBackground='@{viewModel.matchSelectionUIState.moodList[0].isSelected}'>
+
+                    <LinearLayout
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginHorizontal="12dp"
+                        android:gravity="center"
+                        app:chipIconBackground='@{viewModel.matchSelectionUIState.moodList[0].isSelected}'>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/headphone" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_regular"
+                        android:text="@{viewModel.matchSelectionUIState.moodList[0].mood}"
+                        android:textColor="@color/shade_primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="12dp"
+                    android:layout_height="2dp" />
+
+                <LinearLayout
+                    android:id="@+id/chip_excited"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:onClick="@{() -> listener.onMoodClicked(viewModel.matchSelectionUIState.moodList[1])}"
+                    app:chipBackground='@{viewModel.matchSelectionUIState.moodList[1].isSelected}'>
+
+                    <LinearLayout
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginHorizontal="12dp"
+                        android:gravity="center"
+                        app:chipIconBackground='@{viewModel.matchSelectionUIState.moodList[1].isSelected}'>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/flame" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_regular"
+                        android:text="@{viewModel.matchSelectionUIState.moodList[1].mood}"
+                        android:textColor="@color/shade_primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/chip_emotional"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:onClick="@{() -> listener.onMoodClicked(viewModel.matchSelectionUIState.moodList[2])}"
+                    app:chipBackground='@{viewModel.matchSelectionUIState.moodList[2].isSelected}'>
+
+                    <LinearLayout
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginHorizontal="12dp"
+                        android:gravity="center"
+                        app:chipIconBackground='@{viewModel.matchSelectionUIState.moodList[2].isSelected}'>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/heart" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_regular"
+                        android:text="@{viewModel.matchSelectionUIState.moodList[2].mood}"
+                        android:textColor="@color/shade_primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="12dp"
+                    android:layout_height="2dp" />
+
+                <LinearLayout
+                    android:id="@+id/chip_curious"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:onClick="@{() -> listener.onMoodClicked(viewModel.matchSelectionUIState.moodList[3])}"
+                    app:chipBackground='@{viewModel.matchSelectionUIState.moodList[3].isSelected}'>
+
+                    <LinearLayout
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginHorizontal="12dp"
+                        android:gravity="center"
+                        app:chipIconBackground='@{viewModel.matchSelectionUIState.moodList[3].isSelected}'>
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/search" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/manrope_regular"
+                        android:text="@{viewModel.matchSelectionUIState.moodList[3].mood}"
+                        android:textColor="@color/shade_primary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

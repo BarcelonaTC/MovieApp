@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.karrar.movieapp.ui.matchSelection.MatchSelectionUiState.GenreType" />
+    </data>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/genre_button_background"
+        android:gravity="center"
+        android:paddingHorizontal="20dp"
+        android:fontFamily="@font/manrope_regular"
+        android:paddingVertical="12.5dp"
+        android:text="@{item.name}"
+        app:chipBackground='@{item.isSelected}'
+        android:textColor="@color/shade_primary"
+        android:textSize="16sp" />
+</layout>

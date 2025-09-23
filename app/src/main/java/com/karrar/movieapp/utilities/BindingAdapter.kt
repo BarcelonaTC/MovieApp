@@ -8,7 +8,6 @@ import android.widget.RatingBar
 import android.widget.ScrollView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.os.postDelayed
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.PagerSnapHelper
@@ -29,7 +28,6 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import java.text.SimpleDateFormat
 import java.util.Locale
-import java.util.logging.Handler
 import kotlin.math.abs
 
 
@@ -178,6 +176,20 @@ fun reverseGalleryLayout(view: ConstraintLayout, reverse: Boolean) {
     } else {
         View.LAYOUT_DIRECTION_LTR
     }
+}
+
+@BindingAdapter("app:chipBackground")
+fun View.setChipBackground(isSelected: Boolean) {
+    val bgRes = if (isSelected) R.drawable.shape_chip_enabled_radius12
+    else R.drawable.shape_chip_disabled_radius12
+    setBackgroundResource(bgRes)
+}
+
+@BindingAdapter("app:chipIconBackground")
+fun View.setChipIconBackground(isSelected: Boolean) {
+    val bgRes = if (isSelected) R.drawable.shape_chip_icon_enabled_radius10
+    else R.drawable.shape_chip_icon_disabled_radius10
+    setBackgroundResource(bgRes)
 }
 
 @BindingAdapter(value = ["app:usePagerSnapHelper"])

@@ -66,7 +66,7 @@ interface MovieService {
     suspend fun getRequestToken(): Response<RequestTokenResponse>
 
     @GET("genre/movie/list")
-    suspend fun getGenreList(): Response<GenreResponse>
+    suspend fun getGenreList(@Query("language") language: String = "en"): Response<GenreResponse>
 
     @JvmSuppressWildcards
     @FormUrlEncoded
@@ -241,5 +241,17 @@ interface MovieService {
     suspend fun deleteTvShowRating(
         @Path("tv_id") tvId: Int,
     ): Response<RatingDto>
-
+    @GET("discover/movie")
+    suspend fun discoverMovies(
+        @Query("include_adult") includeAdult: Boolean = false,
+        @Query("include_video") includeVideo: Boolean = false,
+        @Query("language") language: String = "en-US",
+        @Query("page") page: Int = 1,
+        @Query("sort_by") sortBy: String = "popularity.desc",
+        @Query("with_genres") withGenres: String? = null,
+        @Query("with_runtime.gte") runtimeGte: Int? = null,
+        @Query("with_runtime.lte") runtimeLte: Int? = null,
+        @Query("primary_release_date.gte") releaseDateGte: String? = null,
+        @Query("primary_release_date.lte") releaseDateLte: String? = null
+    ): Response<BaseListResponse<MovieDto>>
 }

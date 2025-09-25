@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Movie App</string>
     <string name="app_name">Cineverse</string>
-
     <string name="see_all">عرض الكل</string>
     <string name="top_rated">الأعلى تقييماً</string>
     <string name="latest">الأحدث</string>
@@ -12,15 +10,11 @@
     <string name="movies_chip">الأفلام</string>
     <string name="tv_shows_chip">المسلسلات</string>
     <string name="actors_label">الممثلون</string>
-    <string name="welcome_back_CineVerse">تسجيل الدخول إلى حسابك</string>
     <string name="welcome_back_CineVerse">مرحباً بك مرة اخرى في سينا فيرس!</string>
     <string name="login_to_your_account">تسجيل الدخول إلى حسابك</string>
     <string name="username">اسم المستخدم</string>
     <string name="password">كلمة المرور</string>
     <string name="login">تسجيل الدخول</string>
-    <string name="password_Input">Enter your password</string>
-    <string name="userName_Input">Enter your email or username</string>
-    <string name="create_new_account">Create a New Account</string>
     <string name="password_Input">أدخل كلمه السر</string>
     <string name="userName_Input">أدخل الإيميل أو اسم المستخدم</string>
     <string name="don_t_have_an_account">ليس لديك حساب؟</string>
@@ -104,11 +98,6 @@
     <string name="empty">فارغ</string>
     <string name="create_a_new_list">إنشاء قائمة جديدة</string>
     <string name="create_new_account">إنشاء حساب جديد</string>
-    <string name="join_as_guest">Join as Guest</string>
-    <string name="forgot_password">Forgot Password?</string>
-    <string name="join_cineverse">Join CineVerse</string>
-    <string name="sign_up_bottom_sheet_text">Let’s get you set up! We’ll take you to the website to create your account.</string>
-    <string name="go_to_website">Go to Website</string>
     <string name="save_to">حفظ في…</string>
     <string name="hours_pattern">%1$s ساعة</string>
     <string name="minutes_pattern">%1$s دقيقة</string>

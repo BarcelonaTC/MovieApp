@@ -23,7 +23,7 @@ android {
 
     defaultConfig {
         applicationId "com.karrar.movieapp"
-        minSdk 21
+        minSdk 26
         targetSdk 34
         versionCode 1
         versionName "1.0"
@@ -100,11 +100,11 @@ dependencies {
     implementation 'io.coil-kt:coil:2.7.0'
 
     // Room Database
-    def room_version = "2.6.1"
+    def room_version = "2.5.2"
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     implementation "androidx.room:room-paging:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
+    annotationProcessor("androidx.room:room-compiler:$room_version")
 
     // Hilt (Dependency Injection)
     implementation "com.google.dagger:hilt-android:2.52"

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Movie App</string>
+    <string name="app_name">Cineverse</string>
 
     <string name="see_all">عرض الكل</string>
     <string name="top_rated">الأعلى تقييماً</string>
@@ -11,10 +11,13 @@
     <string name="movies_chip">الأفلام</string>
     <string name="tv_shows_chip">المسلسلات</string>
     <string name="actors_label">الممثلون</string>
+    <string name="welcome_back_CineVerse">مرحباً بك مرة اخرى في سينا فيرس!</string>
     <string name="login_to_your_account">تسجيل الدخول إلى حسابك</string>
     <string name="username">اسم المستخدم</string>
     <string name="password">كلمة المرور</string>
     <string name="login">تسجيل الدخول</string>
+    <string name="password_Input">أدخل كلمه السر</string>
+    <string name="userName_Input">أدخل الإيميل أو اسم المستخدم</string>
     <string name="don_t_have_an_account">ليس لديك حساب؟</string>
     <string name="sign_up">إنشاء حساب</string>
     <string name="place_of_birth">مكان الميلاد</string>
@@ -95,6 +98,7 @@
     <string name="you_must_be_logged_in_to_use_list_features">يجب تسجيل الدخول لاستخدام ميزة القوائم.</string>
     <string name="empty">فارغ</string>
     <string name="create_a_new_list">إنشاء قائمة جديدة</string>
+    <string name="create_new_account">إنشاء حساب جديد</string>
     <string name="save_to">حفظ في…</string>
     <string name="hours_pattern">%1$s ساعة</string>
     <string name="minutes_pattern">%1$s دقيقة</string>
@@ -106,9 +110,7 @@
     <string name="show_more">عرض المزيد</string>
     <string name="gallery">المعرض</string>
     <string name="try_again">اعادة المحاولة</string>
-    <string name="try_again_connect_description">
-    يبدو أنك غير متصل بالإنترنت. دعنا نعيد الاتصال حتى لا يفوتك أي شيء!
-</string>
+    <string name="try_again_connect_description">يبدو أنك غير متصل بالإنترنت. دعنا نعيد الاتصال حتى لا يفوتك أي شيء!</string>
     <string name="oops_no_internet">عذرًا ! لا يوجد إنترنت</string>
     <string name="best_of">أفضل ما لدى %1$s</string>
     <string name="born_on">وُلد في %1$s</string>
@@ -123,8 +125,7 @@
     <string name="no_collections_yet">لا يوجد مجموعات</string>
     <string name="start_building">ابدأ ببناء مكتبتك بحفظ الأفلام أو المسلسلات التي تريد تذكرها.</string>
     <string name="tip_swipe">نصيحة: اسحب لليسار لإزالة الأفلام من مجموعتك.</string>
-    <string name="my_favorite_tv_shows">My Favorite TV Shows</string>
-
+    <string name="my_favorite_tv_shows">مسلسلاتي المفضلة</string>
     <string name="magic_stick_icon">أيقونة العصا السحرية</string>
     <string name="alt_arrow_icon">أيقونة السهم البديل</string>
     <string name="we_ll_help_you_skip_the_scroll_and_go_nstraight_to_the_good_stuff">سنساعدك على تخطي التمرير والانتقال مباشرة إلى الأشياء الجيدة.</string>
@@ -140,6 +141,11 @@
     <string name="change_language">تغيير اللغة</string>
     <string name="english">انجليزي</string>
     <string name="arabic">عربي</string>
+    <string name="join_as_guest">الدخول كضيف</string>
+    <string name="forgot_password">نسيت كلمة السر؟</string>
+    <string name="join_cineverse">الإنضمام إلى سينا فيرس</string>
+    <string name="sign_up_bottom_sheet_text">هيا نجهزك! سنأخذك إلى الموقع لإنشاء حسابك.</string>
+    <string name="go_to_website">التوجه إلى الموقع</string>
     <string name="history">السجل</string>
     <string name="my_collections">تجميعتي</string>
     <string name="dark_mode">الوضع الليلي</string>

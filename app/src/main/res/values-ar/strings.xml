@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Cineverse</string>
-
     <string name="see_all">عرض الكل</string>
     <string name="top_rated">الأعلى تقييماً</string>
     <string name="latest">الأحدث</string>
@@ -152,4 +151,7 @@
     <string name="language">اللغة</string>
     <string name="content_preferences">تفضيلاتك للمحتوي</string>
     <string name="version_1_0_1">نسخة 1.0.1</string>
+    <string name="your_collections">مجموعاتك</string>
+    <string name="folder_icon">أيقونة المجلد</string>
+    <string name="featured_collection_image">featured collection image</string>
 </resources>

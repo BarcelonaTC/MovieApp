@@ -6,13 +6,17 @@ import com.karrar.movieapp.domain.enums.HomeItemsType
 import com.karrar.movieapp.domain.usecase.home.HomeUseCasesContainer
 import com.karrar.movieapp.domain.usecases.CheckIfLoggedInUseCase
 import com.karrar.movieapp.domain.usecases.GetAccountDetailsUseCase
+import com.karrar.movieapp.domain.usecases.mylist.GetMyListUseCase
 import com.karrar.movieapp.ui.adapters.MovieInteractionListener
 import com.karrar.movieapp.ui.adapters.SeriesInteractionListener
 import com.karrar.movieapp.ui.base.BaseViewModel
+import com.karrar.movieapp.ui.home.adapter.YourCollectionsInteractionListener
 import com.karrar.movieapp.ui.home.homeUiState.HomeUIEvent
 import com.karrar.movieapp.ui.home.homeUiState.HomeUiState
 import com.karrar.movieapp.ui.mappers.MediaUiMapper
 import com.karrar.movieapp.ui.models.TypeOfMedia
+import com.karrar.movieapp.ui.myList.CreatedListUIMapper
+import com.karrar.movieapp.ui.myList.myListUIState.CreatedListUIState
 import com.karrar.movieapp.ui.profile.AccountUIStateMapper
 import com.karrar.movieapp.utilities.Event
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -29,8 +33,11 @@ class HomeViewModel @Inject constructor(
     private val popularUiMapper: PopularUiMapper,
     private val getAccountDetailsUseCase: GetAccountDetailsUseCase,
     private val accountUIStateMapper: AccountUIStateMapper,
-    private val checkIfLoggedInUseCase: CheckIfLoggedInUseCase
-) : BaseViewModel(), HomeInteractionListener, MovieInteractionListener, SeriesInteractionListener {
+    private val checkIfLoggedInUseCase: CheckIfLoggedInUseCase,
+    private val getMyListUseCase: GetMyListUseCase,
+    private val createdListUIMapper: CreatedListUIMapper
+) : BaseViewModel(), HomeInteractionListener, MovieInteractionListener, SeriesInteractionListener,
+    YourCollectionsInteractionListener {
 
     private val _homeUiState = MutableStateFlow(HomeUiState())
     val homeUiState = _homeUiState.asStateFlow()
@@ -54,6 +61,7 @@ class HomeViewModel @Inject constructor(
         getRecentlyReleased()
         getUpcomingMovies()
         getTopRatedTvShow()
+        getYourCollections()
     }
 
 
@@ -158,6 +166,19 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    private fun getYourCollections() {
+        viewModelScope.launch {
+            try {
+                val list = getMyListUseCase().map { createdListUIMapper.map(it) }
+                _homeUiState.update {
+                    it.copy(isLoading = false, yourCollections = HomeItem.YourCollections(list))
+                }
+            } catch (th: Throwable) {
+                onError(th.message.toString())
+            }
+        }
+    }
+
     private fun onError(message: String) {
         val errors = _homeUiState.value.error.toMutableList()
         errors.add(message)
@@ -178,6 +199,7 @@ class HomeViewModel @Inject constructor(
             HomeItemsType.UPCOMING_MOVIES -> AllMediaType.UPCOMING
             HomeItemsType.TOP_RATED_TV_SHOWS -> AllMediaType.TOP_RATED
             HomeItemsType.NON -> AllMediaType.RECENTLY_RELEASED
+            HomeItemsType.YOUR_COLLECTIONS -> AllMediaType.RECENTLY_RELEASED
         }
         _homeUIEvent.update { Event(HomeUIEvent.ClickSeeAllMovieEvent(type)) }
     }
@@ -194,5 +216,13 @@ class HomeViewModel @Inject constructor(
     }
 
     override fun onClickMatchCTA() {
+    }
+
+    override fun onClickSeeAllYourCollections() {
+        _homeUIEvent.update { Event(HomeUIEvent.ClickSeeAllYourCollection) }
+    }
+
+    override fun onListClick(item: CreatedListUIState) {
+        _homeUIEvent.update { Event(HomeUIEvent.ClickCollection(item)) }
     }
 }

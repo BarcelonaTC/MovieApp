@@ -10,6 +10,7 @@ data class HomeUiState(
     val topRatedTvShows: HomeItem = HomeItem.TopRatedTvShows(emptyList()),
     val matchCRACard: HomeItem = HomeItem.MatchCTACard,
     val exploreCRACard: HomeItem = HomeItem.ExploreCTACard,
+    val yourCollections: HomeItem = HomeItem.YourCollections(emptyList()),
     val isLoading: Boolean = false,
     val error: List<String> = emptyList(),
 )

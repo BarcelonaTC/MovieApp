@@ -26,36 +26,87 @@ class GetMediaByTypeUseCase @Inject constructor(
             AllMediaType.ACTOR_MOVIES -> {
                 wrapper({ movieRepository.getActorMoviesPager(actorId) }, movieMapper::map)
             }
+
             AllMediaType.LATEST,
             AllMediaType.AIRING_TODAY,
-            -> {
+                -> {
                 wrapper(seriesRepository::getAiringTodayTvShowPager, tvShowMapper::map)
             }
+
             AllMediaType.ON_THE_AIR -> {
                 wrapper(seriesRepository::getTopRatedTvShowPager, tvShowMapper::map)
             }
+
             AllMediaType.POPULAR -> {
                 wrapper(seriesRepository::getPopularTvShowPager, tvShowMapper::map)
             }
+
             AllMediaType.TOP_RATED -> {
                 wrapper(seriesRepository::getTopRatedTvShowPager, tvShowMapper::map)
             }
+
             AllMediaType.TRENDING -> {
                 wrapper(movieRepository::getTrendingMoviesPager, movieMapper::map)
             }
+
             AllMediaType.RECENTLY_RELEASED -> {
                 wrapper(movieRepository::getNowPlayingMoviesPager, movieMapper::map)
             }
+
             AllMediaType.UPCOMING -> {
                 wrapper(movieRepository::getUpcomingMoviesPager, movieMapper::map)
             }
+
             AllMediaType.MYSTERY -> {
                 wrapper({ movieRepository.getMovieByGenre(Constants.MYSTERY_ID) }, movieMapper::map)
 
             }
+
             AllMediaType.ADVENTURE -> {
                 wrapper(
                     { movieRepository.getMovieByGenre(Constants.ADVENTURE_ID) },
+                    movieMapper::map
+                )
+            }
+
+            AllMediaType.BASED_ON_TRUE_EVENTS -> {
+                wrapper(
+                    { movieRepository.getMovieByKeyword(Constants.KEYWORD_ID_FOR_TRUE_EVENTS) },
+                    movieMapper::map
+                )
+            }
+
+            AllMediaType.CINEMATIC_MASTERPIECE -> {
+                wrapper(
+                    { movieRepository.getMovieBySort(Constants.SORT_BY_VORE_AVERAGE) },
+                    movieMapper::map
+                )
+            }
+
+            AllMediaType.FAMILY_NIGHT_PICKS -> {
+                wrapper(
+                    { movieRepository.getMovieByGenre(Constants.GENRE_ID_FOR_FAMILY) },
+                    movieMapper::map
+                )
+            }
+
+            AllMediaType.FEEL_GOOD_PREFERENCES -> {
+                wrapper(
+                    { movieRepository.getMovieByGenre(Constants.GENRE_ID_FOR_FEEL_GOOD) },
+                    movieMapper::map
+                )
+            }
+
+            AllMediaType.LATE_NIGHT_THRILLS -> {
+                wrapper(
+                    { movieRepository.getMovieByGenre(Constants.GENRE_ID_FOR_THRILLS) },
+                    movieMapper::map
+                )
+            }
+
+            AllMediaType.MIND_BENDING_STORIES -> {
+                wrapper(
+                    { movieRepository.getMovieByGenre(Constants.GENRE_ID_FOR_FANTASY) },
                     movieMapper::map
                 )
             }

@@ -6,6 +6,9 @@ import androidx.databinding.DataBindingUtil
 import com.karrar.movieapp.BR
 import com.karrar.movieapp.R
 import com.karrar.movieapp.domain.enums.HomeItemsType
+import com.karrar.movieapp.ui.adapters.FeaturedCollectionUi
+import com.karrar.movieapp.ui.adapters.FeaturedCollectionsAdapter
+import com.karrar.movieapp.ui.adapters.FeaturedCollectionsInteractionListener
 import com.karrar.movieapp.ui.adapters.MovieAdapter
 import com.karrar.movieapp.ui.adapters.MovieInteractionListener
 import com.karrar.movieapp.ui.adapters.SeriesAdapter
@@ -15,7 +18,6 @@ import com.karrar.movieapp.ui.base.BaseInteractionListener
 import com.karrar.movieapp.ui.home.HomeInteractionListener
 import com.karrar.movieapp.ui.home.HomeItem
 import com.karrar.movieapp.ui.models.MediaUiState
-import com.karrar.movieapp.ui.myList.CreatedListInteractionListener
 import com.karrar.movieapp.ui.myList.myListUIState.CreatedListUIState
 
 class HomeAdapter(
@@ -80,6 +82,11 @@ class HomeAdapter(
                     currentItem.items,
                     currentItem.type
                 )
+
+                is HomeItem.FeaturedCollection -> bindFeaturedCollection(
+                    holder,
+                    currentItem.items
+                )
             }
     }
 
@@ -117,6 +124,21 @@ class HomeAdapter(
         }
     }
 
+    private fun bindFeaturedCollection(
+        holder: ItemViewHolder,
+        items: List<FeaturedCollectionUi>
+    ) {
+        holder.binding.run {
+            setVariable(
+                BR.adapterRecycler,
+                FeaturedCollectionsAdapter(
+                    items,
+                    listener as FeaturedCollectionsInteractionListener
+                )
+            )
+        }
+    }
+
     override fun setItems(newItems: List<HomeItem>) {
         homeItems = newItems.sortedBy { it.priority }.toMutableList()
         super.setItems(homeItems)
@@ -141,10 +163,10 @@ class HomeAdapter(
                 is HomeItem.RecentlyReleased,
                 is HomeItem.UpcomingMovies,
                     -> R.layout.list_movie
-
                 is HomeItem.MatchCTACard -> R.layout.what_should_i_watch
                 is HomeItem.ExploreCTACard -> R.layout.browse_everything
                 is HomeItem.YourCollections -> R.layout.list_your_collections
+                is HomeItem.FeaturedCollection -> R.layout.list_featured_collections
             }
         }
         return -1

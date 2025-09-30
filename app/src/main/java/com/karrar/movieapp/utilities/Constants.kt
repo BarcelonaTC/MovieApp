@@ -5,6 +5,13 @@ object Constants {
     const val MAX_NUMBER_AIRING_TODAY = 6
     const val MYSTERY_ID = 9648
     const val ADVENTURE_ID = 12
+    const val KEYWORD_ID_FOR_TRUE_EVENTS = "9672"
+    const val SORT_BY_VORE_AVERAGE = "vote_average.desc"
+    const val GENRE_ID_FOR_FAMILY = 10751
+    const val GENRE_ID_FOR_FEEL_GOOD = 10749
+    const val GENRE_ID_FOR_THRILLS = 53
+    const val GENRE_ID_FOR_FANTASY = 14
+
     const val MOVIE_CATEGORIES_ID = 1
     const val TV_CATEGORIES_ID = 2
     const val FIRST_CATEGORY_ID = 0
@@ -18,7 +25,7 @@ object Constants {
     const val PERSON = "person"
     const val ACTING = "Acting"
     const val NUM_HOME_REQUEST = 9
-    const val  SUCCESS_REQUEST = 1
+    const val SUCCESS_REQUEST = 1
     const val INTERNET_STATUS = 400
 
     const val PROFILE = 1

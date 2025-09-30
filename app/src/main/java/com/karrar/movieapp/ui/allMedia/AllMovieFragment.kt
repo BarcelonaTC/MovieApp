@@ -37,7 +37,8 @@ class AllMovieFragment : BaseFragment<FragmentAllMovieBinding>() {
         val mManager = binding.recyclerMedia.layoutManager as GridLayoutManager
         mManager.setSpanSize(footerAdapter, allMediaAdapter, mManager.spanCount)
 
-        collect(flow = allMediaAdapter.loadStateFlow,
+        collect(
+            flow = allMediaAdapter.loadStateFlow,
             action = {
                 viewModel.setErrorUiState(it)
             })
@@ -61,6 +62,7 @@ class AllMovieFragment : BaseFragment<FragmentAllMovieBinding>() {
             MediaUIEvent.BackEvent -> {
                 removeFragment()
             }
+
             is MediaUIEvent.ClickMovieEvent -> {
                 findNavController().navigate(
                     AllMovieFragmentDirections.actionAllMovieFragmentToMovieDetailFragment(
@@ -68,6 +70,7 @@ class AllMovieFragment : BaseFragment<FragmentAllMovieBinding>() {
                     )
                 )
             }
+
             is MediaUIEvent.ClickSeriesEvent -> {
                 findNavController().navigate(
                     AllMovieFragmentDirections.actionAllMovieFragmentToTvShowDetailsFragment(
@@ -75,6 +78,7 @@ class AllMovieFragment : BaseFragment<FragmentAllMovieBinding>() {
                     )
                 )
             }
+
             MediaUIEvent.RetryEvent -> {
                 allMediaAdapter.retry()
             }
@@ -98,6 +102,12 @@ class AllMovieFragment : BaseFragment<FragmentAllMovieBinding>() {
             AllMediaType.MYSTERY -> resources.getString(R.string.title_mystery)
             AllMediaType.ADVENTURE -> resources.getString(R.string.title_adventure)
             AllMediaType.ACTOR_MOVIES -> ""
+            AllMediaType.BASED_ON_TRUE_EVENTS -> resources.getString(R.string.based_on_true_events)
+            AllMediaType.CINEMATIC_MASTERPIECE -> resources.getString(R.string.cinematic_masterpieces)
+            AllMediaType.FAMILY_NIGHT_PICKS -> resources.getString(R.string.family_night_picks)
+            AllMediaType.FEEL_GOOD_PREFERENCES -> resources.getString(R.string.feel_good_favorites)
+            AllMediaType.LATE_NIGHT_THRILLS -> resources.getString(R.string.late_night_thrills)
+            AllMediaType.MIND_BENDING_STORIES -> resources.getString(R.string.mind_bending_stories)
         }
     }
 

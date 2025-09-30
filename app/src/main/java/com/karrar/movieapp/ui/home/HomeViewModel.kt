@@ -7,6 +7,8 @@ import com.karrar.movieapp.domain.usecase.home.HomeUseCasesContainer
 import com.karrar.movieapp.domain.usecases.CheckIfLoggedInUseCase
 import com.karrar.movieapp.domain.usecases.GetAccountDetailsUseCase
 import com.karrar.movieapp.domain.usecases.mylist.GetMyListUseCase
+import com.karrar.movieapp.ui.adapters.FeaturedCollectionType
+import com.karrar.movieapp.ui.adapters.FeaturedCollectionsInteractionListener
 import com.karrar.movieapp.ui.adapters.MovieInteractionListener
 import com.karrar.movieapp.ui.adapters.SeriesInteractionListener
 import com.karrar.movieapp.ui.base.BaseViewModel
@@ -37,7 +39,7 @@ class HomeViewModel @Inject constructor(
     private val getMyListUseCase: GetMyListUseCase,
     private val createdListUIMapper: CreatedListUIMapper
 ) : BaseViewModel(), HomeInteractionListener, MovieInteractionListener, SeriesInteractionListener,
-    YourCollectionsInteractionListener {
+    YourCollectionsInteractionListener, FeaturedCollectionsInteractionListener {
 
     private val _homeUiState = MutableStateFlow(HomeUiState())
     val homeUiState = _homeUiState.asStateFlow()
@@ -224,5 +226,57 @@ class HomeViewModel @Inject constructor(
 
     override fun onListClick(item: CreatedListUIState) {
         _homeUIEvent.update { Event(HomeUIEvent.ClickCollection(item)) }
+    }
+
+    override fun onClickItem(featuredCollectionType: FeaturedCollectionType) {
+        when (featuredCollectionType) {
+            FeaturedCollectionType.LATE_NIGHT_THRILLS -> _homeUIEvent.update {
+                Event(
+                    HomeUIEvent.ClickFeaturedCollectionEvent(
+                        AllMediaType.LATE_NIGHT_THRILLS
+                    )
+                )
+            }
+
+            FeaturedCollectionType.FAMILY_NIGHT_PICKS -> _homeUIEvent.update {
+                Event(
+                    HomeUIEvent.ClickFeaturedCollectionEvent(
+                        AllMediaType.FAMILY_NIGHT_PICKS
+                    )
+                )
+            }
+
+            FeaturedCollectionType.MIND_BENDING_STORIES -> _homeUIEvent.update {
+                Event(
+                    HomeUIEvent.ClickFeaturedCollectionEvent(
+                        AllMediaType.MIND_BENDING_STORIES
+                    )
+                )
+            }
+
+            FeaturedCollectionType.BASED_ON_TRUE_EVENTS -> _homeUIEvent.update {
+                Event(
+                    HomeUIEvent.ClickFeaturedCollectionEvent(
+                        AllMediaType.BASED_ON_TRUE_EVENTS
+                    )
+                )
+            }
+
+            FeaturedCollectionType.CINEMATIC_MASTERPIECE -> _homeUIEvent.update {
+                Event(
+                    HomeUIEvent.ClickFeaturedCollectionEvent(
+                        AllMediaType.CINEMATIC_MASTERPIECE
+                    )
+                )
+            }
+
+            FeaturedCollectionType.FEEL_GOOD_PREFERENCES -> _homeUIEvent.update {
+                Event(
+                    HomeUIEvent.ClickFeaturedCollectionEvent(
+                        AllMediaType.FEEL_GOOD_PREFERENCES
+                    )
+                )
+            }
+        }
     }
 }

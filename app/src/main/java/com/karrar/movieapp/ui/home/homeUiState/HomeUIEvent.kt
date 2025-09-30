@@ -12,4 +12,7 @@ sealed interface HomeUIEvent {
     data class ClickCollection(val createdListUIState: CreatedListUIState) : HomeUIEvent
 
     data object ClickSeeAllYourCollection : HomeUIEvent
+
+    data class ClickFeaturedCollectionEvent(val mediaType: AllMediaType) : HomeUIEvent
+
 }

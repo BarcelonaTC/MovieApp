@@ -40,7 +40,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
                         it.topRatedTvShows,
                         it.upcomingMovies,
                         it.recentlyReleased,
-                        it.yourCollections
+                        it.yourCollections,
+                        it.featuredCollections
                     )
                 )
             }
@@ -96,6 +97,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
             HomeUIEvent.ClickSeeAllYourCollection -> {
                 HomeFragmentDirections.actionHomeFragmentToMyListFragment()
+            }
+
+            is HomeUIEvent.ClickFeaturedCollectionEvent -> {
+                HomeFragmentDirections.actionHomeFragmentToAllMovieFragment(
+                    -1,
+                    event.mediaType
+                )
             }
         }
         findNavController().navigate(action)

@@ -83,7 +83,6 @@
     <string name="zero">\.0</string>
     <string name="my_ratings">My Ratings</string>
     <string name="items">%1$s movies</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create">Create</string>
     <string name="list_name">e.g. My Watchlist</string>
@@ -154,4 +153,12 @@
     <string name="your_collections">Your Collections</string>
     <string name="folder_icon">folder icon</string>
     <string name="featured_collection_image">featured collection image</string>
+    <string name="late_night_thrills">Late-Night Thrills</string>
+    <string name="mind_bending_stories">Mind-Bending Stories</string>
+    <string name="cinematic_masterpieces">Cinematic Masterpieces</string>
+    <string name="family_night_picks">Family Night Picks</string>
+    <string name="based_on_true_events">Based on True Events</string>
+    <string name="feel_good_favorites">Feel-Good Favorites</string>
+    <string name="featured_collections">Featured Collections</string>
+
 </resources>

@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.ScrollView
 import android.widget.TextView
+import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.os.postDelayed
 import androidx.core.view.isVisible
@@ -422,4 +423,9 @@ fun setupCarousel(viewPager: ViewPager2, adapter: BaseAdapter<*>) {
             handler.removeCallbacks(runnable)
         }
     })
+}
+
+@BindingAdapter("imageRes")
+fun setImageRes(view: ImageView, @DrawableRes resId: Int?) {
+    resId?.let { view.setImageResource(it) }
 }

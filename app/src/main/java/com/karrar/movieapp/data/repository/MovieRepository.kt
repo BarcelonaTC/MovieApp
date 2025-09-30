@@ -58,6 +58,10 @@ interface MovieRepository {
 
     suspend fun getMovieByGenre(genreID: Int): Pager<Int, MovieDto>
 
+    suspend fun getMovieByKeyword(keyword: String): Pager<Int, MovieDto>
+
+    suspend fun getMovieBySort(sortBy: String): Pager<Int, MovieDto>
+
     suspend fun getPopularMovies(): Flow<List<PopularMovieEntity>>
 
     suspend fun getTrendingMovies(): Flow<List<TrendingMovieEntity>>
